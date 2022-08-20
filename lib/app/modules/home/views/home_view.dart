@@ -56,6 +56,14 @@ class HomeView extends GetView<HomeController> {
                     icon: const Icon(Icons.add),
                     iconSize: 27,
                   ),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed('/auth');
+                    },
+                    icon: const Icon(Icons.person),
+                    iconSize: 27,
+                  ),
+                  
                 ],
               ),
               body: ListView.separated(

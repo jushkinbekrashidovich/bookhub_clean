@@ -14,6 +14,7 @@ abstract class Routes {
   static const CATEGORIES = _Paths.CATEGORIES;
   static const SAVED = _Paths.SAVED;
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static const AUTH = _Paths.AUTH;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const CATEGORIES = '/categories';
   static const SAVED = '/saved';
   static const EDIT_PROFILE = '/edit-profile';
+  static const AUTH = '/auth';
 }
