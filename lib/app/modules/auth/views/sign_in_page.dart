@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../controllers/auth_controller.dart';
 
-class AuthView extends GetView<AuthController> {
+class SignInView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +20,7 @@ class AuthView extends GetView<AuthController> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+
         children: [
           Container(
             height: 105,
@@ -28,7 +29,7 @@ class AuthView extends GetView<AuthController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: const[
                 Text(
                   'Welcome to Bookhub',
                   style: TextStyle(fontSize: 23, color: AppColors.mainColor),
@@ -40,6 +41,7 @@ class AuthView extends GetView<AuthController> {
               ],
             ),
           ),
+
           Container(
             height: 120,
             //color: Colors.blue,
@@ -49,7 +51,7 @@ class AuthView extends GetView<AuthController> {
                 Container(
                   padding: EdgeInsets.only(left: 10, right: 10),
                   height: 50,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width*0.8,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: AppColors.grey)),
@@ -64,36 +66,30 @@ class AuthView extends GetView<AuthController> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text('Sign up with Google'),
+                      Text('Sign in with Google'),
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    Get.offAllNamed('/main');
-                  },
-                  child: Container(
-                    
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                    height: 50,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: AppColors.grey)),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: SvgPicture.asset('assets/svg/facebook.svg')),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('Sign up with Facebook'),
-                      ],
-                    ),
+                Container(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  height: 50,
+                  width: MediaQuery.of(context).size.width*0.8,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: AppColors.grey)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: SvgPicture.asset('assets/svg/facebook.svg')),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('Sign in with Facebook'),
+                    ],
                   ),
                 ),
               ],
@@ -103,13 +99,13 @@ class AuthView extends GetView<AuthController> {
               text:
                   TextSpan(style: TextStyle(color: AppColors.black), children: [
             TextSpan(
-              text: 'Already have an account?',
+              text: "Don't have an account?",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
 
             TextSpan(
               
-              text: 'Sign in',
+              text: 'Sign up',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -118,10 +114,11 @@ class AuthView extends GetView<AuthController> {
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () async {
-                  return await Get.offNamed('/sign-in');
+                  return await Get.offNamed('/auth');
                 },
             ),
           ])),
+          
         ],
       ),
     );

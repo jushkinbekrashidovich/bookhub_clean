@@ -9,7 +9,7 @@ class SplashController extends GetxController {
     await Future.delayed(
       const Duration(milliseconds: 1500),
       () {
-        Get.offNamed("/main");
+        Get.offNamed("/auth");
       },
     );
   }

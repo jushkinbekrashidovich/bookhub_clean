@@ -1,3 +1,5 @@
+import 'package:bookhub/app/modules/auth/bindings/sign_in_binding.dart';
+import 'package:bookhub/app/modules/auth/views/sign_in_page.dart';
 import 'package:get/get.dart';
 
 import 'package:bookhub/app/modules/add_book/bindings/add_book_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.AUTH,
       page: () => AuthView(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_IN,
+      page: () => SignInView(),
+      binding: SignInBinding(),
     ),
   ];
 }
