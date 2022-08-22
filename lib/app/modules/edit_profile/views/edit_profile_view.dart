@@ -1,4 +1,5 @@
 import 'package:bookhub/app/modules/edit_profile/controllers/edit_profile_controller.dart';
+import 'package:bookhub/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class EditProfileView extends GetView<EditProfileController> {
       appBar: AppBar(
         title: const Text('Edit Profile'),
       ),
-      body: Center(
+      body: GetBuilder<EditProfileController>(builder: (controller) =>  Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +22,7 @@ class EditProfileView extends GetView<EditProfileController> {
             children: [
               Center(
                 child: Container(
-                  height: 219,
+                  height: 319,
                   width: MediaQuery.of(context).size.width * 0.9,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -32,22 +33,27 @@ class EditProfileView extends GetView<EditProfileController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Padding(
+                      children:  [
+                       const Padding(
                           padding: EdgeInsets.only(left: 7, bottom: 10),
-                          child: Text('F.I', style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400),),
+                          child: Text('Name', style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400),),
                         ),
                         SizedBox(
                           height: 48,
                           child: TextField(
                             keyboardType: TextInputType.text,
-                            //controller: nameController,
-                            decoration: InputDecoration(
+                            controller: controller.nameController,
+                            onChanged: (name){
+                              name = controller.nameController.text;
+                              //name = controller.firebaseAuth.currentUser.updateDisplayName(co)
+
+                            },
+                            decoration:const InputDecoration(
                               contentPadding: EdgeInsets.all(12),
                               // suffixIcon: Icon(Icons.clear_rounded),
                               filled: true,
                               fillColor: Color(0xffF9F9FD),
-                              border: const OutlineInputBorder(
+                              border:  OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(10),
                                 ),
@@ -64,22 +70,22 @@ class EditProfileView extends GetView<EditProfileController> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 20,),
-                        Padding(
+                      const  SizedBox(height: 20,),
+                       const Padding(
                           padding: EdgeInsets.only(left: 7, bottom: 10),
-                          child: Text('Age', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400),),
+                          child: Text('Phone number', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400),),
                         ),
                         SizedBox(
                           height: 48,
                           child: TextField(
-                            keyboardType: TextInputType.text,
-                            //controller: nameController,
-                            decoration: InputDecoration(
+                            keyboardType: TextInputType.phone,
+                            controller: controller.phoneController,
+                            decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(12),
                               // suffixIcon: Icon(Icons.clear_rounded),
                               filled: true,
                               fillColor: Color(0xffF9F9FD),
-                              border: const OutlineInputBorder(
+                              border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(10),
                                 ),
@@ -92,23 +98,60 @@ class EditProfileView extends GetView<EditProfileController> {
                                   Radius.circular(10),
                                 ), 
                               ),
-                              hintText: 'Ismingiz',
+                              hintText: '+998',
                             ),
                           ),
                         ),
-                        SizedBox(height: 20,),
+                      const  SizedBox(height: 20,),
+                       const Padding(
+                          padding: EdgeInsets.only(left: 7, bottom: 10),
+                          child: Text('Age', style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400),),
+                        ),
+                        SizedBox(
+                          height: 48,
+                          child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: controller.ageController,
+                            decoration:const InputDecoration(
+                              contentPadding: EdgeInsets.all(12),
+                              // suffixIcon: Icon(Icons.clear_rounded),
+                              filled: true,
+                              fillColor: Color(0xffF9F9FD),
+                              border:  OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                gapPadding: 0,
+                                borderSide: BorderSide.none
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:  BorderSide(color: AppColors.mainColor),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ), 
+                              ),
+                              //hintText: 'age',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20,),
                         
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
-              CustomButton(onTap: (){}, txt: 'Save')
+             const SizedBox(height: 30,),
+              CustomButton(
+                onTap: (){
+               //  var updatedName =controller.nameController.text;
+              // Get.find<ProfileController>().firebaseAuth.currentUser!.updateDisplayName(updatedName);
+               Get.back();
+              }, txt: 'Save')
             ],
           ),
         ),
       ),
-    );
+      ));
   }
 }

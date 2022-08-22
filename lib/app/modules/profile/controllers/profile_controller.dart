@@ -1,12 +1,20 @@
+import 'package:bookhub/app/modules/home/controllers/home_controller.dart';
+import 'package:bookhub/app/modules/splash/controllers/splash_controller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
+ 
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  final count = 0.obs;
   @override
-  void onInit() {
+  void onInit() async{
+
     super.onInit();
+    update();
+
   }
 
   @override
@@ -16,5 +24,11 @@ class ProfileController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+
+  // void logout ()async{
+  //   await splashController.googleSignIn.disconnect();
+  //   await splashController.firebaseAuth.signOut();
+
+  // }
+  
 }

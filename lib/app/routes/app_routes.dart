@@ -16,6 +16,8 @@ abstract class Routes {
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
   static const AUTH = _Paths.AUTH;
   static const SIGN_IN = _Paths.SIGN_IN;
+  static const SETTINGS = _Paths.SETTINGS;
+  static const ADD_BOOK_REVIEW = _Paths.ADD_BOOK_REVIEW;
 }
 
 abstract class _Paths {
@@ -31,4 +33,6 @@ abstract class _Paths {
   static const EDIT_PROFILE = '/edit-profile';
   static const AUTH = '/auth';
   static const SIGN_IN = '/sign-in';
+  static const SETTINGS = '/settings';
+  static const ADD_BOOK_REVIEW = '/add-book-review';
 }

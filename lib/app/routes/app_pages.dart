@@ -1,11 +1,13 @@
-import 'package:bookhub/app/modules/auth/bindings/sign_in_binding.dart';
-import 'package:bookhub/app/modules/auth/views/sign_in_page.dart';
 import 'package:get/get.dart';
 
 import 'package:bookhub/app/modules/add_book/bindings/add_book_binding.dart';
 import 'package:bookhub/app/modules/add_book/views/add_book_view.dart';
+import 'package:bookhub/app/modules/add_book_review/bindings/add_book_review_binding.dart';
+import 'package:bookhub/app/modules/add_book_review/views/add_book_review_view.dart';
 import 'package:bookhub/app/modules/auth/bindings/auth_binding.dart';
+import 'package:bookhub/app/modules/auth/bindings/sign_in_binding.dart';
 import 'package:bookhub/app/modules/auth/views/auth_view.dart';
+import 'package:bookhub/app/modules/auth/views/sign_in_page.dart';
 import 'package:bookhub/app/modules/book_review/bindings/book_review_binding.dart';
 import 'package:bookhub/app/modules/book_review/views/book_review_view.dart';
 import 'package:bookhub/app/modules/book_review_details/bindings/book_review_details_binding.dart';
@@ -22,6 +24,8 @@ import 'package:bookhub/app/modules/profile/bindings/profile_binding.dart';
 import 'package:bookhub/app/modules/profile/views/profile_view.dart';
 import 'package:bookhub/app/modules/saved/bindings/saved_binding.dart';
 import 'package:bookhub/app/modules/saved/views/saved_view.dart';
+import 'package:bookhub/app/modules/settings/bindings/settings_binding.dart';
+import 'package:bookhub/app/modules/settings/views/settings_view.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
 import 'package:bookhub/app/modules/splash/views/splash_view.dart';
 
@@ -92,6 +96,16 @@ class AppPages {
       name: _Paths.SIGN_IN,
       page: () => SignInView(),
       binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsView(),
+      binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_BOOK_REVIEW,
+      page: () => AddBookReviewView(),
+      binding: AddBookReviewBinding(),
     ),
   ];
 }

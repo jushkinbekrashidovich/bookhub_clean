@@ -1,3 +1,4 @@
+import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,11 @@ class BookReviewView extends GetView<BookReviewController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Book reviews"),
+        actions: [
+          IconButton(onPressed: (){
+            Get.toNamed(Routes.ADD_BOOK_REVIEW);
+          }, icon: Icon(Icons.add)),
+        ],
       ),
       body: ListView.builder(
         padding: EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),

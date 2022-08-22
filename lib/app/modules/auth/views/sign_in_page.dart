@@ -1,4 +1,5 @@
 import 'package:bookhub/app/core/custom_widgets/custom_button/custom_button.dart';
+import 'package:bookhub/app/modules/auth/controllers/sign_in_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../controllers/auth_controller.dart';
 
-class SignInView extends GetView<AuthController> {
+class SignInView extends GetView<SignInController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
