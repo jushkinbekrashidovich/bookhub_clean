@@ -7,7 +7,20 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../controllers/book_review_details_controller.dart';
 
-class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
+class BookReviewDetailsView extends StatelessWidget {
+  final String title;
+  final String description;
+  final String date;
+  final String ownerName;
+  final int likes;
+
+  const BookReviewDetailsView({
+    required this.title,
+    required this.description,
+    required this.date,
+    required this.ownerName,
+    required this.likes,
+  }) : super();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +33,7 @@ class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
         child: ListView(
           children: [
             Text(
-              '5 tips to create a modern app UI design',
+              title,
               style: TextStyle(fontSize: 25),
             ),
             Container(
@@ -38,7 +51,7 @@ class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
                   Container(
                       width: 187,
                       child: Text(
-                        'Jushkinbek',
+                        ownerName,
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       )),
@@ -46,8 +59,10 @@ class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
                       //height: 30,
                       width: 49,
                       child: Text(
-                        '22/12/22',
-                        style: TextStyle(fontSize: 10),
+                        
+                        date,
+                        style: TextStyle(fontSize: 10, ),
+                        textAlign: TextAlign.start,
                       )),
                   Divider(),
                 ],
@@ -55,9 +70,7 @@ class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
             ),
             Container(
               child: Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the "
-                "1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                description,
                 style: TextStyle(
                     fontSize: 18,
                     letterSpacing: 1,
@@ -75,7 +88,7 @@ class BookReviewDetailsView extends GetView<BookReviewDetailsController> {
                   onPressed: () {},
                   icon: SvgPicture.asset('assets/svg/clapping.svg'),
                 ),
-                Text('12,221', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),)
+                Text(likes.toString(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),)
               ],
              ),
            ),

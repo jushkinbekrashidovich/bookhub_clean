@@ -16,6 +16,8 @@ void main() async{
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       initialBinding: SplashBinding(),
+      locale: const Locale('en', 'EN'),
+      fallbackLocale: const Locale('en', 'EN'),
       theme: AppThemes.light,
       darkTheme: AppThemes.dark,
       debugShowCheckedModeBanner: false,

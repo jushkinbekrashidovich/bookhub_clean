@@ -45,15 +45,22 @@ class SettingsView extends GetView<SettingsController> {
                                       actions: [
                                         CupertinoActionSheetAction(
                                           child: Text("O'zbekcha"),
-                                          onPressed: () {},
+                                          onPressed: () async{
+                                           // controller.changeLanguage('uz', 'UZ');
+                                           Get.updateLocale(Locale('uz','UZ'));
+                                          },
                                         ),
                                         CupertinoActionSheetAction(
                                           child: Text('English'),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            controller.changeLanguage('en', 'EN');
+                                          },
                                         ),
                                         CupertinoActionSheetAction(
                                           child: Text('Русский'),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            controller.changeLanguage('ru', 'RU');
+                                          },
                                         ),
                                       ],
                                       cancelButton: CupertinoActionSheetAction(
@@ -93,9 +100,12 @@ class SettingsView extends GetView<SettingsController> {
                                               ],
                                             ),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Get.changeThemeMode(ThemeMode.light);
+                                          },
                                         ),
                                         CupertinoActionSheetAction(
+                                          
                                           child: Container(
                                             padding: EdgeInsets.only(right: 25),
                                             child: Row(
@@ -110,7 +120,9 @@ class SettingsView extends GetView<SettingsController> {
                                               ],
                                             ),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Get.changeThemeMode(ThemeMode.light);
+                                          },
                                         ),
                                       ],
                                       cancelButton: CupertinoActionSheetAction(

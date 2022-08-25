@@ -8,6 +8,8 @@ import 'package:bookhub/app/modules/auth/bindings/auth_binding.dart';
 import 'package:bookhub/app/modules/auth/bindings/sign_in_binding.dart';
 import 'package:bookhub/app/modules/auth/views/auth_view.dart';
 import 'package:bookhub/app/modules/auth/views/sign_in_page.dart';
+import 'package:bookhub/app/modules/book_details/bindings/book_details_binding.dart';
+import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
 import 'package:bookhub/app/modules/book_review/bindings/book_review_binding.dart';
 import 'package:bookhub/app/modules/book_review/views/book_review_view.dart';
 import 'package:bookhub/app/modules/book_review_details/bindings/book_review_details_binding.dart';
@@ -62,11 +64,11 @@ class AppPages {
       page: () => BookReviewView(),
       binding: BookReviewBinding(),
     ),
-    GetPage(
-      name: _Paths.BOOK_REVIEW_DETAILS,
-      page: () => BookReviewDetailsView(),
-      binding: BookReviewDetailsBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.BOOK_REVIEW_DETAILS,
+    //   page: () => BookReviewDetailsView(),
+    //   binding: BookReviewDetailsBinding(),
+    // ),
     GetPage(
       name: _Paths.ADD_BOOK,
       page: () => AddBookView(),
@@ -86,6 +88,7 @@ class AppPages {
       name: _Paths.EDIT_PROFILE,
       page: () => EditProfileView(),
       binding: EditProfileBinding(),
+      transition: Transition.cupertino
     ),
     GetPage(
       name: _Paths.AUTH,
@@ -101,11 +104,17 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
+      transition: Transition.cupertino
     ),
     GetPage(
       name: _Paths.ADD_BOOK_REVIEW,
       page: () => AddBookReviewView(),
       binding: AddBookReviewBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.BOOK_DETAILS,
+    //   page: () => BookDetailsView(),
+    //   binding: BookDetailsBinding(),
+    // ),
   ];
 }

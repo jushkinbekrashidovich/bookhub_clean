@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../splash/controllers/splash_controller.dart';
@@ -5,7 +6,10 @@ import '../../splash/controllers/splash_controller.dart';
 class SettingsController extends GetxController {
   //TODO: Implement SettingsController
   SplashController splashController = Get.find<SplashController>();
-
+ void changeLanguage (var param1, var param2){
+    var locale = Locale(param1, param2);
+    Get.updateLocale(locale);
+  }
 
   final count = 0.obs;
   @override

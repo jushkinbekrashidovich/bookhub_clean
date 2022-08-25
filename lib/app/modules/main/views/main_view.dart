@@ -2,6 +2,7 @@ import 'package:bookhub/app/modules/book_review/views/book_review_view.dart';
 import 'package:bookhub/app/modules/categories/views/categories_view.dart';
 import 'package:bookhub/app/modules/home/views/home_view.dart';
 import 'package:bookhub/app/modules/saved/views/saved_view.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -15,14 +16,21 @@ class MainView extends GetView<MainController> {
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(
       builder: (controller) => Scaffold(
-        body: IndexedStack(
-          index: controller.bottomMenu.index,
-          children: [
-            HomeView(),
-            SavedView(),
-            BookReviewView(),
-            CategoriesView(),
-          ],
+        body: DoubleBackToCloseApp(
+          snackBar: SnackBar(
+            content: Text('Double click to exit app'),
+            dismissDirection: DismissDirection.horizontal,
+            duration: Duration(seconds: 1),
+          ),
+          child: IndexedStack(
+            index: controller.bottomMenu.index,
+            children: [
+              HomeView(),
+              SavedView(),
+              BookReviewView(),
+              CategoriesView(),
+            ],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: AppColors.unselectedBottomNavItem,
