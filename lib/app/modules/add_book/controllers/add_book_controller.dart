@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-import '../../../core/custom_widgets/custom_snackbar.dart';
+import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/book_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -19,14 +20,23 @@ class AddBookController extends GetxController {
   TextEditingController priceController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController locationControlller = TextEditingController();
+  List<String> images = [
+    "educational",
+    "sel-improvement",
+    'textbook',
+    'language',
+    'fiction',
+    'novel'
+  ];
   final category = "educational".obs;
-   XFile? image;
+  XFile? image;
   final isExchange = false.obs;
   final didImageSelected = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+    
   }
 
   @override
@@ -43,12 +53,12 @@ class AddBookController extends GetxController {
     book.photoUrl = " ";
     book.title = titleController.text;
     book.category = category.value;
-    book.location =locationControlller.text;
+    book.location = locationControlller.text;
     book.description = descriptionController.text;
     book.phoneNumber = phoneNumberController.text;
     book.price = priceController.text;
     book.postedTimestamp = DateTime.now().millisecondsSinceEpoch;
-   // book.isExchange = isExchange.value;
+    // book.isExchange = isExchange.value;
 
     if (image != null) {
       //print(image.path);
@@ -72,7 +82,7 @@ class AddBookController extends GetxController {
       print("Instance got");
       int ced = await image!.length();
       await firebase_storage.FirebaseStorage.instance
-          .ref('postImages/${Uuid().v4()}.jpg')
+          .ref('postImages/${const Uuid().v4()}.jpg')
           .putFile(File(image!.path))
           .then((p0) async {
         imageUrl = await p0.ref.getDownloadURL();
@@ -123,40 +133,58 @@ class AddBookController extends GetxController {
     });
     print("image picking finished");
   }
- 
 
-  validation() async{
-    if ( didImageSelected.isFalse) {
-       Get.snackbar("Error", "Please select image", );
-       return false;
-     }
-     if ( titleController.text.isEmpty) {
-       Get.snackbar("Error", "Please enter tittle", );
-       return false;
-     }
-     if ( locationControlller.text.isEmpty) {
-       Get.snackbar("Error", "Please enter location", );
-       return false;
-     }
-     if ( descriptionController.text.isEmpty) {
-       Get.snackbar("Error", "Please enter description", );
-       return false;
-     }
-     if ( phoneNumberController.text.isEmpty) {
-       Get.snackbar("Error", "Please enter phone number", );
-       return false;
-     }
-     if ( priceController.text.isEmpty) {
-       Get.snackbar("Error", "Please enter price", );
-       return false;
-     }
-     
-     
-     if ( didImageSelected.isFalse) {
-       Get.snackbar("Error", "Please enter description", );
-       return false;
-     }
+  validation() async {
+    if (didImageSelected.isFalse) {
+      Get.snackbar(
+        "Error",
+        "Please select image",
+      );
+      return false;
+    }
+    if (titleController.text.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Please enter tittle",
+      );
+      return false;
+    }
+    if (locationControlller.text.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Please enter location",
+      );
+      return false;
+    }
+    if (descriptionController.text.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Please enter description",
+      );
+      return false;
+    }
+    if (phoneNumberController.text.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Please enter phone number",
+      );
+      return false;
+    }
+    if (priceController.text.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Please enter price",
+      );
+      return false;
+    }
+
+    if (didImageSelected.isFalse) {
+      Get.snackbar(
+        "Error",
+        "Please enter description",
+      );
+      return false;
+    }
     addBook();
   }
-  
 }

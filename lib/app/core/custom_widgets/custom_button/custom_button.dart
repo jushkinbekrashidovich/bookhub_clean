@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
   final AlignmentGeometry alignment;
   final double? width;
   final Color txtcolor;
+  final TextStyle textStyle ;
   const CustomButton({
     Key? key,
     required this.onTap,
@@ -25,7 +26,8 @@ class CustomButton extends StatelessWidget {
     this.alignment = Alignment.center,
     this.txtcolor= AppColors.white,
     this.padding = EdgeInsets.zero,
-    this.width
+    this.width, 
+     this.textStyle=const TextStyle(color: AppColors.white, fontSize: 18),
   }) : super(key: key);
 
   @override
@@ -55,7 +57,7 @@ class CustomButton extends StatelessWidget {
           height: height,
           padding: padding,
           alignment: alignment,
-          child: Text(txt, style: const TextStyle(color: AppColors.white, fontSize: 18),),
+          child: Text(txt, style: textStyle,),
         ),
       ),
     );

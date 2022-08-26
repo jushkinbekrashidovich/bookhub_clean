@@ -1,4 +1,4 @@
-import 'package:bookhub/app/core/custom_widgets/profile_items.dart';
+import 'package:bookhub/app/core/custom_widgets/custom_widgets/profile_items.dart';
 import 'package:bookhub/app/core/theme/app_colors.dart';
 import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';

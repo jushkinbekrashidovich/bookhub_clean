@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import '../../../core/custom_widgets/custom_snackbar.dart';
+import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/models/book_review_model.dart';
 
 class BookReviewController extends GetxController {

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../core/custom_widgets/profile_items.dart';
+import '../../../core/custom_widgets/custom_widgets/profile_items.dart';
 import '../../../core/theme/app_colors.dart';
 import '../controllers/profile_controller.dart';
 

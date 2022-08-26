@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/custom_widgets/custom_snackbar.dart';
+import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/models/book_review_model.dart';
 import '../../../routes/app_pages.dart';
 import '../../main/controllers/main_controller.dart';
@@ -28,7 +28,7 @@ class AddBookReviewController extends GetxController {
         .add(bookReview.toJson())
         .then((value) {
       //Get.find<MainController>().setMenu(BottomMenu.reviews);
-      Get.back();
+      Get.offAllNamed(Routes.MAIN);
       //Get.offAllNamed(Routes.BOOK_REVIEW,);
     }).catchError((err) {
       // Get.back();

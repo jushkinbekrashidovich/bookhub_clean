@@ -17,7 +17,6 @@ class CustomFullScreenDialog {
       useSafeArea: true,
     );
   }
-
   static void cancelDialog() {
     Get.back();
   }

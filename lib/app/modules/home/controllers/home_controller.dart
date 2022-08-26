@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
-import '../../../core/custom_widgets/custom_snackbar.dart';
+import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/book_model.dart';
 
 class HomeController extends GetxController {

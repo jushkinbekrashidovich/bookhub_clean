@@ -26,5 +26,6 @@ class MainBinding extends Bindings {
     Get.lazyPut<SavedController>(
       () => SavedController(),
     );
+
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../add_book/controllers/add_book_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -277,7 +278,7 @@ class HomeView extends GetView<HomeController> {
     //print("datetime: " + today.compareTo(normalTime).toString());
     if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
             .abs() <=
-        86400000) return 'Yestarday';
+        86400000) return 'Yesterday';
     return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year%100)}';
   }
 

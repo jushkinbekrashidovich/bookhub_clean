@@ -1,11 +1,15 @@
-import 'package:bookhub/app/core/custom_widgets/custom_loader_dialog.dart';
+import 'package:bookhub/app/core/custom_widgets/custom_dialogs/custom_loader_dialog.dart';
+import 'package:bookhub/app/core/custom_widgets/custom_text_widgets/custom_padding_title_widget.dart';
+import 'package:bookhub/app/core/custom_widgets/text_fields/custom_text_field.dart';
+import 'package:bookhub/app/core/custom_widgets/text_fields/custom_text_form_field.dart';
+import 'package:bookhub/app/core/theme/app_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 import '../../../core/custom_widgets/custom_button/custom_button.dart';
-import '../../../core/custom_widgets/custom_snackbar.dart';
+import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../core/theme/app_colors.dart';
 import '../controllers/add_book_controller.dart';
 
@@ -18,15 +22,16 @@ class AddBookView extends GetView<AddBookController> {
         ),
         body: Obx(
           () => ListView(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.only(top: 10, bottom: 25, left: 10, right: 10),
+            physics: const BouncingScrollPhysics(),
+            padding:
+                const EdgeInsets.only(top: 10, bottom: 25, left: 10, right: 10),
             children: [
               Container(
                 height: 120,
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
                   color: AppColors.white,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: AppUtils.kBorderRadius8,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 5),
@@ -51,12 +56,12 @@ class AddBookView extends GetView<AddBookController> {
                           controller.pickImage();
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 10),
-                          padding: EdgeInsets.all(7),
-                          decoration: BoxDecoration(
+                          padding: AppUtils.kAllPadding8,
+                          decoration: const BoxDecoration(
                             color: Color(0xffE6F2FF),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: AppUtils.kBorderRadius10,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,66 +94,19 @@ class AddBookView extends GetView<AddBookController> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              AppUtils.kBoxHeight10,
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                padding: const EdgeInsets.all(10),
+                    borderRadius: AppUtils.kBorderRadius10),
+                padding: AppUtils.kAllPadding10,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        'Title',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 44,
-                      child: TextField(
-                        keyboardType: TextInputType.text,
-                        controller: controller.titleController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(12),
-                          // suffixIcon: Icon(Icons.clear_rounded),
-                          filled: true,
-                          fillColor: Color(0xffF9F9FD),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              gapPadding: 0,
-                              borderSide: BorderSide.none),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.mainColor),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          //hintText: 'Example: Hello World',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        'Categories',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
+                    const CustomPaddingTitle(title: 'Title'),
+                    CustomTextField(controller: controller.titleController),
+                    AppUtils.kBoxHeight10,
+                    const CustomPaddingTitle(title: 'Categories'),
                     Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 1),
@@ -162,14 +120,7 @@ class AddBookView extends GetView<AddBookController> {
                           underline: Container(),
                           value: controller.category.value,
                           selectedItemBuilder: (_) {
-                            return [
-                              "educational",
-                              "sel-improvement",
-                              'textbook',
-                              'language',
-                              'fiction',
-                              'novel'
-                            ].map((String choice) {
+                            return controller.images.map((String choice) {
                               return Center(
                                 child: Container(
                                   width: double.infinity,
@@ -178,14 +129,7 @@ class AddBookView extends GetView<AddBookController> {
                               );
                             }).toList();
                           },
-                          items: [
-                            "educational",
-                            "sel-improvement",
-                            'textbook',
-                            'language',
-                            'fiction',
-                            'novel'
-                          ].map((String choice) {
+                          items: controller.images.map((String choice) {
                             return DropdownMenuItem<String>(
                               value: choice,
                               child: Row(
@@ -197,130 +141,23 @@ class AddBookView extends GetView<AddBookController> {
                             controller.category.value = opt ?? 'all';
                           }),
                     ),
-                    SizedBox(
-                      height: 10,
+                    AppUtils.kBoxHeight10,
+                    const CustomPaddingTitle(title: 'Location'),
+                    CustomTextField(controller: controller.locationControlller),
+                    AppUtils.kBoxHeight10,
+                    const CustomPaddingTitle(title: 'Description'),
+                    CustomTextFormField(
+                        controller: controller.descriptionController,
+                        maxLines: 4,
+                        hintText: 'here you can write about the book'),
+                    AppUtils.kBoxHeight10,
+                    CustomPaddingTitle(title: 'Phone number'),
+                    CustomTextField(
+                      controller: controller.phoneNumberController,
+                      keyboardType: TextInputType.phone,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        'Location',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 44,
-                      child: TextField(
-                        keyboardType: TextInputType.text,
-                        controller: controller.locationControlller,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(12),
-                          // suffixIcon: Icon(Icons.clear_rounded),
-                          filled: true,
-                          fillColor: Color(0xffF9F9FD),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              gapPadding: 0,
-                              borderSide: BorderSide.none),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.mainColor),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          //hintText: 'Example: Hello World',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        'Description',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
-                    
-                    TextFormField(
-                      maxLines: 3,
-                      keyboardType: TextInputType.text,
-                      controller: controller.descriptionController,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.all(12),
-                        // suffixIcon: Icon(Icons.clear_rounded),
-                        filled: true,
-                        fillColor: Color(0xffF9F9FD),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                            gapPadding: 0,
-                            borderSide: BorderSide.none),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.mainColor),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        hintText: 'Kitob haqida',
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        'Phone number',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 48,
-                      child: TextField(
-                        keyboardType: TextInputType.phone,
-                        controller: controller.phoneNumberController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(12),
-                          prefix: Text('+998', style: TextStyle(fontWeight: FontWeight.w400, color: AppColors.black),),
-                          // suffixIcon: Icon(Icons.clear_rounded),
-                          //suffix: Text('UZS',style: TextStyle(color: AppColors.black),),
-                          filled: true,
-                          fillColor: Color(0xffF9F9FD),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              gapPadding: 0,
-                              borderSide: BorderSide.none),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.mainColor),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          //hintText: 'price',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    AppUtils.kBoxHeight10,
                     Container(
-                      //padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-
-                      // margin:
-                      // EdgeInsets.symmetric(horizontal: DEFAULT_PADDING * 1.0),
                       height: 48,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -340,7 +177,6 @@ class AddBookView extends GetView<AddBookController> {
                           ),
                           Spacer(),
                           Container(
-                            //padding: EdgeInsets.symmetric(horizontal: 10),
                             alignment: Alignment.center,
                             height: double.infinity,
                             //width: 150,
@@ -350,79 +186,45 @@ class AddBookView extends GetView<AddBookController> {
                               },
                               value: controller.isExchange.value,
                               activeColor: AppColors.mainColor,
-                              //tractiveTrackColor: Colors.yellow,
-                              //inactiveThumbColor: Colors.redAccent,
-                              //inactiveTrackColor: Colors.orange,
                             ),
                           )
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                     Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 10),
-                      child: Text(
-                        controller.isExchange.value==false? 'Price':'Title',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 48,
-                      child: TextField(
-                        keyboardType: controller.isExchange.value==false? TextInputType.number:TextInputType.text,
-                        controller: controller.priceController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(12),
-                          // suffixIcon: Icon(Icons.clear_rounded),
-                          //suffix: Text('UZS',style: TextStyle(color: AppColors.black),),
-                          filled: true,
-                          fillColor: Color(0xffF9F9FD),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              gapPadding: 0,
-                              borderSide: BorderSide.none),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.mainColor),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          hintText: controller.isExchange.value==false? 'price':'title',
-                        ),
-                      ),
+                    AppUtils.kBoxHeight10,
+                    const CustomPaddingTitle(title: 'Price'),
+                    CustomTextField(
+                      controller: controller.priceController,
+                      keyboardType: controller.isExchange.value == false
+                          ? TextInputType.number
+                          : TextInputType.text,
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 15,
-              ),
+              AppUtils.kBoxHeight15,
               Padding(
-                  padding: EdgeInsets.only(right: 10, left: 10),
-                  child: CustomButton(
-                    onTap: ()async {
+                padding: AppUtils.kLeftandRightPadding10,
+                child: CustomButton(
+                  onTap: () async {
                     //CustomLoaderDialog();
                     showDialog(
-                      context: context,
-                      barrierDismissible: true,
-                      builder: (BuildContext context) {
-                        return Center(
-                        child: CircularProgressIndicator(),
-                        );
-                      });
-                      controller.validation();
-                  // controller.addBook().then((value) {}).catchError((onError) {
-                  //   Get.back();
-                  //   showErrorSnackbar(onError.toString());
-                  // });
-                  }, txt: 'send')),
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (BuildContext context) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        });
+                    controller.validation();
+                    // controller.addBook().then((value) {}).catchError((onError) {
+                    //   Get.back();
+                    //   showErrorSnackbar(onError.toString());
+                    // });
+                  },
+                  txt: 'send',
+                ),
+              ),
             ],
           ),
         ));

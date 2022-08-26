@@ -8,34 +8,34 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required this.controller,
-    this.height=44,
+    this.height = 44,
     this.hintText,
-    
-    
-    }) : super(key: key);
+    this.keyboardType,
+  }) : super(key: key);
   final TextEditingController controller;
-  final height;
-  final hintText;
+  final double height;
+  final  hintText;
+  final  keyboardType;
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
+    return SizedBox(
       height: height,
       child: TextField(
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType,
         controller: controller,
         decoration:  InputDecoration(
           contentPadding: EdgeInsets.all(12),
           // suffixIcon: Icon(Icons.clear_rounded),
           filled: true,
-          fillColor: const Color(0xffF9F9FD),
-          border:const OutlineInputBorder(
+          fillColor: Color(0xffF9F9FD),
+          border: OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
               gapPadding: 0,
               borderSide: BorderSide.none),
-          focusedBorder:const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.mainColor),
             borderRadius: BorderRadius.all(
               Radius.circular(10),

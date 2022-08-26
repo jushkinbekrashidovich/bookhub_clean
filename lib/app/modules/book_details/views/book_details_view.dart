@@ -79,9 +79,20 @@ class BookDetailsView extends StatelessWidget {
                       textAlign: TextAlign.center,
                     )),
                 SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    height: 40,
-                    child: CustomButton(onTap: () {}, txt: price + ' UZS')),
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  height: 40,
+                  child: CustomButton(
+                    onTap: () {},
+                    txt: price+"snkdsankda",
+                    textStyle: TextStyle(
+                      
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.white,
+                      fontSize: 19,
+                      overflow: TextOverflow.ellipsis
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -92,7 +103,7 @@ class BookDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+               const Text(
                   'kitob haqida',
                   style: TextStyle(fontSize: 21),
                 ),
@@ -125,21 +136,33 @@ class BookDetailsView extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Card(
-                elevation: 0,
+                  elevation: 0,
                   child: ExpandablePanel(
-                    header: Text("Description", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),),
+                    header: Text(
+                      "Description",
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+                    ),
                     collapsed: Text(
                       description,
                       softWrap: true,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 16, color: AppColors.grey, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.grey,
+                          fontWeight: FontWeight.w400),
                     ),
                     expanded: Text(
                       description,
-                      style: TextStyle(fontSize: 16, color: AppColors.grey, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.grey,
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
