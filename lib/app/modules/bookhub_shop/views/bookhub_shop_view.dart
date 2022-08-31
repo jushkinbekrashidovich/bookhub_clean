@@ -1,8 +1,7 @@
 import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
-import 'package:bookhub/app/modules/saved/controllers/saved_controller.dart';
-import 'package:bookhub/app/routes/app_pages.dart';
+import 'package:bookhub/app/modules/bookhub_shop/controllers/bookhub_shop_controller.dart';
+import 'package:bookhub/app/modules/bookhub_shop_details/views/bookhub_shop_details_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,16 +9,34 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../add_book/controllers/add_book_controller.dart';
 
-class SavedView extends GetView<SavedController> {
+class BookhubShopView extends GetView<BookhubShopController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          title: Text('New books'),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: 20,),
+              Text('Bookhub Shop'),
+              SizedBox(width: 5,),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.red,
+                  borderRadius: BorderRadius.circular(2)
+
+                ),
+                height: 20,
+                width: 40,
+                
+                child: Center(child: Text('new', style: TextStyle(color: AppColors.white, fontSize: 14,),)),
+              ),
+            ],
+          ),
         ),
         body: ListView(
             physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 10, top: 10),
             //primary: false,
             children: [
               Padding(
@@ -59,26 +76,23 @@ class SavedView extends GetView<SavedController> {
               ...controller.newBookSales.value.map((element) {
                 return GestureDetector(
                   onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) => BookDetailsView(
-                    //       title: element.title.toString(),
-                    //       description: element.description.toString(),
-                    //       postedTimestamp: getReadableTime(element.postedTimestamp),
-                    //       ownerName: element.ownerName.toString(),
-                    //       price: element.price.toString(),
-                    //       phoneNumber: element.phoneNumber.toString(),
-                    //       photoUrl: element.photoUrl.toString(),
-                    //       category: element.category.toString(),
-                    //     ),
-                    //   ),
-                    // );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => BookhubShopDetailsView(
+                          title: element.title.toString(),
+                          description: element.description.toString(),
+                          price: element.price.toString(),
+                          phoneNumber: element.phoneNumber.toString(),
+                          photoUrl: element.photoUrl.toString(), authorName: '', id: '', type: '',
+                        ),
+                      ),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       padding: EdgeInsets.only(
-                        left: 6,
+                        left: 10,
                       ),
                       height: 140,
                       decoration: BoxDecoration(
@@ -86,7 +100,7 @@ class SavedView extends GetView<SavedController> {
                         color: Colors.white,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CachedNetworkImage(
                             imageBuilder: (context, imageProvider) => Container(
@@ -117,7 +131,7 @@ class SavedView extends GetView<SavedController> {
                           ),
                           Container(
                             padding: EdgeInsets.only(
-                              left: 10,
+                              left: 20,
                               top: 10,
                             ),
                             child: Column(
@@ -132,12 +146,24 @@ class SavedView extends GetView<SavedController> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
                                 const SizedBox(
                                   height: 10,
+                                ),
+                                SizedBox(
+                                  child: Text(element.authorName.toString(),
+                                  style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color.fromARGB(255, 149, 148, 148)
+                                  
+                                  ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 25,
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(left: 4),

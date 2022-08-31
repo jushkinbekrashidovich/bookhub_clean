@@ -37,7 +37,6 @@ class BookDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About book'),
         backgroundColor: AppColors.background,
         elevation: 0,
       ),
@@ -83,9 +82,8 @@ class BookDetailsView extends StatelessWidget {
                   height: 40,
                   child: CustomButton(
                     onTap: () {},
-                    txt: price+"snkdsankda",
+                    txt: price,
                     textStyle: TextStyle(
-                      
                       fontWeight: FontWeight.w400,
                       color: AppColors.white,
                       fontSize: 19,
@@ -154,14 +152,14 @@ class BookDetailsView extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           fontSize: 16,
-                          color: AppColors.grey,
+                          color: Color.fromARGB(255, 126, 126, 126),
                           fontWeight: FontWeight.w400),
                     ),
                     expanded: Text(
                       description,
                       style: TextStyle(
                           fontSize: 16,
-                          color: AppColors.grey,
+                          color: Color.fromARGB(255, 126, 126, 126),
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -186,14 +184,19 @@ class BookDetailsView extends StatelessWidget {
                               child: Icon(
                                 CupertinoIcons.person,
                                 color: AppColors.mainColor,
-                                size: 20,
+                                size: 18,
                               )),
                           SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            ownerName,
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                          SizedBox(
+                            height: 22,
+                            width: 220,
+                            child: Text(
+                              ownerName,
+                              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                              overflow: TextOverflow.ellipsis
+                            ),
                           ),
                         ],
                       ),
@@ -201,16 +204,22 @@ class BookDetailsView extends StatelessWidget {
                         children: [
                           Icon(
                             CupertinoIcons.location,
-                            size: 20,
+                            size: 18,
                             color: AppColors.mainColor,
                           ),
                           SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            location,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
+                          SizedBox(
+                            height: 22,
+                            width: MediaQuery.of(context).size.width*0.8,
+                            child: Text(
+                              location,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis
+                              ),
                             ),
                           ),
                         ],
@@ -219,7 +228,7 @@ class BookDetailsView extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.date_range_outlined,
-                            size: 20,
+                            size: 18,
                             color: AppColors.mainColor,
                           ),
                           SizedBox(
@@ -227,7 +236,7 @@ class BookDetailsView extends StatelessWidget {
                           ),
                           Text(
                             postedTimestamp,
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
                           ),
                         ],
                       ),

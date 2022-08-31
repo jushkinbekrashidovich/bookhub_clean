@@ -1,7 +1,7 @@
 import 'package:bookhub/app/modules/book_review/views/book_review_view.dart';
+import 'package:bookhub/app/modules/bookhub_shop/views/bookhub_shop_view.dart';
 import 'package:bookhub/app/modules/categories/views/categories_view.dart';
 import 'package:bookhub/app/modules/home/views/home_view.dart';
-import 'package:bookhub/app/modules/saved/views/saved_view.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,7 +26,7 @@ class MainView extends GetView<MainController> {
             index: controller.bottomMenu.index,
             children: [
               HomeView(),
-              SavedView(),
+              BookhubShopView(),
               BookReviewView(),
               CategoriesView(),
             ],
@@ -56,7 +56,7 @@ class MainView extends GetView<MainController> {
             ),
             _bottomNavigationBarItem(
               icon: 'icon_bookmark',
-              label: 'Saved'.tr,
+              label: 'Bookshop'.tr,
               activeIcon: 'icon_bookmark_active',
             ),
             _bottomNavigationBarItem(

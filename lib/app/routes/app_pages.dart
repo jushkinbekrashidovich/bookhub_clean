@@ -14,6 +14,10 @@ import 'package:bookhub/app/modules/book_review/bindings/book_review_binding.dar
 import 'package:bookhub/app/modules/book_review/views/book_review_view.dart';
 import 'package:bookhub/app/modules/book_review_details/bindings/book_review_details_binding.dart';
 import 'package:bookhub/app/modules/book_review_details/views/book_review_details_view.dart';
+import 'package:bookhub/app/modules/bookhub_shop/bindings/bookhub_shop_binding.dart';
+import 'package:bookhub/app/modules/bookhub_shop/views/bookhub_shop_view.dart';
+import 'package:bookhub/app/modules/bookhub_shop_details/bindings/bookhub_shop_details_binding.dart';
+import 'package:bookhub/app/modules/bookhub_shop_details/views/bookhub_shop_details_view.dart';
 import 'package:bookhub/app/modules/categories/bindings/categories_binding.dart';
 import 'package:bookhub/app/modules/categories/views/categories_view.dart';
 import 'package:bookhub/app/modules/edit_profile/bindings/edit_profile_binding.dart';
@@ -24,8 +28,6 @@ import 'package:bookhub/app/modules/main/bindings/main_binding.dart';
 import 'package:bookhub/app/modules/main/views/main_view.dart';
 import 'package:bookhub/app/modules/profile/bindings/profile_binding.dart';
 import 'package:bookhub/app/modules/profile/views/profile_view.dart';
-import 'package:bookhub/app/modules/saved/bindings/saved_binding.dart';
-import 'package:bookhub/app/modules/saved/views/saved_view.dart';
 import 'package:bookhub/app/modules/settings/bindings/settings_binding.dart';
 import 'package:bookhub/app/modules/settings/views/settings_view.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
@@ -80,16 +82,15 @@ class AppPages {
       binding: CategoriesBinding(),
     ),
     GetPage(
-      name: _Paths.SAVED,
-      page: () => SavedView(),
-      binding: SavedBinding(),
+      name: _Paths.BOOKHUB_SHOP,
+      page: () => BookhubShopView(),
+      binding: BookhubShopBinding(),
     ),
     GetPage(
-      name: _Paths.EDIT_PROFILE,
-      page: () => EditProfileView(),
-      binding: EditProfileBinding(),
-      transition: Transition.cupertino
-    ),
+        name: _Paths.EDIT_PROFILE,
+        page: () => EditProfileView(),
+        binding: EditProfileBinding(),
+        transition: Transition.cupertino),
     GetPage(
       name: _Paths.AUTH,
       page: () => AuthView(),
@@ -101,11 +102,10 @@ class AppPages {
       binding: SignInBinding(),
     ),
     GetPage(
-      name: _Paths.SETTINGS,
-      page: () => SettingsView(),
-      binding: SettingsBinding(),
-      transition: Transition.cupertino
-    ),
+        name: _Paths.SETTINGS,
+        page: () => SettingsView(),
+        binding: SettingsBinding(),
+        transition: Transition.cupertino),
     GetPage(
       name: _Paths.ADD_BOOK_REVIEW,
       page: () => AddBookReviewView(),
@@ -115,6 +115,11 @@ class AppPages {
     //   name: _Paths.BOOK_DETAILS,
     //   page: () => BookDetailsView(),
     //   binding: BookDetailsBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.BOOKHUB_SHOP_DETAILS,
+    //   page: () => BookhubShopDetailsView(),
+    //   binding: BookhubShopDetailsBinding(),
     // ),
   ];
 }

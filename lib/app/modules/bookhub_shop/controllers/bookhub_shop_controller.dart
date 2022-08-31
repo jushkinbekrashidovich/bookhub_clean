@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/book_model.dart';
 
-class SavedController extends GetxController {
+class BookhubShopController extends GetxController {
   //TODO: Implement HomeController
   late FirebaseFirestore firestore;
   final newBookSales = <NewBooks>[].obs;

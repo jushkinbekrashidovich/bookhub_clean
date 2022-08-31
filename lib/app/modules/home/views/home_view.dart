@@ -149,32 +149,14 @@ class HomeView extends GetView<HomeController> {
                             ),
                             imageUrl: element.photoUrl.toString(),
                             placeholder: (context, url) =>
-                                CircularProgressIndicator(
+                                Center(
+                                  child: CircularProgressIndicator(
                               strokeWidth: 2,
                             ),
+                                ),
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),
-                          // Container(
-                          //   height: 120,
-                          //   width: 85,
-                          //   decoration: BoxDecoration(
-                          //     image: DecorationImage(
-                          //         image: NetworkImage(element.photoUrl ?? ""),
-                          //         fit: BoxFit.fill),
-                          //     color: AppColors.white,
-                          //     borderRadius: BorderRadius.circular(10),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //     color: Colors.grey.withOpacity(0.5),
-                          //     spreadRadius: 1.2,
-                          //     blurRadius: 1.2,
-                          //     offset:
-                          //         Offset(0, 3), // changes position of shadow
-                          //   ),
-                          // ],
-                          //   ),
-                          // ),
                           Container(
                             padding: EdgeInsets.only(
                               left: 10,
@@ -220,9 +202,14 @@ class HomeView extends GetView<HomeController> {
                                       Icons.location_on_outlined,
                                       size: 17,
                                     ),
-                                    Text(
-                                      element.location.toString(),
-                                      style: TextStyle(fontSize: 13),
+                                    SizedBox(
+                                      height: 19,
+                                      width: 100,
+                                      child: Text(
+                                        element.location.toString(),
+                                        style: TextStyle(fontSize: 13),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -232,17 +219,8 @@ class HomeView extends GetView<HomeController> {
                           Container(
                             padding: EdgeInsets.only(top: 0, bottom: 10),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 30),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        CupertinoIcons.bookmark,
-                                        size: 23,
-                                      )),
-                                ),
                                 Container(
                                   height: 15,
                                   //width: 60,
