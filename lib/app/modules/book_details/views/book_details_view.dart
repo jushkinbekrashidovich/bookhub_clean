@@ -49,7 +49,7 @@ class BookDetailsView extends StatelessWidget {
             //color: Colors.red,
             height: 320,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CachedNetworkImage(
@@ -77,20 +77,16 @@ class BookDetailsView extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                     )),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: 40,
-                  child: CustomButton(
-                    onTap: () {},
-                    txt: price,
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.white,
-                      fontSize: 19,
-                      overflow: TextOverflow.ellipsis
-                    ),
-                  ),
-                ),
+                Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Text(
+                      price,
+                      style:
+                          TextStyle(color: AppColors.mainColor, fontSize: 22),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    )),
               ],
             ),
           ),
@@ -101,39 +97,44 @@ class BookDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               const Text(
+                const Text(
                   'kitob haqida',
                   style: TextStyle(fontSize: 21),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
-                Container(
-                  height: 30,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 235, 240, 248),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 4),
-                          child: Icon(
-                            Icons.book,
-                            size: 18,
-                          )),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        category,
-                        style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.w400),
-                      )
-                    ],
+                //IconButton(onPressed: () {}, icon: Icon(Icons.settings),splashColor: AppColors.red, splashRadius: 3,),
+                Chip(
+                  backgroundColor: Color.fromARGB(255, 235, 240, 248),
+                  labelPadding: EdgeInsets.only(left: 10, right: 10),
+                  label: Text(
+                    category,
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
                   ),
                 ),
+                // Container(
+                //   height: 30,
+                //   width: 150,
+                //   decoration: BoxDecoration(
+                //       color: Color.fromARGB(255, 235, 240, 248),
+                //       borderRadius: BorderRadius.circular(8)),
+                //   child: Row(
+                //     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       Padding(
+                //           padding: EdgeInsets.only(left: 4),
+                //           child: Icon(
+                //             Icons.book,
+                //             size: 18,
+                //           )),
+                //       SizedBox(
+                //         width: 4,
+                //       ),
+
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 10,
                 ),
@@ -192,11 +193,10 @@ class BookDetailsView extends StatelessWidget {
                           SizedBox(
                             height: 22,
                             width: 220,
-                            child: Text(
-                              ownerName,
-                              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-                              overflow: TextOverflow.ellipsis
-                            ),
+                            child: Text(ownerName,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                overflow: TextOverflow.ellipsis),
                           ),
                         ],
                       ),
@@ -212,14 +212,13 @@ class BookDetailsView extends StatelessWidget {
                           ),
                           SizedBox(
                             height: 22,
-                            width: MediaQuery.of(context).size.width*0.8,
+                            width: MediaQuery.of(context).size.width * 0.8,
                             child: Text(
                               location,
                               style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                overflow: TextOverflow.ellipsis
-                              ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  overflow: TextOverflow.ellipsis),
                             ),
                           ),
                         ],
@@ -236,7 +235,8 @@ class BookDetailsView extends StatelessWidget {
                           ),
                           Text(
                             postedTimestamp,
-                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 16),
                           ),
                         ],
                       ),

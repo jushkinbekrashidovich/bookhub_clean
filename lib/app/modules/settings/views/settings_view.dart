@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/settings_controller.dart';
 
@@ -26,125 +27,68 @@ class SettingsView extends GetView<SettingsController> {
               Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
-                  height: 350,
+                  height: 230,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16)),
                   child: Column(
                     children: [
                       ProfileItems(
-                          text: 'Language',
+                          text: 'Language'.tr,
                           icon: const Icon(
                             Icons.language,
                             color: AppColors.mainColor,
                           ),
                           link: () {
-                            showCupertinoModalPopup(
+                            showCupertinoDialog(
+                                barrierDismissible: true,
                                 context: context,
-                                builder: (context) => CupertinoActionSheet(
-                                      actions: [
-                                        CupertinoActionSheetAction(
+                                builder: (context) {
+                                  return CupertinoAlertDialog(
+                                    content: Text(
+                                      "Select the theme".tr,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    actions: [
+                                      CupertinoDialogAction(
                                           child: Text("O'zbekcha"),
-                                          onPressed: () async{
-                                           // controller.changeLanguage('uz', 'UZ');
-                                           Get.updateLocale(Locale('uz','UZ'));
-                                          },
-                                        ),
-                                        CupertinoActionSheetAction(
+                                          onPressed: () {
+                                            controller.changeLanguage(
+                                                'uz', 'UZ');
+                                            Get.back();
+                                          }),
+                                      CupertinoDialogAction(
                                           child: Text('English'),
                                           onPressed: () {
-                                            controller.changeLanguage('en', 'EN');
-                                          },
-                                        ),
-                                        CupertinoActionSheetAction(
+                                            controller.changeLanguage(
+                                                'en', 'EN');
+                                            Get.back();
+                                          }),
+                                      CupertinoDialogAction(
                                           child: Text('Русский'),
                                           onPressed: () {
-                                            controller.changeLanguage('ru', 'RU');
-                                          },
-                                        ),
-                                      ],
-                                      cancelButton: CupertinoActionSheetAction(
-                                        child: Text('Cancel'),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ));
+                                            controller.changeLanguage(
+                                                'ru', 'RU');
+                                            Get.back();
+                                          }),
+                                    ],
+                                  );
+                                });
                           }),
                       const Divider(),
                       ProfileItems(
-                          text: 'Theme',
-                          icon: const Icon(
-                            Icons.settings_display_outlined,
+                          text: 'Support team'.tr,
+                          icon: Icon(
+                            Icons.headset_mic_outlined,
                             color: AppColors.mainColor,
                           ),
-                          link: () {
-                            showCupertinoModalPopup(
-                                context: context,
-                                builder: (context) => CupertinoActionSheet(
-                                      actions: [
-                                        CupertinoActionSheetAction(
-                                          child: Container(
-                                            padding: EdgeInsets.only(right: 25),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.light_mode_outlined,
-                                                ),
-                                                SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text('Light')
-                                              ],
-                                            ),
-                                          ),
-                                          onPressed: () {
-                                            Get.changeThemeMode(ThemeMode.light);
-                                          },
-                                        ),
-                                        CupertinoActionSheetAction(
-                                          
-                                          child: Container(
-                                            padding: EdgeInsets.only(right: 25),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.dark_mode_outlined),
-                                                SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text('Dark')
-                                              ],
-                                            ),
-                                          ),
-                                          onPressed: () {
-                                            Get.changeThemeMode(ThemeMode.light);
-                                          },
-                                        ),
-                                      ],
-                                      cancelButton: CupertinoActionSheetAction(
-                                        child: Text('Cancel'),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ));
+                          link: () async {
+                             await launch("https://t.me/bookhub_support_bot");
+                            
                           }),
                       Divider(),
                       ProfileItems(
-                        text: 'Support team', 
-                        icon: Icon(Icons.headset_mic_outlined ,color: AppColors.mainColor,), 
-                        link: () {
-
-                        }
-                        ),
-                      
-                      Divider(),
-                      ProfileItems(
-                          text: 'Delete account',
+                          text: 'Delete account'.tr,
                           icon: const Icon(
                             Icons.logout,
                             color: AppColors.mainColor,

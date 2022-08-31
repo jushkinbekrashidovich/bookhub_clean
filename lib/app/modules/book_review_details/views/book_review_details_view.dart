@@ -78,20 +78,6 @@ class BookReviewDetailsView extends StatelessWidget {
                     fontWeight: FontWeight.w400),
               ),
             ),
-           SizedBox(height: 20,),
-           Padding(
-             padding: const EdgeInsets.only(right: 40),
-             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                  IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset('assets/svg/clapping.svg'),
-                ),
-                Text(likes.toString(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),)
-              ],
-             ),
-           ),
             SizedBox(
               height: 20,
             )

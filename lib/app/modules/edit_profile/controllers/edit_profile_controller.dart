@@ -29,7 +29,7 @@ class EditProfileController extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
-
+  
  
 
 }

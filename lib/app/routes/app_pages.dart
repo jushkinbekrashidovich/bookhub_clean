@@ -60,6 +60,7 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+      transition:Transition.leftToRight
     ),
     GetPage(
       name: _Paths.BOOK_REVIEW,

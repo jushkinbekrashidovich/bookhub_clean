@@ -5,21 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/core/theme/app_theme.dart';
+import 'app/core/translation/app_translations.dart';
 import 'app/routes/app_pages.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
     GetMaterialApp(
+      
       title: "bookhub",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       initialBinding: SplashBinding(),
+      translations: AppTranslations(),
       locale: const Locale('en', 'EN'),
-      fallbackLocale: const Locale('en', 'EN'),
+      fallbackLocale: const Locale('uz', 'UZ'),
       theme: AppThemes.light,
-      darkTheme: AppThemes.dark,
+      //darkTheme: AppThemes.dark,
       debugShowCheckedModeBanner: false,
     ),
   );

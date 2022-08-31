@@ -45,6 +45,7 @@ class HomeView extends GetView<HomeController> {
               CupertinoIcons.person_circle,
               size: 34,
             ),
+            
           ),
           actions: [
             IconButton(

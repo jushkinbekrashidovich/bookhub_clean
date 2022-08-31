@@ -10,8 +10,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
-import '../../../data/book_model.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../data/models/book_model.dart';
 
 class AddBookController extends GetxController {
   //TODO: Implement AddBookController

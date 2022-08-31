@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
-import '../../../data/book_model.dart';
+import '../../../data/models/book_model.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -10,6 +10,8 @@ class HomeController extends GetxController {
   late FirebaseFirestore firestore;
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
+
+  //Rx<List<Map<String, dynamic>>> foundBooks= Rx<List<Map<String, dynamic>>>([]);
 
   @override
   void onInit() {
@@ -51,4 +53,9 @@ class HomeController extends GetxController {
     });
     return books;
   }
+
+
+  
+
+  
 }

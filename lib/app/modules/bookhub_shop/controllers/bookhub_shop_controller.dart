@@ -1,9 +1,9 @@
-import 'package:bookhub/app/data/new_books_model.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
-import '../../../data/book_model.dart';
+import '../../../data/models/new_books_model.dart';
 
 class BookhubShopController extends GetxController {
   //TODO: Implement HomeController

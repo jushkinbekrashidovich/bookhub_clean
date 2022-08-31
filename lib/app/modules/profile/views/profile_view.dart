@@ -47,7 +47,9 @@ class ProfileView extends GetView<ProfileController> {
                                   .firebaseAuth.currentUser!.photoURL
                                   .toString(),
                               placeholder: (context, url) =>
-                                  CircularProgressIndicator(strokeWidth: 2,),
+                                  CircularProgressIndicator(
+                                strokeWidth: 2,
+                              ),
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                             ),
@@ -88,23 +90,23 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      height: 300,
+                      height: 240,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16)),
                       child: Column(
                         children: [
-                          ProfileItems(
-                            text: 'Edit Profile',
-                            icon: Icon(
-                              CupertinoIcons.person,
-                              color: AppColors.mainColor,
-                            ),
-                            link: () {
-                              Get.toNamed('/edit-profile');
-                            },
-                          ),
-                          Divider(),
+                          // ProfileItems(
+                          //   text: 'Edit Profile',
+                          //   icon: Icon(
+                          //     CupertinoIcons.person,
+                          //     color: AppColors.mainColor,
+                          //   ),
+                          //   link: () {
+                          //     Get.toNamed('/edit-profile');
+                          //   },
+                          // ),
+                          // Divider(),
                           ProfileItems(
                             text: 'My Dashboard',
                             icon: Icon(
@@ -126,6 +128,7 @@ class ProfileView extends GetView<ProfileController> {
                               Get.toNamed(Routes.SETTINGS);
                             },
                           ),
+                          
                           Divider(),
                           ProfileItems(
                             text: 'Rate ',
