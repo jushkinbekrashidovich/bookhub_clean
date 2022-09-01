@@ -10,8 +10,7 @@ class HomeController extends GetxController {
   late FirebaseFirestore firestore;
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
-
-  //Rx<List<Map<String, dynamic>>> foundBooks= Rx<List<Map<String, dynamic>>>([]);
+  
 
   @override
   void onInit() {
@@ -35,6 +34,7 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {}
+  
 
   Future<List<Book>> fetchBooks() async {
     final List<Book> books = [];

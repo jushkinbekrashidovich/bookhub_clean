@@ -15,28 +15,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          title: const SizedBox(
-            height: 50,
-            child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Center(child: Icon(Icons.search)),
-                  ),
-                  filled: true,
-                  fillColor: Color(0xffF9F9FD),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12),
-                    ),
-                    gapPadding: 0,
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: 'search'),
-            ),
-          ),
+          title: const Text('Home page'),
           leading: IconButton(
             onPressed: () {
               Get.toNamed("/profile");

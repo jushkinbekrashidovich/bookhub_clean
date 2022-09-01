@@ -192,12 +192,13 @@ class AddBookView extends GetView<AddBookController> {
                       ),
                     ),
                     AppUtils.kBoxHeight10,
-                    const CustomPaddingTitle(title: 'Price'),
+                    controller.isExchange.value == false
+                        ? const CustomPaddingTitle(title: 'Price')
+                        : const CustomPaddingTitle(title: 'Title'),
                     CustomTextField(
+                      hintText: controller.isExchange.value == false?'':'title, you want to exchange',
                       controller: controller.priceController,
-                      keyboardType: controller.isExchange.value == false
-                          ? TextInputType.number
-                          : TextInputType.text,
+                      keyboardType: TextInputType.text,
                     ),
                   ],
                 ),

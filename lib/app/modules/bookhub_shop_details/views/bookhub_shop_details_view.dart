@@ -245,7 +245,8 @@ class BookhubShopDetailsView extends StatelessWidget {
           ),
           CustomButton(onTap: (){
             
-          }, txt: 'Sotib olish')
+          }, txt: 'Sotib olish'),
+          SizedBox(height: 20,),
         ],
       ),
       
