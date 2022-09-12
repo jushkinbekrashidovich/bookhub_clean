@@ -1,3 +1,5 @@
+
+import 'package:bookhub/app/modules/add_book/bindings/add_book_binding.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,10 @@ import 'app/core/translation/app_translations.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     GetMaterialApp(
       

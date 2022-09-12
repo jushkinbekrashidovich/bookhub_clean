@@ -34,194 +34,209 @@ class HomeView extends GetView<HomeController> {
               icon: const Icon(Icons.add),
               iconSize: 27,
             ),
+            IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.AUTH);
+              },
+              icon: const Icon(Icons.notification_add),
+              iconSize: 27,
+            ),
           ],
         ),
-        body: ListView(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
-            //primary: false,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12 * 1.0),
-                child: Visibility(
-                    visible: controller.isLoading.value,
-                    child: Container(
-                      //padding: EdgeInsets.all(50),
-                      //width: 85.w,
-                      child: Container(
-                          padding: EdgeInsets.all(15),
-                          //width: double.infinity,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(12 * 1.0),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                CircularProgressIndicator(
-                                  color: AppColors.mainColor,
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+                  //primary: false,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12 * 1.0),
+                      child: Visibility(
+                          visible: controller.isLoading.value,
+                          child: Container(
+                            //padding: EdgeInsets.all(50),
+                            //width: 85.w,
+                            child: Container(
+                                padding: EdgeInsets.all(15),
+                                //width: double.infinity,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(12 * 1.0),
                                 ),
-                                SizedBox(
-                                  height: 25,
-                                ),
-                                Text(
-                                  "Loading",
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          )),
-                    )),
-              ),
-              ...controller.bookSales.value.map((element) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => BookDetailsView(
-                          title: element.title.toString(),
-                          description: element.description.toString(),
-                          postedTimestamp: getReadableTime(element.postedTimestamp),
-                          ownerName: element.ownerName.toString(),
-                          price: element.price.toString(),
-                          phoneNumber: element.phoneNumber.toString(),
-                          photoUrl: element.photoUrl.toString(),
-                          category: element.category.toString(),
-                          location: element.location.toString(),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Container(
-                      padding: EdgeInsets.only(
-                        left: 6,
-                      ),
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CachedNetworkImage(
-                            imageBuilder: (context, imageProvider) => Container(
-                              width: 85.0,
-                              height: 120.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1.2,
-                                    blurRadius: 1.2,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      CircularProgressIndicator(
+                                        color: AppColors.mainColor,
+                                      ),
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      Text(
+                                        "Loading",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                                image: DecorationImage(
-                                    image: imageProvider, fit: BoxFit.cover),
+                                )),
+                          )),
+                    ),
+                    ...controller.bookSales.value.map((element) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => BookDetailsView(
+                                title: element.title.toString(),
+                                description: element.description.toString(),
+                                postedTimestamp: getReadableTime(element.postedTimestamp),
+                                ownerName: element.ownerName.toString(),
+                                price: element.price.toString(),
+                                phoneNumber: element.phoneNumber.toString(),
+                                photoUrl: element.photoUrl.toString(),
+                                category: element.category.toString(),
+                                location: element.location.toString(),
                               ),
                             ),
-                            imageUrl: element.photoUrl.toString(),
-                            placeholder: (context, url) =>
-                                Center(
-                                  child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                            ),
-                                ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
-                          Container(
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Container(
                             padding: EdgeInsets.only(
-                              left: 10,
-                              top: 10,
+                              left: 6,
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 20,
-                                  width: 120,
-                                  child: Text(
-                                    element.title.toString(),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 15,
+                                CachedNetworkImage(
+                                  imageBuilder: (context, imageProvider) => Container(
+                                    width: 85.0,
+                                    height: 120.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 1.2,
+                                          blurRadius: 1.2,
+                                          offset: Offset(
+                                              0, 3), // changes position of shadow
+                                        ),
+                                      ],
+                                      image: DecorationImage(
+                                          image: imageProvider, fit: BoxFit.cover),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 4),
-                                  height: 20,
-                                  width: 120,
-                                  child: Text(
-                                    element.price.toString(),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: Colors.blue, fontSize: 15),
+                                  imageUrl: element.photoUrl.toString(),
+                                  placeholder: (context, url) =>
+                                      Center(
+                                        child: CircularProgressIndicator(
+                                    strokeWidth: 2,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 50,
-                                ),
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.location_on_outlined,
-                                      size: 17,
-                                    ),
-                                    SizedBox(
-                                      height: 19,
-                                      width: 100,
-                                      child: Text(
-                                        element.location.toString(),
-                                        style: TextStyle(fontSize: 13),
-                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                    ),
-                                  ],
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(top: 0, bottom: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
                                 Container(
-                                  height: 15,
-                                  //width: 60,
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Text(
-                                    getReadableTime(element.postedTimestamp),
-                                    style: TextStyle(fontSize: 10),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                                  padding: EdgeInsets.only(
+                                    left: 10,
+                                    top: 10,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        height: 20,
+                                        width: 120,
+                                        child: Text(
+                                          element.title.toString(),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(left: 4),
+                                        height: 20,
+                                        width: 120,
+                                        child: Text(
+                                          element.price.toString(),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              color: Colors.blue, fontSize: 15),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 50,
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.location_on_outlined,
+                                            size: 17,
+                                          ),
+                                          SizedBox(
+                                            height: 19,
+                                            width: 100,
+                                            child: Text(
+                                              element.location.toString(),
+                                              style: TextStyle(fontSize: 13),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 0, bottom: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        height: 15,
+                                        //width: 60,
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                          getReadableTime(element.postedTimestamp),
+                                          style: TextStyle(fontSize: 10),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ])));
+                        ),
+                      );
+                    }),
+                  ]),
+            ),
+            
+
+          ],
+        )));
   }
 
  static String getReadableTime(int? timestamp) {

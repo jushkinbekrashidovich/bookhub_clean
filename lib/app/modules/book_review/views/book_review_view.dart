@@ -14,8 +14,7 @@ class BookReviewView extends GetView<BookReviewController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      (
-        () => Scaffold(
+      (() => Scaffold(
             appBar: AppBar(
               title: const Text("Book reviews"),
               actions: [
@@ -94,7 +93,7 @@ class BookReviewView extends GetView<BookReviewController> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.only(
-                                      top: 7, bottom: 3, right: 3, left: 3),
+                                      top: 7, right: 3, left: 3),
                                   height: 33,
                                   child: Row(
                                     mainAxisAlignment:
@@ -115,15 +114,60 @@ class BookReviewView extends GetView<BookReviewController> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w500),
                                           )),
+
+                                      // SizedBox(
+                                      //     height: 22,
+                                      //     width: 50,
+                                      //     child: Text(
+                                      //       getReadableTime(
+                                      //           element.postedTimestamp),
+                                      //       style: TextStyle(fontSize: 10),
+                                      //     )),
                                       Container(
-                                          height: 32,
-                                          width: 50,
-                                          child: Text(
-                                            getReadableTime(
-                                                element.postedTimestamp),
-                                            style: TextStyle(fontSize: 10),
-                                          )),
-                                      Divider(),
+                                        child: PopupMenuButton<int>(
+                                          
+                                          itemBuilder: (context) => [
+                                            // popupmenu item 1
+                                            PopupMenuItem(
+                                              value: 1,
+                                              child: Row(
+                                                children: [
+                                                  Icon(Icons.delete),
+                                                  SizedBox(
+                                                    // sized box with width 10
+                                                    width: 10,
+                                                  ),
+                                                  Text("delete")
+                                                ],
+                                              ),
+                                              onTap: ()async{
+                                                await controller.deleteBookreview();
+                                                
+
+                                              },
+                                            ),
+                                            // popupmenu item 2
+                                            PopupMenuItem(
+                                              value: 2,
+                                              // row has two child icon and text
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                      Icons.chrome_reader_mode),
+                                                  SizedBox(
+                                                    // sized box with width 10
+                                                    width: 10,
+                                                  ),
+                                                  Text("About")
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                          offset: Offset(0, 50),
+                                          color: Colors.white,
+                                          elevation: 2,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -195,8 +239,7 @@ class BookReviewView extends GetView<BookReviewController> {
                     ),
                   )
                 ]),
-          )
-       ),
+          )),
     );
   }
 
@@ -213,7 +256,7 @@ class BookReviewView extends GetView<BookReviewController> {
     if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
             .abs() <=
         86400000) return 'Yestarday';
-    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year%100)}';
+    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year % 100)}';
   }
 
   static String getNormalDayOrMonth(int dayOrMonth) {

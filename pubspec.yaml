@@ -6,21 +6,22 @@ environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies: 
-  cupertino_icons: ^1.0.2
-  get: 4.6.5
-  flutter_svg: ^1.0.3
-  firebase_core: ^1.21.0
-  firebase_auth: ^3.6.4
+  cupertino_icons: ^1.0.5
+  get: ^4.6.5
+  flutter_svg: ^1.1.4
+  firebase_core: ^1.21.1
+  firebase_auth: ^3.7.0
   google_sign_in: ^5.4.1
   cached_network_image: ^3.2.1
-  cloud_firestore: ^3.4.5
+  cloud_firestore: ^3.4.6
   image_picker: ^0.8.5+3
   url_launcher: ^6.1.5
   double_back_to_close_app: ^2.1.0
   flutter: 
     sdk: flutter
-  firebase_storage: ^10.3.6
+  firebase_storage: ^10.3.7
   expandable: ^5.0.1
+  get_storage: ^2.0.3
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

@@ -2,6 +2,7 @@ import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 
@@ -144,6 +145,27 @@ class ProfileView extends GetView<ProfileController> {
                         ],
                       ),
                     ),
+                   
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: SvgPicture.asset('assets/svg/instagram.svg',)),
+                    SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: SvgPicture.asset('assets/svg/telegram.svg',)),
+                    SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: SvgPicture.asset('assets/svg/facebook.svg',)),
+
+                    ],
+                  ), 
+                   
+                  
                   ],
                 )));
   }

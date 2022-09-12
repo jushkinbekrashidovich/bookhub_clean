@@ -54,6 +54,23 @@ class BookReviewController extends GetxController {
     return books;
     
   }
+   CollectionReference bookreviews = FirebaseFirestore.instance.collection('bookreviews');
+
+Future<void> deleteBookreview() {
+  BookReview bookReview = BookReview();
+  return bookreviews
+    .doc(bookReview.id)
+    .delete()
+    .then((value) => print("User Deleted"))
+    .catchError((error) => print("Failed to delete user: $error"));
+  
+}
+
+ deleteFromList(BookReview bookReview){
+  bookReviews.removeWhere((element) => element.id==bookReview);
+  update();
+
+ }
 
   Future<void> incrementLike(String reviewId) async {
     firestore
@@ -62,5 +79,7 @@ class BookReviewController extends GetxController {
         .update({"likes": FieldValue.increment(1)});
         update();
   }
+
+ 
 
 }

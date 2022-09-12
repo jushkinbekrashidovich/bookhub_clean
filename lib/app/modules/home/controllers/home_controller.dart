@@ -10,7 +10,6 @@ class HomeController extends GetxController {
   late FirebaseFirestore firestore;
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
-  
 
   @override
   void onInit() {
@@ -34,7 +33,6 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {}
-  
 
   Future<List<Book>> fetchBooks() async {
     final List<Book> books = [];
@@ -53,9 +51,6 @@ class HomeController extends GetxController {
     });
     return books;
   }
-
-
-  
 
   
 }

@@ -20,6 +20,7 @@ abstract class Routes {
   static const ADD_BOOK_REVIEW = _Paths.ADD_BOOK_REVIEW;
   static const BOOK_DETAILS = _Paths.BOOK_DETAILS;
   static const BOOKHUB_SHOP_DETAILS = _Paths.BOOKHUB_SHOP_DETAILS;
+  static const TODO = _Paths.TODO;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const ADD_BOOK_REVIEW = '/add-book-review';
   static const BOOK_DETAILS = '/book-details';
   static const BOOKHUB_SHOP_DETAILS = '/bookhub-shop-details';
+  static const TODO = '/todo';
 }
