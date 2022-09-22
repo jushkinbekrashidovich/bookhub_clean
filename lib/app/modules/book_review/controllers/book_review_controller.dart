@@ -1,5 +1,7 @@
 
+import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -8,6 +10,7 @@ import '../../../data/models/book_review_model.dart';
 
 class BookReviewController extends GetxController {
   late final FirebaseFirestore firestore;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final bookReviews = <BookReview>[].obs;
   final isLoading = true.obs;
 
@@ -43,34 +46,24 @@ class BookReviewController extends GetxController {
         .get()
         .then((value) {
       //print(value.size);
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         final book = BookReview.fromJson(element.data());
         book.id = element.id;
         //print(food.id);
         books.add(book);
         update();
-      });
+      }
     });
     return books;
     
   }
-   CollectionReference bookreviews = FirebaseFirestore.instance.collection('bookreviews');
+  Future deleteReview(BookReview bookReview) async{
+    await firestore.collection('bookReviews').doc(bookReview.id).delete();
+    Get.offAllNamed(Routes.MAIN);
 
-Future<void> deleteBookreview() {
-  BookReview bookReview = BookReview();
-  return bookreviews
-    .doc(bookReview.id)
-    .delete()
-    .then((value) => print("User Deleted"))
-    .catchError((error) => print("Failed to delete user: $error"));
-  
-}
+  }
 
- deleteFromList(BookReview bookReview){
-  bookReviews.removeWhere((element) => element.id==bookReview);
-  update();
 
- }
 
   Future<void> incrementLike(String reviewId) async {
     firestore

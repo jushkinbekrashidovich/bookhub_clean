@@ -1,6 +1,7 @@
 import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
 import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +20,12 @@ class HomeView extends GetView<HomeController> {
           leading: IconButton(
             onPressed: () {
               Get.toNamed("/profile");
+              print(FirebaseAuth.instance.currentUser!.uid);
             },
             icon: const Icon(
               CupertinoIcons.person_circle,
               size: 34,
             ),
-            
           ),
           actions: [
             IconButton(
@@ -48,7 +49,8 @@ class HomeView extends GetView<HomeController> {
             Expanded(
               child: ListView(
                   physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+                  padding:
+                      EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
                   //primary: false,
                   children: [
                     Padding(
@@ -93,7 +95,8 @@ class HomeView extends GetView<HomeController> {
                               builder: (context) => BookDetailsView(
                                 title: element.title.toString(),
                                 description: element.description.toString(),
-                                postedTimestamp: getReadableTime(element.postedTimestamp),
+                                postedTimestamp:
+                                    getReadableTime(element.postedTimestamp),
                                 ownerName: element.ownerName.toString(),
                                 price: element.price.toString(),
                                 phoneNumber: element.phoneNumber.toString(),
@@ -119,7 +122,8 @@ class HomeView extends GetView<HomeController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CachedNetworkImage(
-                                  imageBuilder: (context, imageProvider) => Container(
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
                                     width: 85.0,
                                     height: 120.0,
                                     decoration: BoxDecoration(
@@ -129,21 +133,21 @@ class HomeView extends GetView<HomeController> {
                                           color: Colors.grey.withOpacity(0.5),
                                           spreadRadius: 1.2,
                                           blurRadius: 1.2,
-                                          offset: Offset(
-                                              0, 3), // changes position of shadow
+                                          offset: Offset(0,
+                                              3), // changes position of shadow
                                         ),
                                       ],
                                       image: DecorationImage(
-                                          image: imageProvider, fit: BoxFit.cover),
+                                          image: imageProvider,
+                                          fit: BoxFit.cover),
                                     ),
                                   ),
                                   imageUrl: element.photoUrl.toString(),
-                                  placeholder: (context, url) =>
-                                      Center(
-                                        child: CircularProgressIndicator(
-                                    strokeWidth: 2,
+                                  placeholder: (context, url) => Center(
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
                                   ),
-                                      ),
                                   errorWidget: (context, url, error) =>
                                       Icon(Icons.error),
                                 ),
@@ -153,7 +157,8 @@ class HomeView extends GetView<HomeController> {
                                     top: 10,
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     //mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Container(
@@ -168,6 +173,9 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                       ),
+                                      // IconButton(onPressed: (){
+                                      //   controller.deleteReview(element);
+                                      // }, icon: Icon(Icons.delete)),
                                       const SizedBox(
                                         height: 10,
                                       ),
@@ -209,14 +217,63 @@ class HomeView extends GetView<HomeController> {
                                 Container(
                                   padding: EdgeInsets.only(top: 0, bottom: 10),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
+                                      element.ownerName ==
+                                              controller.firebaseAuth
+                                                  .currentUser!.displayName
+                                          ? Container(
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  showDialog(
+                                                        context: context,
+                                                        builder: (_) =>
+                                                            CupertinoAlertDialog(
+                                                          title: Text(
+                                                            'Are you sure'.tr,
+                                                            style: TextStyle(
+                                                                fontSize: 20),
+                                                          ),
+                                                          //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
+                                                          actions: [
+                                                            CupertinoDialogAction(
+                                                              isDefaultAction:
+                                                                  true,
+                                                              child: Text('Yes'),
+                                                              onPressed: () {
+                                                                controller
+                                                          .deletePost(element);
+                                                              },
+                                                            ),
+                                                            CupertinoDialogAction(
+                                                              isDefaultAction:
+                                                                  true,
+                                                              child: Text('No'),
+                                                              onPressed: () {
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pop();
+                                                              },
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                },
+                                                icon: Icon(
+                                                    CupertinoIcons.delete_solid),
+                                              ),
+                                            )
+                                          : SizedBox(
+                                              width: 30,
+                                            ),
                                       Container(
                                         height: 15,
                                         //width: 60,
                                         padding: EdgeInsets.only(right: 10),
                                         child: Text(
-                                          getReadableTime(element.postedTimestamp),
+                                          getReadableTime(
+                                              element.postedTimestamp),
                                           style: TextStyle(fontSize: 10),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
@@ -233,26 +290,26 @@ class HomeView extends GetView<HomeController> {
                     }),
                   ]),
             ),
-            
-
           ],
         )));
   }
 
- static String getReadableTime(int? timestamp) {
+  static String getReadableTime(int? timestamp) {
     if (timestamp == null) return "null";
     final normalTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final today = DateTime.now();
     if (normalTime.day == today.day &&
         normalTime.month == today.month &&
         normalTime.year == today.year) {
-      return getNormalDayOrMonth(normalTime.hour)+ ":"+getNormalDayOrMonth(normalTime.minute);
+      return getNormalDayOrMonth(normalTime.hour) +
+          ":" +
+          getNormalDayOrMonth(normalTime.minute);
     }
     //print("datetime: " + today.compareTo(normalTime).toString());
     if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
             .abs() <=
         86400000) return 'Yesterday';
-    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year%100)}';
+    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year % 100)}';
   }
 
   static String getNormalDayOrMonth(int dayOrMonth) {

@@ -10,6 +10,7 @@ class NewBooks {
   String? category;
   String? authorName;
   String? type;
+  String? quality;
   
 
   NewBooks(
@@ -21,6 +22,7 @@ class NewBooks {
       this.order,
       //this.isExchange,
       this.authorName,
+      this.quality,
       this.type,
       this.id});
 
@@ -33,6 +35,7 @@ class NewBooks {
     order = json['order'];
     authorName = json['authorName'];
     type = json['type'];
+    quality = json['quality'];
     //isExchange = json['isExchange'];
   }
 
@@ -46,6 +49,7 @@ class NewBooks {
     data['order'] = order;
     data['authorName'] = authorName;
     data['type'] = type;
+    data['quality'] = quality;
     //data['isExchange'] = isExchange;
     return data;
   }

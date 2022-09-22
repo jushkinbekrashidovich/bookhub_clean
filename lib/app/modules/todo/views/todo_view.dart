@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:bookhub/app/core/custom_widgets/custom_button/custom_button.dart';
 import 'package:bookhub/app/core/custom_widgets/text_fields/custom_text_field.dart';
 import 'package:bookhub/app/core/theme/app_colors.dart';
+import 'package:bookhub/app/data/models/todo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +82,7 @@ class TodoView extends GetView<TodoController> {
                       Column(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
+                        children:  [
                           SizedBox(
                             height: 15,
                           ),
@@ -95,7 +98,8 @@ class TodoView extends GetView<TodoController> {
                           ),
                           SizedBox(
                             width: 85,
-                            child: Text("12",
+                            child: Text(
+                              controller.todos.length.toString(),
                                 style: TextStyle(
                                   fontSize: 19,
                                 ),
@@ -128,7 +132,7 @@ class TodoView extends GetView<TodoController> {
                           ),
                           SizedBox(
                             width: 70,
-                            child: Text("1222",
+                            child: Text(controller.todos.length.toString(),
                                 style: TextStyle(
                                   fontSize: 19,
                                 ),
@@ -162,7 +166,7 @@ class TodoView extends GetView<TodoController> {
                           SizedBox(
                             width: 90,
                             child: Text(
-                              "122",
+                              controller.todos.length.toString(),
                               style: TextStyle(
                                 fontSize: 19,
                               ),
@@ -179,41 +183,60 @@ class TodoView extends GetView<TodoController> {
               ],
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: controller.todos.length,
+              itemBuilder: (context, index){
+               return ListTile(
+                  title: Text(controller.todos[index].text.toString()),
+                );
+              },
+            ),
+          ),
+        
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.mainColor,
         onPressed: () {
           Get.bottomSheet(
-            Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  color: AppColors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Text('Title of the book'),
-                      ),
-                      Center(
-                        child: SizedBox(
-                          width: Get.size.width * 0.9,
-                          child: TextField(
-                            controller: controller.titleOfBookcontroller,
+            Builder(
+              builder: (context) {
+                return Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      color: AppColors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Text('Title of the book'),
                           ),
-                        ),
+                          Center(
+                            child: SizedBox(
+                              width: Get.size.width * 0.9,
+                              child: TextField(
+                                controller: controller.titleOfBookcontroller,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 30,),
+                          CustomButton(onTap: () {
+                            controller.todos.add(Todo(text: controller.titleOfBookcontroller.text));
+                            
+                           //print(jsonEncode(controller.todos) );
+                          }, txt: 'save'),
+                        ],
                       ),
-                      SizedBox(height: 30,),
-                      CustomButton(onTap: () {}, txt: 'save'),
-                    ],
-                  ),
-                )),
+                    ));
+              }
+            ),
             //isScrollControlled: true,
           );
         },

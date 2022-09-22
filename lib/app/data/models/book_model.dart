@@ -10,6 +10,7 @@ class Book {
   String? userId;
   int? postedTimestamp;
   String? category;
+  String? ref;
  // bool? isExchange;
 
   Book(
@@ -24,7 +25,9 @@ class Book {
       this.ownerName,
       this.category,
       //this.isExchange,
-      this.id});
+      this.id,
+      this.ref
+      });
 
   Book.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -37,6 +40,7 @@ class Book {
     userId = json['userId'];
     postedTimestamp = json['postedTimestamp'];
     category = json['category'];
+    ref = json['ref'];
     //isExchange = json['isExchange'];
   }
 
@@ -52,6 +56,7 @@ class Book {
     data['postedTimestamp'] = postedTimestamp;
     data['ownerName'] = ownerName;
     data['category'] = category;
+    data['ref'] = ref;
     //data['isExchange'] = isExchange;
     return data;
   }

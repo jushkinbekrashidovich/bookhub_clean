@@ -59,31 +59,18 @@ class AddBookController extends GetxController {
     book.phoneNumber = phoneNumberController.text;
     book.price = priceController.text;
     book.postedTimestamp = DateTime.now().millisecondsSinceEpoch;
+    String refImage = 'postImages/${const Uuid().v4()}.jpg';
+    book.ref = refImage;
     // book.isExchange = isExchange.value;
 
     if (image != null) {
-      //print(image.path);
-      // print("Uploading image");
-      // firebase_storage.UploadTask uploadTask;
-      //
-      // firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
-      //     .ref()
-      //     .child('postImages')
-      //     .child('/${Uuid().v4()}.jpg');
-      //
-      // final metadata = firebase_storage.SettableMetadata(
-      //     contentType: 'image/jpeg',
-      //     customMetadata: {'picked-file-path': image!.path});
-      //
-      // uploadTask = ref.putFile(File(image!.path), metadata);
-      // await Future.value(uploadTask);
 
       firebase_storage.FirebaseStorage storage =
           await firebase_storage.FirebaseStorage.instance;
       print("Instance got");
-      int ced = await image!.length();
+      // int ced = await image!.length();
       await firebase_storage.FirebaseStorage.instance
-          .ref('postImages/${const Uuid().v4()}.jpg')
+          .ref(refImage)
           .putFile(File(image!.path))
           .then((p0) async {
         imageUrl = await p0.ref.getDownloadURL();
@@ -92,12 +79,6 @@ class AddBookController extends GetxController {
         //showErrorSnackbar(onError.toString());
       });
       print("Image url: " + imageUrl);
-      // StorageTaskSnapshot snapshot = await storage
-      //     .ref()
-      //     .child("admins/$adminId.png")
-      //     .putFile(uiData.profileImage)
-      //     .onComplete;
-      // print("2");
     }
 
     final currUser = FirebaseAuth.instance.currentUser!;

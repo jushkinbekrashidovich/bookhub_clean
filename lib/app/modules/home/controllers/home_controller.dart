@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/models/book_model.dart';
+import '../../../routes/app_pages.dart';
+import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -10,6 +14,7 @@ class HomeController extends GetxController {
   late FirebaseFirestore firestore;
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
   void onInit() {
@@ -51,6 +56,21 @@ class HomeController extends GetxController {
     });
     return books;
   }
+  
 
+
+  
+  Future deletePost(Book book,) async{
+    if (book.photoUrl != null) {
+    await FirebaseStorage.instance.ref(book.ref).delete();
+
+
+    print('image deleted');
+  }
+
+    await firestore.collection('books').doc(book.id).delete();
+    Get.offAllNamed(Routes.MAIN);
+
+  }
   
 }

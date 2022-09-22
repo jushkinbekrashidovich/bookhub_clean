@@ -17,19 +17,27 @@ class BookhubShopView extends GetView<BookhubShopController> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 20,),
+              SizedBox(
+                width: 20,
+              ),
               Text('Bookhub Shop'),
-              SizedBox(width: 5,),
+              SizedBox(
+                width: 5,
+              ),
               Container(
                 decoration: BoxDecoration(
-                  color: AppColors.red,
-                  borderRadius: BorderRadius.circular(2)
-
-                ),
+                    color: AppColors.red,
+                    borderRadius: BorderRadius.circular(2)),
                 height: 20,
                 width: 40,
-                
-                child: Center(child: Text('new', style: TextStyle(color: AppColors.white, fontSize: 14,),)),
+                child: Center(
+                    child: Text(
+                  'new',
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 14,
+                  ),
+                )),
               ),
             ],
           ),
@@ -57,7 +65,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const[
+                              children: const [
                                 CircularProgressIndicator(
                                   color: AppColors.mainColor,
                                 ),
@@ -83,7 +91,10 @@ class BookhubShopView extends GetView<BookhubShopController> {
                           description: element.description.toString(),
                           price: element.price.toString(),
                           phoneNumber: element.phoneNumber.toString(),
-                          photoUrl: element.photoUrl.toString(), authorName: '', id: '', type: '',
+                          photoUrl: element.photoUrl.toString(),
+                          authorName: '',
+                          id: '',
+                          type: '',
                         ),
                       ),
                     );
@@ -154,16 +165,23 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                   height: 10,
                                 ),
                                 SizedBox(
-                                  child: Text(element.authorName.toString(),
-                                  style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color.fromARGB(255, 149, 148, 148)
-                                  
-                                  ),
+                                  child: Text(
+                                    element.authorName.toString(),
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color:
+                                            Color.fromARGB(255, 149, 148, 148)),
                                   ),
                                 ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  element.quality.toString(),
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
                                 const SizedBox(
-                                  height: 25,
+                                  height: 15,
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(left: 4),
@@ -189,20 +207,22 @@ class BookhubShopView extends GetView<BookhubShopController> {
             ])));
   }
 
- static String getReadableTime(int? timestamp) {
+  static String getReadableTime(int? timestamp) {
     if (timestamp == null) return "null";
     final normalTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final today = DateTime.now();
     if (normalTime.day == today.day &&
         normalTime.month == today.month &&
         normalTime.year == today.year) {
-      return getNormalDayOrMonth(normalTime.hour)+ ":"+getNormalDayOrMonth(normalTime.minute);
+      return getNormalDayOrMonth(normalTime.hour) +
+          ":" +
+          getNormalDayOrMonth(normalTime.minute);
     }
     //print("datetime: " + today.compareTo(normalTime).toString());
     if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
             .abs() <=
         86400000) return 'Yesterday';
-    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year%100)}';
+    return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year % 100)}';
   }
 
   static String getNormalDayOrMonth(int dayOrMonth) {

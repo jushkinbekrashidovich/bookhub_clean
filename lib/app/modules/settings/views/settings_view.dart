@@ -126,7 +126,8 @@ class SettingsView extends GetView<SettingsController> {
                                     ],
                                   );
                                 });
-                          }),
+                          }
+                          ),
                     ],
                   ),
                 ),

@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:bookhub/app/core/theme/app_colors.dart';
 import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/custom_widgets/custom_button/custom_button.dart';
 import '../../book_review_details/views/book_review_details_view.dart';
@@ -93,7 +96,7 @@ class BookReviewView extends GetView<BookReviewController> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.only(
-                                      top: 7, right: 3, left: 3),
+                                      top: 7, right: 3, left: 3,),
                                   height: 33,
                                   child: Row(
                                     mainAxisAlignment:
@@ -115,59 +118,51 @@ class BookReviewView extends GetView<BookReviewController> {
                                                 fontWeight: FontWeight.w500),
                                           )),
 
-                                      // SizedBox(
-                                      //     height: 22,
-                                      //     width: 50,
-                                      //     child: Text(
-                                      //       getReadableTime(
-                                      //           element.postedTimestamp),
-                                      //       style: TextStyle(fontSize: 10),
-                                      //     )),
-                                      Container(
-                                        child: PopupMenuButton<int>(
-                                          
-                                          itemBuilder: (context) => [
-                                            // popupmenu item 1
-                                            PopupMenuItem(
-                                              value: 1,
-                                              child: Row(
-                                                children: [
-                                                  Icon(Icons.delete),
-                                                  SizedBox(
-                                                    // sized box with width 10
-                                                    width: 10,
-                                                  ),
-                                                  Text("delete")
-                                                ],
+                                      element.ownerName ==
+                                              controller.firebaseAuth
+                                                  .currentUser!.displayName
+                                          ? Container(
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (_) =>
+                                                        CupertinoAlertDialog(
+                                                      title: Text(
+                                                        'Are you sure'.tr,
+                                                        style: TextStyle(
+                                                            fontSize: 20),
+                                                      ),
+                                                      //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
+                                                      actions: [
+                                                        CupertinoDialogAction(
+                                                          isDefaultAction: true,
+                                                          child: Text('Yes'),
+                                                          onPressed: () {
+                                                            controller
+                                                                .deleteReview(
+                                                                    element);
+                                                          },
+                                                        ),
+                                                        CupertinoDialogAction(
+                                                          isDefaultAction: true,
+                                                          child: Text('No'),
+                                                          onPressed: () {
+                                                            Navigator.of(
+                                                                    context)
+                                                                .pop();
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                                icon: Icon(CupertinoIcons.delete_solid,),
                                               ),
-                                              onTap: ()async{
-                                                await controller.deleteBookreview();
-                                                
-
-                                              },
+                                            )
+                                          : SizedBox(
+                                              width: 30,
                                             ),
-                                            // popupmenu item 2
-                                            PopupMenuItem(
-                                              value: 2,
-                                              // row has two child icon and text
-                                              child: Row(
-                                                children: [
-                                                  Icon(
-                                                      Icons.chrome_reader_mode),
-                                                  SizedBox(
-                                                    // sized box with width 10
-                                                    width: 10,
-                                                  ),
-                                                  Text("About")
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                          offset: Offset(0, 50),
-                                          color: Colors.white,
-                                          elevation: 2,
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -183,24 +178,29 @@ class BookReviewView extends GetView<BookReviewController> {
                                   Container(
                                       padding:
                                           EdgeInsets.only(right: 10, left: 10),
-                                      height: 60,
+                                      height: 44,
                                       child: Text(
                                         element.title.toString(),
-                                        style: TextStyle(fontSize: 22),
-                                        maxLines: 2,
+                                        style: GoogleFonts.ptSerif(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                        maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       )),
                                   Container(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 4),
-                                      child: Text(
-                                        element.description.toString(),
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w300),
-                                        maxLines: 4,
-                                        overflow: TextOverflow.ellipsis,
-                                      )),
+                                    padding: EdgeInsets.only(
+                                      left: 10,
+                                      right: 5,
+                                    ),
+                                    child: Text(
+                                      element.description.toString(),
+                                      style: GoogleFonts.ptSerif(
+                                        fontSize: 16,
+                                      ),
+                                      maxLines: 4,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -210,25 +210,29 @@ class BookReviewView extends GetView<BookReviewController> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.8,
                                   child: CustomButton(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                BookReviewDetailsView(
-                                              title: element.title.toString(),
-                                              description: element.description
-                                                  .toString(),
-                                              date: getReadableTime(
-                                                  element.postedTimestamp),
-                                              likes: element.likes ?? 0,
-                                              ownerName:
-                                                  element.ownerName.toString(),
-                                            ),
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              BookReviewDetailsView(
+                                            title: element.title.toString(),
+                                            description:
+                                                element.description.toString(),
+                                            date: getReadableTime(
+                                                element.postedTimestamp),
+                                            likes: element.likes ?? 0,
+                                            ownerName:
+                                                element.ownerName.toString(),
                                           ),
-                                        );
-                                        // Get.toNamed('/book-review-details');
-                                      },
-                                      txt: 'read more')),
+                                        ),
+                                      );
+                                      // Get.toNamed('/book-review-details');
+                                    },
+                                    txt: 'read more',
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.white),
+                                  )),
                             ),
                             SizedBox(
                               height: 10,
@@ -239,6 +243,19 @@ class BookReviewView extends GetView<BookReviewController> {
                     ),
                   )
                 ]),
+            floatingActionButton: Container(
+              height: 45,
+              width: 45,
+              child: FloatingActionButton(
+                  backgroundColor: Color.fromARGB(255, 82, 150, 206),
+                  child: Icon(
+                    Icons.add,
+                    color: AppColors.white,
+                  ),
+                  onPressed: () {
+                    Get.toNamed(Routes.ADD_BOOK_REVIEW);
+                  }),
+            ),
           )),
     );
   }

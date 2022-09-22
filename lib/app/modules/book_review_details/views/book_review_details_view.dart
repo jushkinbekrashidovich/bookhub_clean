@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../controllers/book_review_details_controller.dart';
@@ -25,17 +26,14 @@ class BookReviewDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 0.4,
+        shadowColor: AppColors.white,
         backgroundColor: AppColors.background,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
         child: ListView(
           children: [
-            Text(
-              title,
-              style: TextStyle(fontSize: 25),
-            ),
             Container(
               height: 60,
               child: Row(
@@ -53,7 +51,7 @@ class BookReviewDetailsView extends StatelessWidget {
                       child: Text(
                         ownerName,
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 14, fontWeight: FontWeight.w400),
                       )),
                   Container(
                       //height: 30,
@@ -68,14 +66,22 @@ class BookReviewDetailsView extends StatelessWidget {
                 ],
               ),
             ),
+            Text(
+              title,
+              style:  GoogleFonts.ptSerif(
+                fontSize: 25,
+                fontWeight:FontWeight.bold
+                  
+                ),
+            ),
+            
             Container(
+              padding: EdgeInsets.only(top: 25),
               child: Text(
                 description,
-                style: TextStyle(
-                    fontSize: 18,
-                    letterSpacing: 1,
-                    wordSpacing: 3,
-                    fontWeight: FontWeight.w400),
+                style: GoogleFonts.ptSerif(
+
+                )
               ),
             ),
             SizedBox(
