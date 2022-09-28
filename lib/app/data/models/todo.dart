@@ -1,20 +1,20 @@
+import 'package:flutter/cupertino.dart';
+
 class Todo {
   String text;
-  bool done;
-
-  Todo({ required this.text, this.done = false});
+  int? postedTimestamp;
+  Todo({ required this.text, this.postedTimestamp});
 
   factory Todo.fromJson(Map<String, dynamic> json) =>
       Todo(
         text: json['text'], 
-        done: json['done']
+        postedTimestamp: json['postedTimestamp'], 
         );
 
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['text']= text; 
-    data['done']= done;
-    return data;
+  Map<String, dynamic> toJson() => {
+    'text': text,
+    'postedTimestamp':postedTimestamp,
+  };
     
-    }
+  
 }

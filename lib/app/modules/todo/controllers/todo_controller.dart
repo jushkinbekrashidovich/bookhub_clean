@@ -9,13 +9,13 @@ class TodoController extends GetxController {
   //TODO: Implement TodoController
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   TextEditingController titleOfBookcontroller = TextEditingController();
-
+  
+  
+  List? storedTodos = GetStorage().read<List>('todos');
   var todos = <Todo>[].obs;
 
   @override
   void onInit() {
-    List? storedTodos = GetStorage().read<List>('todos');
-
     if (!storedTodos.isNull) {
       todos = storedTodos!.map((e) => Todo.fromJson(e)).toList().obs;
     }

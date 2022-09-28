@@ -4,6 +4,7 @@ import 'package:bookhub/app/core/theme/app_colors.dart';
 import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -71,7 +72,7 @@ class BookReviewView extends GetView<BookReviewController> {
                     (element) => Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Container(
-                        height: 251,
+                        height: 298,
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -96,7 +97,10 @@ class BookReviewView extends GetView<BookReviewController> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.only(
-                                      top: 7, right: 3, left: 3,),
+                                    top: 7,
+                                    right: 3,
+                                    left: 3,
+                                  ),
                                   height: 33,
                                   child: Row(
                                     mainAxisAlignment:
@@ -117,7 +121,6 @@ class BookReviewView extends GetView<BookReviewController> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w500),
                                           )),
-
                                       element.ownerName ==
                                               controller.firebaseAuth
                                                   .currentUser!.displayName
@@ -157,7 +160,9 @@ class BookReviewView extends GetView<BookReviewController> {
                                                     ),
                                                   );
                                                 },
-                                                icon: Icon(CupertinoIcons.delete_solid,),
+                                                icon: Icon(
+                                                  CupertinoIcons.delete_solid,
+                                                ),
                                               ),
                                             )
                                           : SizedBox(
@@ -188,7 +193,7 @@ class BookReviewView extends GetView<BookReviewController> {
                                         overflow: TextOverflow.ellipsis,
                                       )),
                                   Container(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                       left: 10,
                                       right: 5,
                                     ),
@@ -200,6 +205,40 @@ class BookReviewView extends GetView<BookReviewController> {
                                       maxLines: 4,
                                       overflow: TextOverflow.ellipsis,
                                     ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(right: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  element.likes != null
+                                      ? Text(
+                                          element.likes.toString(),
+                                          style: GoogleFonts.ptSerif(
+                                              color: Colors.black54),
+                                        )
+                                      : Text(
+                                          '0',
+                                          style: GoogleFonts.ptSerif(
+                                              color: Colors.black54),
+                                        ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      controller
+                                          .incrementLike(element.id.toString());
+                                    },
+                                    child: SizedBox(
+                                        height: 25,
+                                        width: 25,
+                                        child: SvgPicture.asset(
+                                          'assets/svg/clap.svg',
+                                        )),
                                   ),
                                 ],
                               ),
@@ -220,12 +259,13 @@ class BookReviewView extends GetView<BookReviewController> {
                                                 element.description.toString(),
                                             date: getReadableTime(
                                                 element.postedTimestamp),
-                                            likes: element.likes ?? 0,
+                                            likes: element.likes.toString(),
                                             ownerName:
                                                 element.ownerName.toString(),
                                           ),
                                         ),
                                       );
+
                                       // Get.toNamed('/book-review-details');
                                     },
                                     txt: 'read more',
@@ -244,12 +284,12 @@ class BookReviewView extends GetView<BookReviewController> {
                   )
                 ]),
             floatingActionButton: Container(
-              height: 45,
-              width: 45,
+              height: 50,
+              width: 50,
               child: FloatingActionButton(
-                  backgroundColor: Color.fromARGB(255, 82, 150, 206),
+                  backgroundColor: AppColors.mainColor,
                   child: Icon(
-                    Icons.add,
+                    Icons.edit,
                     color: AppColors.white,
                   ),
                   onPressed: () {

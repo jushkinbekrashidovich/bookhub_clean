@@ -21,7 +21,7 @@ class BookReviewController extends GetxController {
     update();
     super.onInit();
   }
-
+  
   @override
   void onReady() async {
     isLoading.value = true;
@@ -65,13 +65,14 @@ class BookReviewController extends GetxController {
 
 
 
-  Future<void> incrementLike(String reviewId) async {
+ incrementLike(String reviewId)  {
     firestore
         .collection("bookReviews")
         .doc(reviewId)
-        .update({"likes": FieldValue.increment(1)});
-        update();
+        .update({"likes": FieldValue.increment(1)}).obs;
   }
+
+  
 
  
 

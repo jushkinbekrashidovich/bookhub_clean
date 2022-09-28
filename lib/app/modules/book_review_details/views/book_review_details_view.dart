@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,7 +14,7 @@ class BookReviewDetailsView extends StatelessWidget {
   final String description;
   final String date;
   final String ownerName;
-  final int likes;
+  final String likes;
 
   const BookReviewDetailsView({
     required this.title,
@@ -57,9 +58,10 @@ class BookReviewDetailsView extends StatelessWidget {
                       //height: 30,
                       width: 49,
                       child: Text(
-                        
                         date,
-                        style: TextStyle(fontSize: 10, ),
+                        style: TextStyle(
+                          fontSize: 10,
+                        ),
                         textAlign: TextAlign.start,
                       )),
                   Divider(),
@@ -68,25 +70,17 @@ class BookReviewDetailsView extends StatelessWidget {
             ),
             Text(
               title,
-              style:  GoogleFonts.ptSerif(
-                fontSize: 25,
-                fontWeight:FontWeight.bold
-                  
-                ),
+              style: GoogleFonts.ptSerif(
+                  fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            
             Container(
               padding: EdgeInsets.only(top: 25),
-              child: Text(
-                description,
-                style: GoogleFonts.ptSerif(
-
-                )
-              ),
+              child: Text(description, style: GoogleFonts.ptSerif()),
             ),
             SizedBox(
               height: 20,
-            )
+            ),
+            Text(likes),
           ],
         ),
       ),

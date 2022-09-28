@@ -146,24 +146,6 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                    
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: SvgPicture.asset('assets/svg/instagram.svg',)),
-                    SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: SvgPicture.asset('assets/svg/telegram.svg',)),
-                    SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: SvgPicture.asset('assets/svg/facebook.svg',)),
-
-                    ],
-                  ), 
                    
                   
                   ],
