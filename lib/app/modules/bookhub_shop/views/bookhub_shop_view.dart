@@ -44,7 +44,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
         ),
         body: ListView(
             physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 10, top: 10),
+            padding: EdgeInsets.only(left: 8, right: 8, bottom: 10, top: 10),
             //primary: false,
             children: [
               Padding(
@@ -92,9 +92,10 @@ class BookhubShopView extends GetView<BookhubShopController> {
                           price: element.price.toString(),
                           phoneNumber: element.phoneNumber.toString(),
                           photoUrl: element.photoUrl.toString(),
-                          authorName: '',
+                          authorName: element.authorName.toString(),
                           id: '',
-                          type: '',
+                          type: element.type.toString(),
+                          quality: element.quality.toString(),
                         ),
                       ),
                     );
@@ -107,7 +108,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                       ),
                       height: 140,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(4),
                         color: Colors.white,
                       ),
                       child: Row(
@@ -118,7 +119,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                               width: 85.0,
                               height: 120.0,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.5),
@@ -142,7 +143,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                           ),
                           Container(
                             padding: EdgeInsets.only(
-                              left: 20,
+                              left: 25,
                               top: 10,
                             ),
                             child: Column(
@@ -174,12 +175,23 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                   ),
                                 ),
                                 SizedBox(height: 10,),
-                                Text(
+
+                                Container(
+                                  padding: EdgeInsets.only(left: 3, right: 3),
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.green,
+                                    borderRadius: BorderRadius.circular(2)
+                                  ),
+                                  child: Text(
                                   element.quality.toString(),
                                   style: TextStyle(
+                                     color: AppColors.white,
                                       fontSize: 15,
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w500),
                                 ),
+                                ),
+                                
                                 const SizedBox(
                                   height: 15,
                                 ),
@@ -192,7 +204,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        color: Colors.blue, fontSize: 15),
+                                        color: Colors.blue, fontSize: 18),
                                   ),
                                 ),
                               ],

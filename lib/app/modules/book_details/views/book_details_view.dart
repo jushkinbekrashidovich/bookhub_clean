@@ -54,10 +54,10 @@ class BookDetailsView extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   imageBuilder: (context, imageProvider) => Container(
-                    width: 145.0,
-                    height: 200.0,
+                    width: 155.0,
+                    height: 220.0,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(3),
                       image: DecorationImage(
                           image: imageProvider, fit: BoxFit.cover),
                     ),
@@ -93,12 +93,12 @@ class BookDetailsView extends StatelessWidget {
           Container(
             //height: MediaQuery.of(context).size.height,
             // color: Colors.red,
-            padding: EdgeInsets.only(left: 10, top: 40, right: 10),
+            padding: EdgeInsets.only(left: 10, top: 20, right: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'kitob haqida',
+                 Text(
+                  'About',
                   style: TextStyle(fontSize: 21),
                 ),
                 SizedBox(
@@ -113,30 +113,8 @@ class BookDetailsView extends StatelessWidget {
                     style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
                   ),
                 ),
-                // Container(
-                //   height: 30,
-                //   width: 150,
-                //   decoration: BoxDecoration(
-                //       color: Color.fromARGB(255, 235, 240, 248),
-                //       borderRadius: BorderRadius.circular(8)),
-                //   child: Row(
-                //     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: [
-                //       Padding(
-                //           padding: EdgeInsets.only(left: 4),
-                //           child: Icon(
-                //             Icons.book,
-                //             size: 18,
-                //           )),
-                //       SizedBox(
-                //         width: 4,
-                //       ),
-
-                //     ],
-                //   ),
-                // ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Card(
                   elevation: 0,
@@ -181,10 +159,15 @@ class BookDetailsView extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                              width: 20,
+                            decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                              height: 25,
+                              width: 25,
                               child: Icon(
                                 CupertinoIcons.person,
-                                color: AppColors.mainColor,
+                                color: AppColors.white,
                                 size: 18,
                               )),
                           SizedBox(
@@ -200,13 +183,21 @@ class BookDetailsView extends StatelessWidget {
                           ),
                         ],
                       ),
+                        SizedBox(height: 5,),
                       Row(
                         children: [
-                          Icon(
-                            CupertinoIcons.location,
-                            size: 18,
-                            color: AppColors.mainColor,
-                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                              height: 25,
+                              width: 25,
+                              child: Icon(
+                                CupertinoIcons.location,
+                                color: AppColors.white,
+                                size: 18,
+                              )),
                           SizedBox(
                             width: 5,
                           ),
@@ -223,13 +214,21 @@ class BookDetailsView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      SizedBox(height: 5,),
                       Row(
                         children: [
-                          Icon(
-                            Icons.date_range_outlined,
-                            size: 18,
-                            color: AppColors.mainColor,
-                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                              height: 25,
+                              width: 25,
+                              child: Icon(
+                                Icons.date_range_outlined,
+                                color: AppColors.white,
+                                size: 18,
+                              )),
                           SizedBox(
                             width: 5,
                           ),
@@ -249,8 +248,8 @@ class BookDetailsView extends StatelessWidget {
         ],
       ),
       floatingActionButton: SizedBox(
-        height: 65,
-        width: 65,
+        height: 55,
+        width: 55,
         child: FloatingActionButton(
           onPressed: () async {
             launch('tel://$phoneNumber');

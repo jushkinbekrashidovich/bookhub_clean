@@ -106,21 +106,26 @@ class BookReviewView extends GetView<BookReviewController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Container(
-                                          width: 20,
-                                          child: Icon(
-                                            CupertinoIcons.person,
-                                            size: 20,
-                                          )),
-                                      SizedBox(),
-                                      Container(
-                                          width: 187,
-                                          child: Text(
-                                            element.ownerName.toString(),
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500),
-                                          )),
+                                      Row(
+                                        children: [
+                                          Container(
+                                              width: 20,
+                                              child: Icon(
+                                                CupertinoIcons.person,
+                                                size: 20,
+                                              )),
+                                              SizedBox(width: 4,),
+                                          Container(
+                                              width: 187,
+                                              child: Text(
+                                                element.ownerName.toString(),
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              )),
+                                        ],
+                                      ),
                                       element.ownerName ==
                                               controller.firebaseAuth
                                                   .currentUser!.displayName
@@ -191,7 +196,8 @@ class BookReviewView extends GetView<BookReviewController> {
                                             fontWeight: FontWeight.bold),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                      )),
+                                      ),
+                                      ),
                                   Container(
                                     padding: const EdgeInsets.only(
                                       left: 10,

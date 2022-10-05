@@ -83,7 +83,7 @@ class AddBookController extends GetxController {
 
     final currUser = FirebaseAuth.instance.currentUser!;
     book.userId = currUser.uid;
-    book.ownerName = currUser.displayName;
+    book.ownerName = currUser.displayName!.split(' ')[0];
     book.photoUrl = imageUrl == "" ? null : imageUrl;
 
     FirebaseFirestore.instance

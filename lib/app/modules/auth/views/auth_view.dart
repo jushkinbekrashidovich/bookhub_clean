@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../controllers/auth_controller.dart';
@@ -68,11 +69,29 @@ class AuthView extends GetView<AuthController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Welcome to Bookhub'.tr,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                      'Welcome to'.tr,
                       style: const TextStyle(
-                          fontSize: 30, color: AppColors.mainColor),
+                          fontSize: 22, color: AppColors.mainColor),
                     ),
+                    SizedBox(height: 10,),
+                    Text(
+                      'bookhub',
+                      style: GoogleFonts.comfortaa(
+                        fontSize: 34,
+                        color: AppColors.mainColor,
+                        letterSpacing: 2,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+
+                      ],
+                    ),
+                    
                     Text(
                       'We are happy to see you. Here are a bunch of features and opportunities that will encourage you to read more books.'
                           .tr,
@@ -97,21 +116,29 @@ class AuthView extends GetView<AuthController> {
                         height: 50,
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: AppColors.grey)),
+                          color: Color.fromARGB(255, 0, 132, 255),
+                            borderRadius: BorderRadius.circular(10),),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                                height: 30,
-                                width: 30,
-                                child:
-                                    SvgPicture.asset('assets/svg/google.svg')),
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.white,
+                              ),        
+                              height: 35,
+                              width: 35, 
+                                child:SizedBox(
+                                  height: 22,
+                                width: 22,
+
+                                  child: SvgPicture.asset('assets/svg/google.svg',)),
+                                  ),
                             SizedBox(
                               width: 10,
                             ),
-                            Text('Sign in with Google'),
+                            Text('Continue with Google'.tr, style: TextStyle(color: AppColors.white),),
                           ],
                         ),
                       ),

@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          title: const Text('Home page'),
+          title: Text('Home'),
           leading: IconButton(
             onPressed: () {
               Get.toNamed("/profile");
@@ -28,6 +28,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           actions: [
+            
             IconButton(
               onPressed: () {
                 Get.toNamed('/add-book');
@@ -48,7 +49,6 @@ class HomeView extends GetView<HomeController> {
           children: [
             Expanded(
               child: ListView(
-                  physics: BouncingScrollPhysics(),
                   padding:
                       EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
                   //primary: false,
@@ -124,15 +124,15 @@ class HomeView extends GetView<HomeController> {
                                 CachedNetworkImage(
                                   imageBuilder: (context, imageProvider) =>
                                       Container(
-                                    width: 85.0,
-                                    height: 120.0,
+                                    width: 90.0,
+                                    height: 130.0,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(3),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 1.2,
-                                          blurRadius: 1.2,
+                                          spreadRadius: 0.2,
+                                          blurRadius: 0.2,
                                           offset: Offset(0,
                                               3), // changes position of shadow
                                         ),
@@ -317,4 +317,7 @@ class HomeView extends GetView<HomeController> {
         ? '0$dayOrMonth'
         : dayOrMonth.toString();
   }
+
+  
+
 }

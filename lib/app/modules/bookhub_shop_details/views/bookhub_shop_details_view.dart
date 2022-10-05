@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/custom_widgets/custom_button/custom_button.dart';
 import '../../../core/theme/app_colors.dart';
@@ -18,6 +19,7 @@ class BookhubShopDetailsView extends StatelessWidget {
   final String photoUrl;
   final String authorName;
   final String type;
+  final String quality;
 
   const BookhubShopDetailsView(
       {required this.title,
@@ -25,6 +27,7 @@ class BookhubShopDetailsView extends StatelessWidget {
       required this.price,
       required this.phoneNumber,
       required this.photoUrl,
+      required this.quality,
       //this.isExchange,
       required this.authorName,
       required this.type,
@@ -60,11 +63,13 @@ class BookhubShopDetailsView extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                                image: imageProvider, ),
+                              image: imageProvider,
+                            ),
                           ),
                         ),
                         imageUrl: photoUrl,
-                        placeholder: (context, url) => CircularProgressIndicator(
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(
                           strokeWidth: 2,
                         ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
@@ -78,7 +83,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                           )),
-                          Container(
+                      Container(
                           width: MediaQuery.of(context).size.width * 0.9,
                           child: Text(
                             price,
@@ -88,7 +93,6 @@ class BookhubShopDetailsView extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                           )),
-          
                       Container(
                         padding: EdgeInsets.only(left: 2, right: 2),
                         height: 70,
@@ -98,32 +102,30 @@ class BookhubShopDetailsView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const[
+                              children: [
                                 SizedBox(
                                   height: 15,
                                 ),
                                 Text(
                                   'Author',
-                                  style:
-                                      TextStyle(fontSize: 12, color: AppColors.grey),
+                                  style: TextStyle(
+                                      fontSize: 12, color: AppColors.grey),
                                 ),
                                 SizedBox(
-                                  width: 85,
+                                  height: 3,
+                                ),
+                                SizedBox(
                                   height: 18,
-                                  child: Text(
-                                    "Auuthor",
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                    textAlign: TextAlign.center
-                                  ),
+                                  child: Text(authorName,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
+                                      textAlign: TextAlign.center),
                                 ),
                               ],
                             ),
@@ -133,8 +135,6 @@ class BookhubShopDetailsView extends StatelessWidget {
                                   thickness: 2,
                                 )),
                             Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
@@ -142,19 +142,16 @@ class BookhubShopDetailsView extends StatelessWidget {
                                 ),
                                 Text(
                                   'Quality',
-                                  style:
-                                      TextStyle(fontSize: 12, color: AppColors.grey),
+                                  style: TextStyle(
+                                      fontSize: 12, color: AppColors.grey),
                                 ),
                                 SizedBox(
-                                  width: 70,
                                   height: 18,
-                                  child: Text(
-                                    "yangi",
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                    textAlign: TextAlign.center
-                                  ),
+                                  child: Text(quality,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
+                                      textAlign: TextAlign.center),
                                 ),
                               ],
                             ),
@@ -164,31 +161,23 @@ class BookhubShopDetailsView extends StatelessWidget {
                                   thickness: 2,
                                 )),
                             Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   height: 15,
                                 ),
                                 Text(
-                                  'Muqovasi',
-                                  style:
-                                      TextStyle(fontSize: 12, color: AppColors.grey),
+                                  'Type',
+                                  style: TextStyle(
+                                      fontSize: 12, color: AppColors.grey),
                                 ),
                                 SizedBox(
-                                  width: 90,
                                   height: 18,
-                                  child: Text(
-                                    "Qog'oz",
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  
+                                  child: Text(type,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
+                                      textAlign: TextAlign.center),
                                 ),
                               ],
                             ),
@@ -214,8 +203,8 @@ class BookhubShopDetailsView extends StatelessWidget {
                         child: ExpandablePanel(
                           header: Text(
                             "Description",
-                            style:
-                                TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400),
                           ),
                           collapsed: Text(
                             description,
@@ -236,20 +225,22 @@ class BookhubShopDetailsView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      
-                      ],
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          CustomButton(onTap: (){
-            
-          }, txt: 'Sotib olish'),
-          SizedBox(height: 20,),
+          CustomButton(
+              onTap: () async {
+                await launch("https://t.me/bookhubshop");
+              },
+              txt: 'Sotib olish'),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
-      
     );
   }
 }

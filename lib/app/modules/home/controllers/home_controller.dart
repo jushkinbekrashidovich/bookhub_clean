@@ -15,6 +15,10 @@ class HomeController extends GetxController {
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  
+ 
+
+
 
   @override
   void onInit() {
@@ -72,5 +76,6 @@ class HomeController extends GetxController {
     Get.offAllNamed(Routes.MAIN);
 
   }
+  
   
 }

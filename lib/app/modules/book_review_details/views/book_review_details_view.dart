@@ -40,13 +40,15 @@ class BookReviewDetailsView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
+                  Row(
+                    children: [
+                      Container(
                       width: 24,
                       child: Icon(
                         CupertinoIcons.person,
                         size: 22,
                       )),
-                  SizedBox(),
+                  SizedBox(width: 4,),
                   Container(
                       width: 187,
                       child: Text(
@@ -54,6 +56,10 @@ class BookReviewDetailsView extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w400),
                       )),
+
+                    ],
+                  ),
+                  
                   Container(
                       //height: 30,
                       width: 49,
@@ -80,6 +86,7 @@ class BookReviewDetailsView extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+            
             Text(likes),
           ],
         ),

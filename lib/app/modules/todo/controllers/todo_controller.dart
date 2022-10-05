@@ -16,12 +16,17 @@ class TodoController extends GetxController {
 
   @override
   void onInit() {
-    if (!storedTodos.isNull) {
+    if (storedTodos != null) {
       todos = storedTodos!.map((e) => Todo.fromJson(e)).toList().obs;
-    }
+    } 
     ever(todos, (_) {
       GetStorage().write('todos', todos.toList());
     });
+    
     super.onInit();
   }
+  
+
+
+  
 }
