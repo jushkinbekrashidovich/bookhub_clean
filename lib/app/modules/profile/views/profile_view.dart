@@ -4,6 +4,7 @@ import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:app_version/app_version.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -147,8 +148,10 @@ class ProfileView extends GetView<ProfileController> {
                         ],
                       ),
                     ),
-                    
-                   
+                    SizedBox(height: 4,),
+                  const Center(
+                    child: AppVersion(),
+                   ),
                    
                   
                   ],

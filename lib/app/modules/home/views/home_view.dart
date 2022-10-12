@@ -1,6 +1,6 @@
 import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
 import 'package:bookhub/app/routes/app_pages.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: Text('Home'.tr),
           leading: IconButton(
             onPressed: () {
               Get.toNamed("/profile");
@@ -28,7 +28,6 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           actions: [
-            
             IconButton(
               onPressed: () {
                 Get.toNamed('/add-book');
@@ -121,36 +120,46 @@ class HomeView extends GetView<HomeController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CachedNetworkImage(
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
-                                    width: 90.0,
-                                    height: 130.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(3),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 0.2,
-                                          blurRadius: 0.2,
-                                          offset: Offset(0,
-                                              3), // changes position of shadow
-                                        ),
-                                      ],
-                                      image: DecorationImage(
-                                          image: imageProvider,
-                                          fit: BoxFit.cover),
-                                    ),
+                                FancyShimmerImage(
+                                  width: 90.0,
+                                  height: 130.0,
+                                  errorWidget: Icon(
+                                    Icons.error,
+                                    color: Colors.red,
+                                    size: 28,
                                   ),
                                   imageUrl: element.photoUrl.toString(),
-                                  placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                    ),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
+                                  boxFit: BoxFit.cover,
                                 ),
+                                // CachedNetworkImage(
+                                //   imageBuilder: (context, imageProvider) =>
+                                //       Container(
+
+                                //     decoration: BoxDecoration(
+                                //       borderRadius: BorderRadius.circular(3),
+                                //       boxShadow: [
+                                //         BoxShadow(
+                                //           color: Colors.grey.withOpacity(0.5),
+                                //           spreadRadius: 0.2,
+                                //           blurRadius: 0.2,
+                                //           offset: Offset(0,
+                                //               3), // changes position of shadow
+                                //         ),
+                                //       ],
+                                //       image: DecorationImage(
+                                //           image: imageProvider,
+                                //           fit: BoxFit.cover),
+                                //     ),
+                                //   ),
+                                //   imageUrl: element.photoUrl.toString(),
+                                //   placeholder: (context, url) => Center(
+                                //     child: CircularProgressIndicator(
+                                //       strokeWidth: 2,
+                                //     ),
+                                //   ),
+                                //   errorWidget: (context, url, error) =>
+                                //       Icon(Icons.error),
+                                // ),
                                 Container(
                                   padding: EdgeInsets.only(
                                     left: 10,
@@ -227,41 +236,40 @@ class HomeView extends GetView<HomeController> {
                                               child: IconButton(
                                                 onPressed: () {
                                                   showDialog(
-                                                        context: context,
-                                                        builder: (_) =>
-                                                            CupertinoAlertDialog(
-                                                          title: Text(
-                                                            'Are you sure'.tr,
-                                                            style: TextStyle(
-                                                                fontSize: 20),
-                                                          ),
-                                                          //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
-                                                          actions: [
-                                                            CupertinoDialogAction(
-                                                              isDefaultAction:
-                                                                  true,
-                                                              child: Text('Yes'),
-                                                              onPressed: () {
-                                                                controller
-                                                          .deletePost(element);
-                                                              },
-                                                            ),
-                                                            CupertinoDialogAction(
-                                                              isDefaultAction:
-                                                                  true,
-                                                              child: Text('No'),
-                                                              onPressed: () {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ],
+                                                    context: context,
+                                                    builder: (_) =>
+                                                        CupertinoAlertDialog(
+                                                      title: Text(
+                                                        'Are you sure'.tr,
+                                                        style: TextStyle(
+                                                            fontSize: 20),
+                                                      ),
+                                                      //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
+                                                      actions: [
+                                                        CupertinoDialogAction(
+                                                          isDefaultAction: true,
+                                                          child: Text('Yes'),
+                                                          onPressed: () {
+                                                            controller
+                                                                .deletePost(
+                                                                    element);
+                                                          },
                                                         ),
-                                                      );
+                                                        CupertinoDialogAction(
+                                                          isDefaultAction: true,
+                                                          child: Text('No'),
+                                                          onPressed: () {
+                                                            Navigator.of(
+                                                                    context)
+                                                                .pop();
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
                                                 },
-                                                icon: Icon(
-                                                    CupertinoIcons.delete_solid),
+                                                icon: Icon(CupertinoIcons
+                                                    .delete_solid),
                                               ),
                                             )
                                           : SizedBox(
@@ -317,7 +325,4 @@ class HomeView extends GetView<HomeController> {
         ? '0$dayOrMonth'
         : dayOrMonth.toString();
   }
-
-  
-
 }

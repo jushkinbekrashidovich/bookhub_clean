@@ -28,14 +28,17 @@ class CategoriesView extends GetView<CategoriesController> {
             crossAxisSpacing: 10),
         children: [
           CustomGridViewItem(
-            icon: CupertinoIcons.square_list,
-            txt: 'Book List',
+            icon: 'group',
+            txt: 'txt',
             onpress: () {
               Get.toNamed(Routes.TODO);
             },
           ),
           CustomGridViewItem(
-              txt: 'txt', icon: CupertinoIcons.book, onpress: () {}),
+              txt: 'txt', icon: 'group', onpress: () {
+
+                Get.toNamed(Routes.BOOK_REVIEW);
+              }),
           // BackdropFilter(
           //   filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           //   child: Container(

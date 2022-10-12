@@ -62,7 +62,7 @@ class AuthView extends GetView<AuthController> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                height: 150,
+                height: 160,
                 //color: Colors.blue,
                 padding: EdgeInsets.only(top: 10, left: 15, right: 15),
                 child: Column(
@@ -93,7 +93,7 @@ class AuthView extends GetView<AuthController> {
                     ),
                     
                     Text(
-                      'We are happy to see you. Here are a bunch of features and opportunities that will encourage you to read more books.'
+                      'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. Our main goal is to give an opportunity to people to read more books.'
                           .tr,
                       style: const TextStyle(
                           fontSize: 13, fontWeight: FontWeight.w300),
@@ -130,15 +130,15 @@ class AuthView extends GetView<AuthController> {
                               height: 35,
                               width: 35, 
                                 child:SizedBox(
-                                  height: 22,
-                                width: 22,
+                                  height: 18,
+                                width: 18,
 
                                   child: SvgPicture.asset('assets/svg/google.svg',)),
                                   ),
                             SizedBox(
                               width: 10,
                             ),
-                            Text('Continue with Google'.tr, style: TextStyle(color: AppColors.white),),
+                            Text('Continue with Google'.tr, style: TextStyle(color: AppColors.white, fontSize: 15),),
                           ],
                         ),
                       ),

@@ -27,7 +27,7 @@ class MainView extends GetView<MainController> {
             children: [
               HomeView(),
               BookhubShopView(),
-              BookReviewView(),
+            //  BookReviewView(),
               CategoriesView(),
             ],
           ),
@@ -40,11 +40,11 @@ class MainView extends GetView<MainController> {
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
           selectedLabelStyle: const TextStyle(
-            fontSize: 12,
+            fontSize: 15,
             fontWeight: FontWeight.w500,
           ),
           unselectedLabelStyle: const TextStyle(
-            fontSize: 10,
+            fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
           elevation: 8,
@@ -59,11 +59,11 @@ class MainView extends GetView<MainController> {
               label: 'Bookshop'.tr,
               activeIcon: 'icon_bookmark_active',
             ),
-            _bottomNavigationBarItem(
-              icon: 'icon_donation',
-              label: 'Reviews'.tr,
-              activeIcon: 'icon_donation_active',
-            ),
+            // _bottomNavigationBarItem(
+            //   icon: 'icon_donation',
+            //   label: 'Reviews'.tr,
+            //   activeIcon: 'icon_donation_active',
+            // ),
             _bottomNavigationBarItem(
               icon: 'icon_category',
               label: 'Categories'.tr,

@@ -2,6 +2,7 @@ import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
 import 'package:bookhub/app/modules/bookhub_shop/controllers/bookhub_shop_controller.dart';
 import 'package:bookhub/app/modules/bookhub_shop_details/views/bookhub_shop_details_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -114,33 +115,43 @@ class BookhubShopView extends GetView<BookhubShopController> {
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CachedNetworkImage(
-                            imageBuilder: (context, imageProvider) => Container(
-                              width: 85.0,
-                              height: 120.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(3),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 1.2,
-                                    blurRadius: 1.2,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
+                          FancyShimmerImage(
+                                  width: 85.0,
+                              height: 125.0,
+                                  errorWidget: Icon(
+                                    Icons.error,
+                                    color: Colors.red,
+                                    size: 28,
                                   ),
-                                ],
-                                image: DecorationImage(
-                                    image: imageProvider, fit: BoxFit.cover),
-                              ),
-                            ),
-                            imageUrl: element.photoUrl.toString(),
-                            placeholder: (context, url) =>
-                                CircularProgressIndicator(
-                              strokeWidth: 2,
-                            ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
+                                  imageUrl: element.photoUrl.toString(),
+                                  boxFit: BoxFit.fill,
+                                ),
+                          // CachedNetworkImage(
+                          //   imageBuilder: (context, imageProvider) => Container(
+                              
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(3),
+                          //       boxShadow: [
+                          //         BoxShadow(
+                          //           color: Colors.grey.withOpacity(0.5),
+                          //           spreadRadius: 1.2,
+                          //           blurRadius: 1.2,
+                          //           offset: Offset(
+                          //               0, 3), // changes position of shadow
+                          //         ),
+                          //       ],
+                          //       image: DecorationImage(
+                          //           image: imageProvider, fit: BoxFit.cover),
+                          //     ),
+                          //   ),
+                          //   imageUrl: element.photoUrl.toString(),
+                          //   placeholder: (context, url) =>
+                          //       CircularProgressIndicator(
+                          //     strokeWidth: 2,
+                          //   ),
+                          //   errorWidget: (context, url, error) =>
+                          //       Icon(Icons.error),
+                          // ),
                           Container(
                             padding: EdgeInsets.only(
                               left: 25,

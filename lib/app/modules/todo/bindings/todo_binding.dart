@@ -7,6 +7,7 @@ class TodoBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<TodoController>(
       () => TodoController(),
+      fenix: true
     );
   }
 }

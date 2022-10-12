@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../theme/app_colors.dart';
 
@@ -9,7 +10,7 @@ class CustomGridViewItem extends StatelessWidget {
       : super(key: key);
 
   final String txt;
-  final IconData icon;
+  final String icon;
   final Function onpress;
 
   @override
@@ -37,10 +38,11 @@ class CustomGridViewItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Icon(
-              icon,
-              size: 45,
-              color: AppColors.mainColor,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 35,
+                child: SvgPicture.asset('assets/svg/$icon.svg')),
             ),
             SizedBox(
                 height: 32,

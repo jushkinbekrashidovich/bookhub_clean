@@ -36,7 +36,7 @@ class SplashController extends GetxController {
 
   void handleAuthStateChanged(isLoggedIn) async {
     await Future.delayed(
-      const Duration(milliseconds: 250000000),
+      const Duration(milliseconds: 2500),
       () {
         if (isLoggedIn) {
           Get.offAllNamed(Routes.MAIN, arguments: firebaseAuth.currentUser);

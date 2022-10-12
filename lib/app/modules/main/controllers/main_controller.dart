@@ -14,4 +14,4 @@ class MainController extends GetxController {
 
   BottomMenu get bottomMenu => _bottomMenu;
 }
-enum BottomMenu { home, saved,  reviews, categories }
+enum BottomMenu { home, saved,  categories }

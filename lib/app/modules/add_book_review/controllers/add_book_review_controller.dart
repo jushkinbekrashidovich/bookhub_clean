@@ -27,8 +27,10 @@ class AddBookReviewController extends GetxController {
         .collection("bookReviews")
         .add(bookReview.toJson())
         .then((value) {
-      //Get.find<MainController>().setMenu(BottomMenu.reviews);
+      
       Get.offAllNamed(Routes.MAIN);
+      //Get.to();
+      
       //Get.offAllNamed(Routes.BOOK_REVIEW,);
     }).catchError((err) {
       // Get.back();

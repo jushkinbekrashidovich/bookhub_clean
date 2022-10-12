@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,22 +24,11 @@ class SplashView extends GetView<SplashController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(8)),
-                  height: 50,
-                  width: 50,
-                  child: Center(
-                      child: Icon(
-                    CupertinoIcons.book,
-                    color: AppColors.mainColor,
-                    size: 38,
-                  )),
-                ),
                 SizedBox(
-                  height: 10,
-                ),
+                  height: 100,
+                  width: 80,
+                  child: Image.asset('assets/book11.png')),
+               
                 Text(
                   'bookhub',
                   style: GoogleFonts.comfortaa(

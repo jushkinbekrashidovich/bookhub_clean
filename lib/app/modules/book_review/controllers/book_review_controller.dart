@@ -3,7 +3,6 @@ import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
 import '../../../data/models/book_review_model.dart';
@@ -11,7 +10,7 @@ import '../../../data/models/book_review_model.dart';
 class BookReviewController extends GetxController {
   late final FirebaseFirestore firestore;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final bookReviews = <BookReview>[].obs;
+  RxList bookReviews = <BookReview>[].obs;
   final isLoading = true.obs;
 
   @override
@@ -19,6 +18,7 @@ class BookReviewController extends GetxController {
     firestore = FirebaseFirestore.instance;
     print("here we go again in book reveiews");
     update();
+    
     super.onInit();
   }
   
@@ -29,7 +29,7 @@ class BookReviewController extends GetxController {
       bookReviews.value = await fetchBookReviews();
     } catch (err) {
       showErrorSnackbar(
-          "Error while fetching foods from server: " + err.toString());
+          "Error while fetching foods from server: $err");
       throw err;
     }
     isLoading.value = false;
@@ -45,7 +45,7 @@ class BookReviewController extends GetxController {
         .orderBy('postedTimestamp', descending: true)
         .get()
         .then((value) {
-      //print(value.size);
+      
       for (var element in value.docs) {
         final book = BookReview.fromJson(element.data());
         book.id = element.id;
