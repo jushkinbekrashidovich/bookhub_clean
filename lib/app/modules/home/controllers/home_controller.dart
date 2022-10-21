@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -18,7 +19,10 @@ class HomeController extends GetxController {
   
  
 
-
+void changeLanguage (var param1, var param2){
+    var locale = Locale(param1, param2);
+    Get.updateLocale(locale);
+  }
 
   @override
   void onInit() {

@@ -5,7 +5,7 @@ class BookReview {
   String? ownerName;
   String? userId;
   int? postedTimestamp;
-  int? likes;
+  List? likes;
   
 
   BookReview(

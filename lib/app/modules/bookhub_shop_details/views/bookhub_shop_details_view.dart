@@ -112,7 +112,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                                   height: 15,
                                 ),
                                 Text(
-                                  'Author',
+                                  'Author'.tr,
                                   style: TextStyle(
                                       fontSize: 12, color: AppColors.grey),
                                 ),
@@ -141,7 +141,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                                   height: 15,
                                 ),
                                 Text(
-                                  'Quality',
+                                  'Quality'.tr,
                                   style: TextStyle(
                                       fontSize: 12, color: AppColors.grey),
                                 ),
@@ -167,7 +167,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                                   height: 15,
                                 ),
                                 Text(
-                                  'Type',
+                                  'Type'.tr,
                                   style: TextStyle(
                                       fontSize: 12, color: AppColors.grey),
                                 ),
@@ -194,15 +194,15 @@ class BookhubShopDetailsView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'About',
+                      Text(
+                        'About'.tr,
                         style: TextStyle(fontSize: 20),
                       ),
                       Card(
                         elevation: 0,
                         child: ExpandablePanel(
                           header: Text(
-                            "Description",
+                            'Description'.tr,
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w400),
                           ),
@@ -231,13 +231,43 @@ class BookhubShopDetailsView extends StatelessWidget {
               ],
             ),
           ),
-          CustomButton(
-              onTap: () async {
-                await launch("https://t.me/bookhubshop");
-              },
-              txt: 'Sotib olish'),
+
+          // CustomButton(
+          //     onTap: () async {
+          //       await launch("https://t.me/bookhubshop");
+          //     },
+          //     txt: 'Sotib olish'),
           SizedBox(
             height: 20,
+          ),
+        ],
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FloatingActionButton(
+            heroTag: 'contactPhone',
+            onPressed: () async {
+              launch('tel://+998880189977');
+            },
+            backgroundColor: Colors.blue,
+            child: const Icon(
+              Icons.phone,
+              color: AppColors.white,
+              size: 35,
+            ),
+          ),
+          FloatingActionButton(
+            heroTag: 'contactOnline',
+            onPressed: () async {
+              launch('https://t.me/bookhubshopbot');
+            },
+            backgroundColor: Colors.blue,
+            child: const Icon(
+              Icons.telegram_outlined,
+              color: AppColors.white,
+              size: 35,
+            ),
           ),
         ],
       ),

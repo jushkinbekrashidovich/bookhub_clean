@@ -15,7 +15,7 @@ class CategoriesView extends GetView<CategoriesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CategoriesView'),
+        title: Text('Categories'.tr),
         centerTitle: true,
       ),
       body: GridView(
@@ -28,17 +28,18 @@ class CategoriesView extends GetView<CategoriesController> {
             crossAxisSpacing: 10),
         children: [
           CustomGridViewItem(
+              txt: 'Book reviews'.tr, icon: 'group', onpress: () {
+
+                Get.toNamed(Routes.BOOK_REVIEW);
+              }),
+          CustomGridViewItem(
             icon: 'group',
             txt: 'txt',
             onpress: () {
               Get.toNamed(Routes.TODO);
             },
           ),
-          CustomGridViewItem(
-              txt: 'txt', icon: 'group', onpress: () {
-
-                Get.toNamed(Routes.BOOK_REVIEW);
-              }),
+          
           // BackdropFilter(
           //   filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           //   child: Container(

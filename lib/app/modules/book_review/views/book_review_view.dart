@@ -20,7 +20,7 @@ class BookReviewView extends GetView<BookReviewController> {
     return Obx(
       (() => Scaffold(
             appBar: AppBar(
-              title: const Text("Book reviews"),
+              title:  Text('Book reviews'.tr),
               actions: [
                 IconButton(
                     onPressed: () {
@@ -104,27 +104,31 @@ class BookReviewView extends GetView<BookReviewController> {
                                   height: 33,
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                              width: 20,
-                                              child: Icon(
-                                                CupertinoIcons.person,
-                                                size: 20,
-                                              )),
-                                              SizedBox(width: 4,),
-                                          Container(
-                                              width: 187,
-                                              child: Text(
-                                                element.ownerName.toString(),
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )),
-                                        ],
+
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 9),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: 20,
+                                                child: Icon(
+                                                  CupertinoIcons.person,
+                                                  size: 20,
+                                                )),
+                                                SizedBox(width: 4,),
+                                            Container(
+                                                width: 187,
+                                                child: Text(
+                                                  element.ownerName.toString(),
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                )),
+                                          ],
+                                        ),
                                       ),
                                       element.ownerName ==
                                               controller.firebaseAuth
@@ -215,40 +219,40 @@ class BookReviewView extends GetView<BookReviewController> {
                                 ],
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(right: 20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  element.likes != null
-                                      ? Text(
-                                          element.likes.toString(),
-                                          style: GoogleFonts.ptSerif(
-                                              color: Colors.black54),
-                                        )
-                                      : Text(
-                                          '0',
-                                          style: GoogleFonts.ptSerif(
-                                              color: Colors.black54),
-                                        ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      controller
-                                          .incrementLike(element.id.toString());
-                                    },
-                                    child: SizedBox(
-                                        height: 25,
-                                        width: 25,
-                                        child: SvgPicture.asset(
-                                          'assets/svg/clap.svg',
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Container(
+                            //   padding: EdgeInsets.only(right: 20),
+                            //   child: Row(
+                            //     mainAxisAlignment: MainAxisAlignment.end,
+                            //     children: [
+                            //       element.likes != null
+                            //           ? Text(
+                            //               element.likes.toString(),
+                            //               style: GoogleFonts.ptSerif(
+                            //                   color: Colors.black54),
+                            //             )
+                            //           : Text(
+                            //               '0',
+                            //               style: GoogleFonts.ptSerif(
+                            //                   color: Colors.black54),
+                            //             ),
+                            //       SizedBox(
+                            //         width: 10,
+                            //       ),
+                            //       // InkWell(
+                            //       //   onTap: () {
+                            //       //     // controller
+                            //       //     //     .incrementLike(element.id.toString());
+                            //       //   },
+                            //       //   child: SizedBox(
+                            //       //       height: 25,
+                            //       //       width: 25,
+                            //       //       child: SvgPicture.asset(
+                            //       //         'assets/svg/clap.svg',
+                            //       //       )),
+                            //       // ),
+                            //     ],
+                            //   ),
+                            // ),
                             Center(
                               child: SizedBox(
                                   height: 40,
@@ -274,7 +278,7 @@ class BookReviewView extends GetView<BookReviewController> {
 
                                       // Get.toNamed('/book-review-details');
                                     },
-                                    txt: 'read more',
+                                    txt: 'read more'.tr,
                                     textStyle: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         color: AppColors.white),

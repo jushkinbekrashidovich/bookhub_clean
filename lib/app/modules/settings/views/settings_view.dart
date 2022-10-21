@@ -15,7 +15,7 @@ class SettingsView extends GetView<SettingsController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('Settings'),
+        title: Text('Settings'.tr),
         // backgroundColor: AppColors.background,
       ),
       body: GetBuilder<SettingsController>(
@@ -46,7 +46,7 @@ class SettingsView extends GetView<SettingsController> {
                                 builder: (context) {
                                   return CupertinoAlertDialog(
                                     content: Text(
-                                      "Select the theme".tr,
+                                      "Select language".tr,
                                       style: TextStyle(fontSize: 20),
                                     ),
                                     actions: [
@@ -83,7 +83,7 @@ class SettingsView extends GetView<SettingsController> {
                             color: AppColors.mainColor,
                           ),
                           link: () async {
-                             await launch("https://t.me/bookhub_support_bot");
+                             await launch("https://t.me/BookhubSupportBot");
                             
                           }),
                       Divider(),

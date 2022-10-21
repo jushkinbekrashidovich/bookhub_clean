@@ -41,7 +41,7 @@ class AddBookReviewView extends GetView<AddBookReviewController> {
                     controller.validation();
                   },
                   child: Text(
-                    'Publish',
+                    'Publish'.tr,
                     style:
                         TextStyle(fontSize: 19, fontWeight: FontWeight.w400),
                   ))
@@ -61,12 +61,12 @@ class AddBookReviewView extends GetView<AddBookReviewController> {
                   fontSize: 20, fontWeight: FontWeight.bold),
               keyboardType: TextInputType.text,
               controller: controller.titleController,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                   contentPadding: EdgeInsets.all(12),
                   // suffixIcon: Icon(Icons.clear_rounded),
                   filled: true,
                   fillColor: AppColors.background,
-                  hintText: 'title'),
+                  hintText: 'Title'.tr),
             ),
             TextFormField(
               textInputAction: TextInputAction.newline,
@@ -74,13 +74,13 @@ class AddBookReviewView extends GetView<AddBookReviewController> {
                   fontSize: 18, fontWeight: FontWeight.w400),
               controller: controller.descriptionController,
               maxLines:10000,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                   contentPadding: EdgeInsets.only(
                     left: 10,
                     top: 10,
                   ),
                   fillColor: AppColors.background,
-                  hintText: 'about'),
+                  hintText: 'About'.tr),
             ),
           ],
         ),

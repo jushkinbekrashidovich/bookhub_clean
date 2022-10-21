@@ -19,7 +19,7 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: const Text('Profile'),
+          title:  Text('Profile'.tr),
         ),
         body: GetBuilder<ProfileController>(
             builder: (controller) => Column(
@@ -94,7 +94,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      height: 240,
+                      height: 170,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16)),
@@ -111,19 +111,19 @@ class ProfileView extends GetView<ProfileController> {
                           //   },
                           // ),
                           // Divider(),
+                          // ProfileItems(
+                          //   text: 'My Dashboard',
+                          //   icon: Icon(
+                          //     CupertinoIcons.square_list,
+                          //     color: AppColors.mainColor,
+                          //   ),
+                          //   link: () {
+                          //     // Get.toNamed(AppRoutes.editprofile);
+                          //   },
+                          // ),
+                          //Divider(),
                           ProfileItems(
-                            text: 'My Dashboard',
-                            icon: Icon(
-                              CupertinoIcons.square_list,
-                              color: AppColors.mainColor,
-                            ),
-                            link: () {
-                              // Get.toNamed(AppRoutes.editprofile);
-                            },
-                          ),
-                          Divider(),
-                          ProfileItems(
-                            text: 'Settings',
+                            text: 'Settings'.tr,
                             icon: Icon(
                               CupertinoIcons.settings,
                               color: AppColors.mainColor,
@@ -135,7 +135,7 @@ class ProfileView extends GetView<ProfileController> {
                           
                           Divider(),
                           ProfileItems(
-                            text: 'Rate ',
+                            text: 'Rate'.tr,
                             icon: Icon(
                               CupertinoIcons.star,
                               color: AppColors.mainColor,

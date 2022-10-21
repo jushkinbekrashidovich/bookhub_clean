@@ -64,13 +64,39 @@ class BookReviewController extends GetxController {
   }
 
 
+  
+   
+   likePost(String postID, String uid, List likes) async{
+  
+    // try{
+    //   if(likes.contains(null) || likes.isEmpty){
+    //     return;
+    //   }
+    //   if(likes.contains(uid)){
+    //    await firestore.collection('bookReviews').doc(postID).update({
+    //       'likes':FieldValue.arrayRemove([uid]),
+    //     });
 
- incrementLike(String reviewId)  {
-    firestore
-        .collection("bookReviews")
-        .doc(reviewId)
-        .update({"likes": FieldValue.increment(1)}).obs;
-  }
+    //   }
+      
+    //   else {
+        await  firestore.collection('bookReviews').doc(postID).update({
+          'likes':FieldValue.arrayRemove([uid]),
+        });
+    //   }
+    // }catch(e){
+    //   print(e.toString());
+    // }
+
+   }
+
+//  incrementLike(String reviewId)  {
+//     firestore
+//         .collection("bookReviews")
+//         .doc(reviewId)
+//         .update({"likes": FieldValue.increment(1)}).obs;
+//   }
+
 
   
 

@@ -3,6 +3,7 @@ import 'package:bookhub/app/modules/add_book/bindings/add_book_binding.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,6 +17,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   runApp(
     GetMaterialApp(
@@ -25,7 +30,7 @@ void main() async {
       getPages: AppPages.routes,
       initialBinding: SplashBinding(),
       translations: AppTranslations(),
-      locale: const Locale('en', 'EN'),
+      locale: const Locale('uz', 'UZ'),
       fallbackLocale: const Locale('uz', 'UZ'),
       theme: AppThemes.light,
       //darkTheme: AppThemes.dark,

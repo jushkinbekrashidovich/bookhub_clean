@@ -21,14 +21,14 @@ class BookhubShopView extends GetView<BookhubShopController> {
               SizedBox(
                 width: 20,
               ),
-              Text('Bookhub Shop'),
+              Text('Bookshop'),
               SizedBox(
                 width: 5,
               ),
               Container(
                 decoration: BoxDecoration(
                     color: AppColors.red,
-                    borderRadius: BorderRadius.circular(2)),
+                    borderRadius: BorderRadius.circular(4)),
                 height: 20,
                 width: 40,
                 child: Center(
@@ -88,15 +88,22 @@ class BookhubShopView extends GetView<BookhubShopController> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => BookhubShopDetailsView(
-                          title: element.title.toString(),
-                          description: element.description.toString(),
-                          price: element.price.toString(),
-                          phoneNumber: element.phoneNumber.toString(),
+                          
                           photoUrl: element.photoUrl.toString(),
+                          title: element.title.toString(),
+                          price: element.price.toString(),
                           authorName: element.authorName.toString(),
-                          id: '',
-                          type: element.type.toString(),
+
                           quality: element.quality.toString(),
+                          type: element.type.toString(),
+                          description: element.description.toString(),
+                          
+                          phoneNumber: element.phoneNumber.toString(),
+                          
+                          
+                          id: '',
+                          
+                          
                         ),
                       ),
                     );
@@ -191,16 +198,18 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                   padding: EdgeInsets.only(left: 3, right: 3),
                                   height: 20,
                                   decoration: BoxDecoration(
-                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.green,
-                                    borderRadius: BorderRadius.circular(2)
+                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.white,
+                                    borderRadius: BorderRadius.circular(4)
                                   ),
-                                  child: Text(
-                                  element.quality.toString(),
-                                  style: TextStyle(
-                                     color: AppColors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
+                                  child: Center(
+                                    child: Text(
+                                    element.quality.toString(),
+                                    style: TextStyle(
+                                       color: AppColors.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500),
                                 ),
+                                  ),
                                 ),
                                 
                                 const SizedBox(

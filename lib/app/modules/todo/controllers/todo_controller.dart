@@ -11,12 +11,14 @@ class TodoController extends GetxController {
   TextEditingController titleOfBookcontroller = TextEditingController();
   
   
-  List storedTodos = GetStorage().read('todos')??[];
+  
   var todos = <Todo>[].obs;
 
   @override
   void onInit() {
-    todos = storedTodos.map((e) => Todo.fromJson(e)).toList().obs;
+    
+    List? storedTodos = GetStorage().read('todos');
+    todos.value = storedTodos!.map((e) => Todo.fromJson(e)).toList().obs;
     ever(todos, (_) async{
       await GetStorage().write('todos', todos.toList());
     });

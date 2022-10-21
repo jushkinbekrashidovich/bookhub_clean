@@ -36,12 +36,40 @@ class HomeView extends GetView<HomeController> {
               iconSize: 27,
             ),
             IconButton(
-              onPressed: () {
-                Get.toNamed(Routes.AUTH);
-              },
-              icon: const Icon(Icons.notification_add),
-              iconSize: 27,
-            ),
+                  onPressed: () {
+                    showCupertinoDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (context) {
+                          return CupertinoAlertDialog(
+                            content: Text(
+                              "Select language".tr,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            actions: [
+                              CupertinoDialogAction(
+                                  child: Text("O'zbekcha"),
+                                  onPressed: () {
+                                    controller.changeLanguage('uz', 'UZ');
+                                    Get.back();
+                                  }),
+                              CupertinoDialogAction(
+                                  child: Text('English'),
+                                  onPressed: () {
+                                    controller.changeLanguage('en', 'EN');
+                                    Get.back();
+                                  }),
+                              CupertinoDialogAction(
+                                  child: Text('Русский'),
+                                  onPressed: () {
+                                    controller.changeLanguage('ru', 'RU');
+                                    Get.back();
+                                  }),
+                            ],
+                          );
+                        });
+                  },
+                  icon: Icon(Icons.language)),
           ],
         ),
         body: Column(
@@ -120,7 +148,9 @@ class HomeView extends GetView<HomeController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                FancyShimmerImage(
+                                Row(
+                                  children: [
+                                    FancyShimmerImage(
                                   width: 90.0,
                                   height: 130.0,
                                   errorWidget: Icon(
@@ -131,35 +161,8 @@ class HomeView extends GetView<HomeController> {
                                   imageUrl: element.photoUrl.toString(),
                                   boxFit: BoxFit.cover,
                                 ),
-                                // CachedNetworkImage(
-                                //   imageBuilder: (context, imageProvider) =>
-                                //       Container(
-
-                                //     decoration: BoxDecoration(
-                                //       borderRadius: BorderRadius.circular(3),
-                                //       boxShadow: [
-                                //         BoxShadow(
-                                //           color: Colors.grey.withOpacity(0.5),
-                                //           spreadRadius: 0.2,
-                                //           blurRadius: 0.2,
-                                //           offset: Offset(0,
-                                //               3), // changes position of shadow
-                                //         ),
-                                //       ],
-                                //       image: DecorationImage(
-                                //           image: imageProvider,
-                                //           fit: BoxFit.cover),
-                                //     ),
-                                //   ),
-                                //   imageUrl: element.photoUrl.toString(),
-                                //   placeholder: (context, url) => Center(
-                                //     child: CircularProgressIndicator(
-                                //       strokeWidth: 2,
-                                //     ),
-                                //   ),
-                                //   errorWidget: (context, url, error) =>
-                                //       Icon(Icons.error),
-                                // ),
+                                SizedBox(width: 15,),
+                                
                                 Container(
                                   padding: EdgeInsets.only(
                                     left: 10,
@@ -223,6 +226,10 @@ class HomeView extends GetView<HomeController> {
                                     ],
                                   ),
                                 ),
+
+                                  ],
+                                ),
+                                
                                 Container(
                                   padding: EdgeInsets.only(top: 0, bottom: 10),
                                   child: Column(

@@ -29,7 +29,7 @@ class AuthView extends GetView<AuthController> {
                         builder: (context) {
                           return CupertinoAlertDialog(
                             content: Text(
-                              "Select the theme".tr,
+                              "Select language".tr,
                               style: TextStyle(fontSize: 20),
                             ),
                             actions: [
@@ -93,7 +93,7 @@ class AuthView extends GetView<AuthController> {
                     ),
                     
                     Text(
-                      'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. Our main goal is to give an opportunity to people to read more books.'
+                      'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. In addition, new books are available for an affordable price.'
                           .tr,
                       style: const TextStyle(
                           fontSize: 13, fontWeight: FontWeight.w300),

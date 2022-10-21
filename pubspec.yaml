@@ -24,6 +24,7 @@ dependencies:
   flutter: 
     sdk: flutter
   app_version: ^0.0.2
+  flutter_native_splash: ^2.2.9
   
 
 dev_dependencies: 

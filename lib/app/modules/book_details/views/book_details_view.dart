@@ -98,7 +98,7 @@ class BookDetailsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                  Text(
-                  'About',
+                  'About'.tr,
                   style: TextStyle(fontSize: 21),
                 ),
                 SizedBox(
@@ -120,7 +120,7 @@ class BookDetailsView extends StatelessWidget {
                   elevation: 0,
                   child: ExpandablePanel(
                     header: Text(
-                      "Description",
+                      'Description'.tr,
                       style:
                           TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
                     ),
@@ -147,7 +147,7 @@ class BookDetailsView extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  'Seller',
+                  'Seller'.tr,
                   style: TextStyle(fontSize: 21),
                 ),
                 SizedBox(
@@ -160,14 +160,14 @@ class BookDetailsView extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: AppColors.mainColor,
+                              color: Color.fromARGB(255, 235, 240, 248),
                               borderRadius: BorderRadius.circular(5)
                             ),
                               height: 25,
                               width: 25,
                               child: Icon(
                                 CupertinoIcons.person,
-                                color: AppColors.white,
+                                color: AppColors.mainColor,
                                 size: 18,
                               )),
                           SizedBox(
@@ -188,14 +188,14 @@ class BookDetailsView extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: AppColors.mainColor,
+                              color: Color.fromARGB(255, 235, 240, 248),
                               borderRadius: BorderRadius.circular(5)
                             ),
                               height: 25,
                               width: 25,
                               child: Icon(
                                 CupertinoIcons.location,
-                                color: AppColors.white,
+                                color: AppColors.mainColor,
                                 size: 18,
                               )),
                           SizedBox(
@@ -219,14 +219,14 @@ class BookDetailsView extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: AppColors.mainColor,
+                              color: Color.fromARGB(255, 235, 240, 248),
                               borderRadius: BorderRadius.circular(5)
                             ),
                               height: 25,
                               width: 25,
                               child: Icon(
                                 Icons.date_range_outlined,
-                                color: AppColors.white,
+                                color: AppColors.mainColor,
                                 size: 18,
                               )),
                           SizedBox(

@@ -18,7 +18,7 @@ class AddBookView extends GetView<AddBookController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add your book'),
+          title: Text('Add your book'.tr),
         ),
         body: Obx(
           () => ListView(
@@ -103,10 +103,10 @@ class AddBookView extends GetView<AddBookController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomPaddingTitle(title: 'Title'),
+                     CustomPaddingTitle(title: 'Title'.tr),
                     CustomTextField(controller: controller.titleController),
                     AppUtils.kBoxHeight10,
-                    const CustomPaddingTitle(title: 'Categories'),
+                    CustomPaddingTitle(title: 'Category'.tr),
                     Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 1),
@@ -142,16 +142,16 @@ class AddBookView extends GetView<AddBookController> {
                           }),
                     ),
                     AppUtils.kBoxHeight10,
-                    const CustomPaddingTitle(title: 'Location'),
+                   CustomPaddingTitle(title: 'Address'.tr),
                     CustomTextField(controller: controller.locationControlller),
                     AppUtils.kBoxHeight10,
-                    const CustomPaddingTitle(title: 'Description'),
+                     CustomPaddingTitle(title: 'Description'.tr),
                     CustomTextFormField(
                         controller: controller.descriptionController,
                         maxLines: 4,
                         hintText: 'here you can write about the book'),
                     AppUtils.kBoxHeight10,
-                    CustomPaddingTitle(title: 'Phone number'),
+                    CustomPaddingTitle(title: 'Phone number'.tr),
                     CustomTextField(
                       controller: controller.phoneNumberController,
                       keyboardType: TextInputType.phone,
@@ -170,9 +170,9 @@ class AddBookView extends GetView<AddBookController> {
                           Container(
                             padding: EdgeInsets.only(left: 10),
                             child: Text(
-                              "Is exchange?",
+                              'Do you want to exchange your book?'.tr,
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w400),
+                                  fontSize: 12, fontWeight: FontWeight.w400),
                             ),
                           ),
                           Spacer(),
@@ -193,8 +193,8 @@ class AddBookView extends GetView<AddBookController> {
                     ),
                     AppUtils.kBoxHeight10,
                     controller.isExchange.value == false
-                        ? const CustomPaddingTitle(title: 'Price')
-                        : const CustomPaddingTitle(title: 'Title'),
+                        ?  CustomPaddingTitle(title: 'Price'.tr)
+                        :  CustomPaddingTitle(title: 'Title '.tr),
                     CustomTextField(
                       hintText: controller.isExchange.value == false?'':'title, you want to exchange',
                       controller: controller.priceController,
@@ -223,7 +223,7 @@ class AddBookView extends GetView<AddBookController> {
                     //   showErrorSnackbar(onError.toString());
                     // });
                   },
-                  txt: 'send',
+                  txt: 'Submit'.tr,
                 ),
               ),
             ],
