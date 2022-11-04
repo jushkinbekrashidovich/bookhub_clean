@@ -8,6 +8,7 @@ import '../../../core/custom_widgets/loading_widgets/custom_full_screen_dialog.d
 
 class AuthController extends GetxController {
   SplashController splashController = Get.find<SplashController>();
+  TextEditingController passwordController = TextEditingController();
 
  void changeLanguage (var param1, var param2){
     var locale = Locale(param1, param2);

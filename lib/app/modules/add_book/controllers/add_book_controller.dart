@@ -21,13 +21,16 @@ class AddBookController extends GetxController {
   TextEditingController priceController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController locationControlller = TextEditingController();
-  List<String> images = [
+  List<String> categories = [
     "educational",
-    "sel-improvement",
-    'textbook',
-    'language',
-    'fiction',
-    'novel'
+    "self-improvement".tr,
+    'textbook'.tr,
+    'language'.tr,
+    'fiction'.tr,
+    'novel'.tr,
+    "IT".tr,
+    "business".tr,
+    'other'.tr
   ];
   final category = "educational".obs;
   XFile? image;
@@ -83,7 +86,7 @@ class AddBookController extends GetxController {
 
     final currUser = FirebaseAuth.instance.currentUser!;
     book.userId = currUser.uid;
-    book.ownerName = currUser.displayName!.split(' ')[0];
+    book.ownerName = currUser.displayName;
     book.photoUrl = imageUrl == "" ? null : imageUrl;
 
     FirebaseFirestore.instance

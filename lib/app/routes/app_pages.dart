@@ -32,8 +32,6 @@ import 'package:bookhub/app/modules/settings/bindings/settings_binding.dart';
 import 'package:bookhub/app/modules/settings/views/settings_view.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
 import 'package:bookhub/app/modules/splash/views/splash_view.dart';
-import 'package:bookhub/app/modules/todo/bindings/todo_binding.dart';
-import 'package:bookhub/app/modules/todo/views/todo_view.dart';
 
 part 'app_routes.dart';
 
@@ -123,10 +121,6 @@ class AppPages {
     //   page: () => BookhubShopDetailsView(),
     //   binding: BookhubShopDetailsBinding(),
     // ),
-    GetPage(
-      name: _Paths.TODO,
-      page: () => TodoView(),
-      binding: TodoBinding(),
-    ),
+   
   ];
 }

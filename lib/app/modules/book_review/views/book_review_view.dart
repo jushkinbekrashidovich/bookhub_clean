@@ -72,7 +72,7 @@ class BookReviewView extends GetView<BookReviewController> {
                     (element) => Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Container(
-                        height: 298,
+                        height: 278,
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -103,8 +103,8 @@ class BookReviewView extends GetView<BookReviewController> {
                                   ),
                                   height: 33,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    // mainAxisAlignment:
+                                    //     MainAxisAlignment.spaceBetween,
                                     children: [
 
                                       Padding(
@@ -130,7 +130,11 @@ class BookReviewView extends GetView<BookReviewController> {
                                           ],
                                         ),
                                       ),
-                                      element.ownerName ==
+                                      controller.firebaseAuth.currentUser!=null?
+
+                                      Row(
+                                        children: [
+                                          element.ownerName ==
                                               controller.firebaseAuth
                                                   .currentUser!.displayName
                                           ? Container(
@@ -175,8 +179,11 @@ class BookReviewView extends GetView<BookReviewController> {
                                               ),
                                             )
                                           : SizedBox(
-                                              width: 30,
                                             ),
+
+                                        ],
+                                      ):SizedBox(),
+                                      
                                     ],
                                   ),
                                 ),
@@ -184,7 +191,7 @@ class BookReviewView extends GetView<BookReviewController> {
                               ],
                             ),
                             Container(
-                              height: 145,
+                              height: 165,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -192,7 +199,7 @@ class BookReviewView extends GetView<BookReviewController> {
                                   Container(
                                       padding:
                                           EdgeInsets.only(right: 10, left: 10),
-                                      height: 44,
+                                      height: 30,
                                       child: Text(
                                         element.title.toString(),
                                         style: GoogleFonts.ptSerif(
@@ -212,47 +219,14 @@ class BookReviewView extends GetView<BookReviewController> {
                                       style: GoogleFonts.ptSerif(
                                         fontSize: 16,
                                       ),
-                                      maxLines: 4,
+                                      maxLines: 6,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            // Container(
-                            //   padding: EdgeInsets.only(right: 20),
-                            //   child: Row(
-                            //     mainAxisAlignment: MainAxisAlignment.end,
-                            //     children: [
-                            //       element.likes != null
-                            //           ? Text(
-                            //               element.likes.toString(),
-                            //               style: GoogleFonts.ptSerif(
-                            //                   color: Colors.black54),
-                            //             )
-                            //           : Text(
-                            //               '0',
-                            //               style: GoogleFonts.ptSerif(
-                            //                   color: Colors.black54),
-                            //             ),
-                            //       SizedBox(
-                            //         width: 10,
-                            //       ),
-                            //       // InkWell(
-                            //       //   onTap: () {
-                            //       //     // controller
-                            //       //     //     .incrementLike(element.id.toString());
-                            //       //   },
-                            //       //   child: SizedBox(
-                            //       //       height: 25,
-                            //       //       width: 25,
-                            //       //       child: SvgPicture.asset(
-                            //       //         'assets/svg/clap.svg',
-                            //       //       )),
-                            //       // ),
-                            //     ],
-                            //   ),
-                            // ),
+                            
                             Center(
                               child: SizedBox(
                                   height: 40,
@@ -285,7 +259,7 @@ class BookReviewView extends GetView<BookReviewController> {
                                   )),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 8,
                             )
                           ],
                         ),
@@ -314,15 +288,15 @@ class BookReviewView extends GetView<BookReviewController> {
     if (timestamp == null) return "null";
     final normalTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final today = DateTime.now();
-    if (normalTime.day == today.day &&
-        normalTime.month == today.month &&
-        normalTime.year == today.year) {
-      return "Today at ${getNormalDayOrMonth(normalTime.hour)}:${getNormalDayOrMonth(normalTime.minute)}";
-    }
+    // if (normalTime.day == today.day &&
+    //     normalTime.month == today.month &&
+    //     normalTime.year == today.year) {
+    //   return "Today at ${getNormalDayOrMonth(normalTime.hour)}:${getNormalDayOrMonth(normalTime.minute)}";
+    // }
     //print("datetime: " + today.compareTo(normalTime).toString());
-    if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
-            .abs() <=
-        86400000) return 'Yestarday';
+    // if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
+    //         .abs() <=
+    //     86400000) return 'Yestarday';
     return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year % 100)}';
   }
 

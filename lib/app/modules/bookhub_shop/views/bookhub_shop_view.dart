@@ -99,6 +99,8 @@ class BookhubShopView extends GetView<BookhubShopController> {
                           description: element.description.toString(),
                           
                           phoneNumber: element.phoneNumber.toString(),
+                          pages: element.pages.toString(),
+                          deliver: element.deliver.toString(),
                           
                           
                           id: '',

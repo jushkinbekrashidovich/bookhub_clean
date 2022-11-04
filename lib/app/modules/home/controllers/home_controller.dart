@@ -70,7 +70,7 @@ void changeLanguage (var param1, var param2){
   
   Future deletePost(Book book,) async{
     if (book.photoUrl != null) {
-    await FirebaseStorage.instance.ref(book.ref).delete();
+     FirebaseStorage.instance.ref(book.ref).delete();
 
 
     print('image deleted');

@@ -40,12 +40,13 @@ class AddBookView extends GetView<AddBookController> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(),
-                      const Text(
-                        'Please upload image',
+                       Text(
+                        'Please upload image'.tr,
+                        textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 15),
                       ),
-                      const Text(
-                        'Photo',
+                       Text(
+                        'Photo'.tr,
                         style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey,
@@ -57,7 +58,7 @@ class AddBookView extends GetView<AddBookController> {
                         },
                         child: Container(
                           margin: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
+                              horizontal: 45, vertical: 10),
                           padding: AppUtils.kAllPadding8,
                           decoration: const BoxDecoration(
                             color: Color(0xffE6F2FF),
@@ -77,8 +78,8 @@ class AddBookView extends GetView<AddBookController> {
                               ),
                               Text(
                                 !controller.didImageSelected.value
-                                    ? "Select image"
-                                    : "Image selected",
+                                    ? "Select image".tr
+                                    : "Image selected".tr,
                                 style: TextStyle(
                                   color: !controller.didImageSelected.value
                                       ? AppColors.mainColor
@@ -120,7 +121,7 @@ class AddBookView extends GetView<AddBookController> {
                           underline: Container(),
                           value: controller.category.value,
                           selectedItemBuilder: (_) {
-                            return controller.images.map((String choice) {
+                            return controller.categories.map((String choice) {
                               return Center(
                                 child: Container(
                                   width: double.infinity,
@@ -129,7 +130,7 @@ class AddBookView extends GetView<AddBookController> {
                               );
                             }).toList();
                           },
-                          items: controller.images.map((String choice) {
+                          items: controller.categories.map((String choice) {
                             return DropdownMenuItem<String>(
                               value: choice,
                               child: Row(
@@ -149,7 +150,7 @@ class AddBookView extends GetView<AddBookController> {
                     CustomTextFormField(
                         controller: controller.descriptionController,
                         maxLines: 4,
-                        hintText: 'here you can write about the book'),
+                        hintText: 'Please, write a description'.tr),
                     AppUtils.kBoxHeight10,
                     CustomPaddingTitle(title: 'Phone number'.tr),
                     CustomTextField(
@@ -194,9 +195,9 @@ class AddBookView extends GetView<AddBookController> {
                     AppUtils.kBoxHeight10,
                     controller.isExchange.value == false
                         ?  CustomPaddingTitle(title: 'Price'.tr)
-                        :  CustomPaddingTitle(title: 'Title '.tr),
+                        :  CustomPaddingTitle(title: 'Title'.tr),
                     CustomTextField(
-                      hintText: controller.isExchange.value == false?'':'title, you want to exchange',
+                      hintText: controller.isExchange.value == false?'':'e.g Atomic Habits'.tr,
                       controller: controller.priceController,
                       keyboardType: TextInputType.text,
                     ),

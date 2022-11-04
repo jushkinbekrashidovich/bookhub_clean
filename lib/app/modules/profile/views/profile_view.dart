@@ -8,6 +8,7 @@ import 'package:app_version/app_version.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/custom_widgets/custom_widgets/profile_items.dart';
 import '../../../core/theme/app_colors.dart';
@@ -36,7 +37,10 @@ class ProfileView extends GetView<ProfileController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           //mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CachedNetworkImage(
+                            controller.firebaseAuth.currentUser!=null?
+                            Column(
+                              children: [
+                                CachedNetworkImage(
                               imageBuilder: (context, imageProvider) =>
                                   Container(
                                 width: 80.0,
@@ -84,6 +88,11 @@ class ProfileView extends GetView<ProfileController> {
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
                             ),
+
+                              ],
+                            ):Text('Welcome to Bookhub'),
+                            
+                            
                             SizedBox(),
                           ],
                         ),
@@ -140,7 +149,9 @@ class ProfileView extends GetView<ProfileController> {
                               CupertinoIcons.star,
                               color: AppColors.mainColor,
                             ),
-                            link: () {
+                            link: () async{
+                               await launch("https://play.google.com/store/apps/details?id=com.bookhub.bookhub");
+                             
                               //Get.toNamed(AppRoutes.editprofile);
                             },
                           ),

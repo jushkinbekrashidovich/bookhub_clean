@@ -2,15 +2,16 @@ class NewBooks {
   String? id;
   String? title;
   String? description;
-  String? ownerName;
   String? price;
   String? phoneNumber;
   String? photoUrl;
   int? order;
-  String? category;
   String? authorName;
   String? type;
   String? quality;
+  String? pages;
+  String? deliver;
+
   
 
   NewBooks(
@@ -24,7 +25,11 @@ class NewBooks {
       this.authorName,
       this.quality,
       this.type,
-      this.id});
+      this.id,
+      this.deliver,
+      this.pages,
+      
+      });
 
   NewBooks.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -36,6 +41,8 @@ class NewBooks {
     authorName = json['authorName'];
     type = json['type'];
     quality = json['quality'];
+    pages = json['pages'];
+    deliver = json['deliver'];
     //isExchange = json['isExchange'];
   }
 
@@ -50,6 +57,8 @@ class NewBooks {
     data['authorName'] = authorName;
     data['type'] = type;
     data['quality'] = quality;
+    data['pages'] = pages;
+    data['deliver'] = deliver;
     //data['isExchange'] = isExchange;
     return data;
   }

@@ -20,7 +20,6 @@ class SplashController extends GetxController {
   void onReady() async {
     googleSignIn = GoogleSignIn();
     ever(isSignIn, handleAuthStateChanged);
-
     isSignIn.value = await firebaseAuth.currentUser != null;
     firebaseAuth.authStateChanges().listen((event) {
       isSignIn.value = event != null;

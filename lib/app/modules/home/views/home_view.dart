@@ -20,7 +20,7 @@ class HomeView extends GetView<HomeController> {
           leading: IconButton(
             onPressed: () {
               Get.toNamed("/profile");
-              print(FirebaseAuth.instance.currentUser!.uid);
+             // print(FirebaseAuth.instance.currentUser!.uid);
             },
             icon: const Icon(
               CupertinoIcons.person_circle,
@@ -229,59 +229,64 @@ class HomeView extends GetView<HomeController> {
 
                                   ],
                                 ),
-                                
-                                Container(
+                               
+                               Container(
                                   padding: EdgeInsets.only(top: 0, bottom: 10),
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      element.ownerName ==
+                                     controller.firebaseAuth.currentUser!=null?
+                                     Column(
+                                      children: [
+                                        element.ownerName ==
                                               controller.firebaseAuth
                                                   .currentUser!.displayName
-                                          ? Container(
-                                              child: IconButton(
-                                                onPressed: () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (_) =>
-                                                        CupertinoAlertDialog(
-                                                      title: Text(
-                                                        'Are you sure'.tr,
-                                                        style: TextStyle(
-                                                            fontSize: 20),
-                                                      ),
-                                                      //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
-                                                      actions: [
-                                                        CupertinoDialogAction(
-                                                          isDefaultAction: true,
-                                                          child: Text('Yes'),
-                                                          onPressed: () {
-                                                            controller
-                                                                .deletePost(
-                                                                    element);
-                                                          },
-                                                        ),
-                                                        CupertinoDialogAction(
-                                                          isDefaultAction: true,
-                                                          child: Text('No'),
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop();
-                                                          },
-                                                        ),
-                                                      ],
+                                          ? IconButton(
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (_) =>
+                                                    CupertinoAlertDialog(
+                                                  title: Text(
+                                                    'Are you sure'.tr,
+                                                    style: TextStyle(
+                                                        fontSize: 20),
+                                                  ),
+                                                  //content: Text('Iltimos mahsulotni tanlang'.tr, style: TextStyle(fontSize: 17),),
+                                                  actions: [
+                                                    CupertinoDialogAction(
+                                                      isDefaultAction: true,
+                                                      child: Text('Yes'),
+                                                      onPressed: () {
+                                                        controller
+                                                            .deletePost(
+                                                                element);
+                                                      },
                                                     ),
-                                                  );
-                                                },
-                                                icon: Icon(CupertinoIcons
-                                                    .delete_solid),
-                                              ),
-                                            )
+                                                    CupertinoDialogAction(
+                                                      isDefaultAction: true,
+                                                      child: Text('No'),
+                                                      onPressed: () {
+                                                        Navigator.of(
+                                                                context)
+                                                            .pop();
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(CupertinoIcons
+                                                .delete_solid),
+                                          )
                                           : SizedBox(
                                               width: 30,
                                             ),
+
+                                      ],
+                                     ):SizedBox(),
+                                      
                                       Container(
                                         height: 15,
                                         //width: 60,
@@ -313,17 +318,17 @@ class HomeView extends GetView<HomeController> {
     if (timestamp == null) return "null";
     final normalTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final today = DateTime.now();
-    if (normalTime.day == today.day &&
-        normalTime.month == today.month &&
-        normalTime.year == today.year) {
-      return getNormalDayOrMonth(normalTime.hour) +
-          ":" +
-          getNormalDayOrMonth(normalTime.minute);
-    }
+    // if (normalTime.day == today.day &&
+    //     normalTime.month == today.month &&
+    //     normalTime.year == today.year) {
+    //   return getNormalDayOrMonth(normalTime.hour) +
+    //       ":" +
+    //       getNormalDayOrMonth(normalTime.minute);
+    // }
     //print("datetime: " + today.compareTo(normalTime).toString());
-    if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
-            .abs() <=
-        86400000) return 'Yesterday';
+    // if ((normalTime.millisecondsSinceEpoch - today.millisecondsSinceEpoch)
+    //         .abs() <=
+    //     86400000) return 'Yesterday';
     return '${getNormalDayOrMonth(normalTime.day)}.${getNormalDayOrMonth(normalTime.month)}.${getNormalDayOrMonth(normalTime.year % 100)}';
   }
 

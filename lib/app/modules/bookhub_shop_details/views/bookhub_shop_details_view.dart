@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/custom_widgets/custom_button/custom_button.dart';
@@ -20,6 +21,8 @@ class BookhubShopDetailsView extends StatelessWidget {
   final String authorName;
   final String type;
   final String quality;
+  final String pages;
+  final String deliver;
 
   const BookhubShopDetailsView(
       {required this.title,
@@ -31,7 +34,7 @@ class BookhubShopDetailsView extends StatelessWidget {
       //this.isExchange,
       required this.authorName,
       required this.type,
-      required this.id})
+      required this.id, required this.pages, required this.deliver})
       : super();
 
   @override
@@ -51,7 +54,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(top: 2),
                   //color: Colors.red,
-                  height: 350,
+                  height: 435,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,11 +77,12 @@ class BookhubShopDetailsView extends StatelessWidget {
                         ),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
+                      SizedBox(height: 15,),
                       Container(
                           width: MediaQuery.of(context).size.width * 0.9,
                           child: Text(
                             title,
-                            //style: TextStyle(color: AppColors.red),
+                          style: TextStyle(fontSize: 19),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
@@ -88,97 +92,152 @@ class BookhubShopDetailsView extends StatelessWidget {
                           child: Text(
                             price,
                             //style: TextStyle(color: AppColors.red),
-                            style: TextStyle(color: AppColors.mainColor),
+                            style: TextStyle(color: AppColors.mainColor, fontSize: 22),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                           )),
+                          SizedBox(height: 10,),
+                      // Container(
+                      //   padding: EdgeInsets.only(left: 2, right: 2),
+                      //   height: 70,
+                      //   width: MediaQuery.of(context).size.width * 0.90,
+                      //   decoration: BoxDecoration(
+                      //     color: AppColors.white,
+                      //     borderRadius: BorderRadius.circular(10),
+                      //   ),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      //     crossAxisAlignment: CrossAxisAlignment.center,
+                      //     children: [
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.center,
+                      //         children: [
+                      //           SizedBox(
+                      //             height: 15,
+                      //           ),
+                      //           Text(
+                      //             'Author'.tr,
+                      //             style: TextStyle(
+                      //                 fontSize: 12, color: AppColors.grey),
+                      //           ),
+                      //           SizedBox(
+                      //             height: 3,
+                      //           ),
+                      //           SizedBox(
+                      //             height: 18,
+                      //             child: Text(authorName,
+                      //                 style: TextStyle(
+                      //                   fontSize: 13,
+                      //                 ),
+                      //                 textAlign: TextAlign.center),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       SizedBox(
+                      //           height: 30,
+                      //           child: VerticalDivider(
+                      //             thickness: 2,
+                      //           )),
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.center,
+                      //         children: [
+                      //           SizedBox(
+                      //             height: 15,
+                      //           ),
+                      //           Text(
+                      //             'Quality'.tr,
+                      //             style: TextStyle(
+                      //                 fontSize: 12, color: AppColors.grey),
+                      //           ),
+                      //           SizedBox(
+                      //             height: 18,
+                      //             child: Text(quality,
+                      //                 style: TextStyle(
+                      //                   fontSize: 13,
+                      //                 ),
+                      //                 textAlign: TextAlign.center),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       SizedBox(
+                      //           height: 30,
+                      //           child: VerticalDivider(
+                      //             thickness: 2,
+                      //           )),
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.center,
+                      //         children: [
+                      //           SizedBox(
+                      //             height: 15,
+                      //           ),
+                      //           Text(
+                      //             'Type'.tr,
+                      //             style: TextStyle(
+                      //                 fontSize: 12, color: AppColors.grey),
+                      //           ),
+                      //           SizedBox(
+                      //             height: 18,
+                      //             child: Text(type,
+                      //                 style: TextStyle(
+                      //                   fontSize: 13,
+                      //                 ),
+                      //                 textAlign: TextAlign.center),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       Container(
-                        padding: EdgeInsets.only(left: 2, right: 2),
-                        height: 70,
-                        width: MediaQuery.of(context).size.width * 0.90,
+                        padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+                        margin: EdgeInsets.only(left: 6, right: 6,),
+                        //height: 100,
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        
+                        child: Column(
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                            Row(
                               children: [
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  'Author'.tr,
-                                  style: TextStyle(
-                                      fontSize: 12, color: AppColors.grey),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                SizedBox(
-                                  height: 18,
-                                  child: Text(authorName,
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                      ),
-                                      textAlign: TextAlign.center),
-                                ),
+                                Text('✍️'),
+                                SizedBox(width: 5,),
+                                Text(authorName),
                               ],
                             ),
-                            SizedBox(
-                                height: 30,
-                                child: VerticalDivider(
-                                  thickness: 2,
-                                )),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                            SizedBox(height: 8,),
+                            Row(
                               children: [
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  'Quality'.tr,
-                                  style: TextStyle(
-                                      fontSize: 12, color: AppColors.grey),
-                                ),
-                                SizedBox(
-                                  height: 18,
-                                  child: Text(quality,
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                      ),
-                                      textAlign: TextAlign.center),
-                                ),
+                                Text('📘'),
+                                SizedBox(width: 5,),
+                                Text(type),
                               ],
                             ),
-                            SizedBox(
-                                height: 30,
-                                child: VerticalDivider(
-                                  thickness: 2,
-                                )),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                            SizedBox(height: 8,),
+                            Row(
                               children: [
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  'Type'.tr,
-                                  style: TextStyle(
-                                      fontSize: 12, color: AppColors.grey),
-                                ),
-                                SizedBox(
-                                  height: 18,
-                                  child: Text(type,
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                      ),
-                                      textAlign: TextAlign.center),
-                                ),
+                                Text('📖'),
+                                SizedBox(width: 5,),
+                                Text(pages),
+                                Text(' pages'.tr),
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+                            Row(
+                              children: [
+                                Text('🚚'),
+                                SizedBox(width: 5,),
+                                Text(deliver,),
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+                            Row(
+                              children: [
+                                Text('✅'),
+                                SizedBox(width: 5,),
+                                Text(quality),
                               ],
                             ),
                           ],
@@ -187,7 +246,13 @@ class BookhubShopDetailsView extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 5,),
                 Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  
                   //height: MediaQuery.of(context).size.height,
                   // color: Colors.red,
                   padding: EdgeInsets.only(left: 10, top: 20, right: 10),
@@ -199,6 +264,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                         style: TextStyle(fontSize: 20),
                       ),
                       Card(
+                        color: AppColors.white,
                         elevation: 0,
                         child: ExpandablePanel(
                           header: Text(
@@ -218,10 +284,19 @@ class BookhubShopDetailsView extends StatelessWidget {
                           ),
                           expanded: Text(
                             description,
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(255, 126, 126, 126),
-                                fontWeight: FontWeight.w400),
+                            style: GoogleFonts.ptSerif(
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 126, 126, 126),
+                              wordSpacing: 1.5,
+                              fontWeight: FontWeight.w400,
+
+                            ),
+                            // TextStyle(
+                            //   letterSpacing: 1,
+                            //   wordSpacing: 1.5,
+                            //     fontSize: 16,
+                            //     color: Color.fromARGB(255, 126, 126, 126),
+                            //     fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
