@@ -41,7 +41,7 @@ class AddBookView extends GetView<AddBookController> {
                     children: [
                       SizedBox(),
                        Text(
-                        'Please upload image'.tr,
+                        'Please upload an image'.tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 15),
                       ),
@@ -78,7 +78,7 @@ class AddBookView extends GetView<AddBookController> {
                               ),
                               Text(
                                 !controller.didImageSelected.value
-                                    ? "Select image".tr
+                                    ? "Select an image".tr
                                     : "Image selected".tr,
                                 style: TextStyle(
                                   color: !controller.didImageSelected.value
@@ -156,6 +156,7 @@ class AddBookView extends GetView<AddBookController> {
                     CustomTextField(
                       controller: controller.phoneNumberController,
                       keyboardType: TextInputType.phone,
+                      hintText: '+998',
                     ),
                     AppUtils.kBoxHeight10,
                     Container(

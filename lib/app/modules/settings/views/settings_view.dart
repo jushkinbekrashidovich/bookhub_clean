@@ -79,8 +79,9 @@ class SettingsView extends GetView<SettingsController> {
                       ProfileItems(
                           text: 'Support team'.tr,
                           icon: Icon(
-                            Icons.headset_mic_outlined,
+                            Icons.telegram,
                             color: AppColors.mainColor,
+                            size: 30,
                           ),
                           link: () async {
                              await launch("https://t.me/BookhubSupportBot");
@@ -88,7 +89,7 @@ class SettingsView extends GetView<SettingsController> {
                           }),
                       Divider(),
                       ProfileItems(
-                          text: 'Delete account'.tr,
+                          text: 'Delete Account'.tr,
                           icon: const Icon(
                             Icons.logout,
                             color: AppColors.mainColor,
@@ -99,14 +100,14 @@ class SettingsView extends GetView<SettingsController> {
                                 builder: (context) {
                                   return CupertinoAlertDialog(
                                     title: Text(
-                                      "Delete account?",
+                                      "Delete account?".tr,
                                       style: TextStyle(),
                                     ),
                                     //content:  Text("Haqiqatdan chiqishni xohlaysizmi".tr),
                                     actions: [
                                       CupertinoDialogAction(
                                           child: Text(
-                                            "Yes",
+                                            "Yes".tr,
                                             style:
                                                 TextStyle(color: AppColors.red),
                                           ),
@@ -115,7 +116,7 @@ class SettingsView extends GetView<SettingsController> {
                                           }),
                                       CupertinoDialogAction(
                                           child: Text(
-                                            "No",
+                                            "No".tr,
                                             style: TextStyle(
                                               color: AppColors.mainColor,
                                             ),

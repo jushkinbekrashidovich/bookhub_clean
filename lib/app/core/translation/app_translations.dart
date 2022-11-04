@@ -35,14 +35,14 @@ class AppTranslations extends Translations {
        'Price':'Price',
        'Submit':'Submit',
        'Book reviews':'Book reviews',
-       'Are you sure':'Are you sure',
+       'Are you sure?':'Are you sure?',
        'Publish':'Publish',
        'read more':'read more',
        'No':'No',
        'Yes':'Yes',
        ' pages':' pages',
        "Update the app to continue because we added great features to the app 🤩":"Update the app to continue because we added great features to the app 🤩",
-
+      'Frequently Asked Questions':'Frequently Asked Questions',
      "educational":"educational",
     "self-improvement":"self-improvement",
     'textbook':'textbook',
@@ -54,17 +54,24 @@ class AppTranslations extends Translations {
     "business":"business",
 
     'Add your book':'Add your book',
-    'Please upload image':'Please upload image',
+    'Please upload an image':'Please upload an image',
     'Photo':'Photo',
-    "Select image":"Select image",
+    "Select an image":"Select an image",
     "Image selected":"Image selected",
     'Please, write a description':'Please, write a description',
     'e.g Atomic Habits':'e.g: Atomic Habits',
+    'Q & A':'Q & A',
+    'What is Bookhub?':'What is Bookhub?',
+    'Is it free to sell our books through Bookhub?':'Is it free to sell our books through Bookhub?',
 
+   'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊',
+    'What is Bookshop?':'What is Bookshop?',
+   'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.',
    
+  'How can I contact you?':'How can I contact you?',
+  'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG',
 
-
-
+'Delete Account':'Delete Account',
 
        
 
@@ -75,7 +82,6 @@ class AppTranslations extends Translations {
     {
        'Language':'Til',
        'Theme': 'Tema',
-       'Support Team':'Yordam',
        'Delete account':"Hisobni o'chirish",
        'Continue with Google':'Google bilan davom etish',
        'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. In addition, new original books are available for an affordable price.':"Bookhub bu onlayn kitob bozori ilovasi, ya'ni insonlarga kitob sotish, sotib olish hamda almashtrish imkoniyatini beradi, bundan tashqari ilova orqali original, yangi va foydalanilgan kitoblarni arzon narxda sotib olishingiz mumkin",
@@ -90,7 +96,7 @@ class AppTranslations extends Translations {
        'Type':'Turi',
        'About':'Kitob haqida',
        'Description':'Tavsif',
-       'Support team':"Qo'llab quvvatlash jamoasi",
+       'Support team':"Telegram orqali murojaat",
        'Categories':'Kategoriyalar',
        'Seller':'Sotuvchi',
        'Title':'Kitob nomi',
@@ -101,7 +107,7 @@ class AppTranslations extends Translations {
        'Price':'Narxi',
        'Submit':"E'lonni joylashtirish",
        'Book reviews':'Kitob taqrizlari',
-       'Are you sure':'Ishonchingiz komilmi?',
+       'Are you sure?':"Haqiqatdan ham o'chirmoqchimisiz?",
        'Publish':'Joylash',
        'read more':"da'vomini o'qish",
        'No':"Yo'q",
@@ -120,24 +126,26 @@ class AppTranslations extends Translations {
     "business":"biznes",
 
     'Add your book':"Kitobingizni joylashtring",
-    'Please upload image':'Iltimos, rasmni yuklang',
+    'Please upload an image':'Iltimos, rasmni yuklang',
     'Photo':'Rasm',
 
-    "Select image":"Rasmni tanlang",
+    "Select an image":"Rasmni tanlang",
     "Image selected":"Rasm tanlandi",
     'Please, write a description':'Iltimos, tavsif yozing',
-    'e.g Atomic Habits':'misol: Atom Odatlar',
+    'e.g Atomic Habits':'misol: Yulduzli tunlar',
+
+   'Frequently Asked Questions':"Tez-tez so'raladigan savollar",
+  'Q & A':'Savol va Javoblar',
 
 
-
-
-
-
-       
-       
-
-
-
+   'What is Bookhub?':'Bookhub nima?',
+   'Is it free to sell our books through Bookhub?':'Kitoblarimizni Bookhub orqali sotish bepulmi?',
+   'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Ha, siz Bookhub orqali kitoblaringizni sotishingiz, sotib olishingiz va almashtirishingiz mumkin.\nVa bularning hammasi bepul 😊',
+     'What is Bookshop?':'Bookshop nima?',  
+       'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':"Bookshop Bookhub ilovasining original, foydalanilgan, yangi kitoblarni sotadigan do'kon, Va biz o'z xizmatlarimiz va kitoblarga kafolat beramiz.",
+ 'How can I contact you?':"Siz bilan qanday bog'lansam bo'ladi?",
+ 'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':"Telegram bot orqali bog'lanishingiz mumkin: @BookhubSupportBot \n yoki to'g'ridan-to'g'ri menga @CodeRG ga yozing",
+ 'Delete Account':"Hisobni o'chirish"
     },
 
     
@@ -145,11 +153,11 @@ class AppTranslations extends Translations {
     {
       'Language':'Язык',
        'Theme': 'Тема',
-       'Support Team':'Команда поддержки',
+       'Support team':'Команда поддержки',
        'Delete account':'Удалить аккаунт',
        'We are happy to see you. Here are a bunch of features and opportunities that will encourage you to read more books.':'«Мы рады вас видеть. Вот набор функций и возможностей, которые побудят вас читать больше книг».',
-       'Continue with Google':'Продолжить через Google', 
-       'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. In addition, new books are available for an affordable price.':'Bookhub — это онлайн-приложение, которое помогает людям покупать, продавать и обменивать книги. Наша главная цель – дать людям возможность читать больше книг.',
+       'Continue with Google':'Продолжить с Google', 
+       //'Bookhub is an online marketplace application that helps people buy, sell, and exchange books. In addition, new books are available for an affordable price.':'Bookhub — это онлайн-приложение, которое помогает людям покупать, продавать и обменивать книги. Наша главная цель – дать людям возможность читать больше книг.',
        'Home':'Объявления',
        'Profile':'Профиль',
        'Settings':'Настройки',
@@ -161,18 +169,17 @@ class AppTranslations extends Translations {
        'Type':'Тип',
        'About':'О книге',
        'Description':'Описание',
-       'Support team':'Команда поддержки',
        'Categories':'Категории',
        'Seller':'Продавец',
        'Title':'Название книги',
        'Category':'Категория',
        'Address':'Адрес',
        'Phone number':'Номер телефона',
-       'Kitobingizni almashtirmoqchimisiz?':'Вы хотите обменять свою книгу?',
+       'Do you want to exchange your book?':'Хотите обменять свою книгу?',
        'Price':'Цена',
        'Submit':'Опубликовать',
        'Book reviews':'Отзывы о книге',
-       'Are you sure':'Ты уверен?',
+       'Are you sure?':'Вы хотите удалить?',
        'Publish':'Разместить',
        'read more':'читать далее',
        'No':'Нет',
@@ -189,17 +196,28 @@ class AppTranslations extends Translations {
     'other':'Другой',
     "IT":"ИТ",
     "business":"бизнес",
-    'Add your book':'Добавьте свою книгу объявлений',
+    'Add your book':'Добавьте свою книгу',
 
-    'Please upload image':'Пожалуйста, загрузите изображение',
+    'Please upload an image':'Пожалуйста, загрузите изображение',
     'Photo':'Фото',
-    "Select image":"Выберите и..",
-    "Image selected":"Изображение выбрано",
+    "Select an image":"Выберите и..",
+    "Image selected":"выбрано",
     'Please, write a description':'Пожалуйста, напишите описание',
-    'Do you want to exchange your book?':'Вы хотите обменять свою книгу?',
+    //'Do you want to exchange your book?':'Вы хотите обменять свою книгу?',
 
-    'e.g Atomic Habits':'например: Атом Одатлар'
+    'e.g Atomic Habits':'например: Война и мир',
+    'Frequently Asked Questions':'Часто задаваемые вопросы',
 
+  'Q & A':'Вопросы и ответы',
+
+  'What is Bookhub?':'Что такое Bookhub?',
+  'Is it free to sell our books through Bookhub?':'Можно ли бесплатно продавать книги через Bookhub',
+  'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Да, вы можете продавать, покупать и обменивать свои книги через Bookhub.\nИ все это бесплатно 😊',
+    'What is Bookshop?':'Что такое Bookshop',
+    'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':'Bookshop принадлежит Bookhub, который продает оригинальные, подержанные/хорошие книги. И мы гарантируем наши услуги и книги.',
+    'How can I contact you?':'Как я могу связаться с вами?',
+    'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':'Вы можете связаться с помощью телеграм-бота: @BookhubSupportBot \nor Напишите мне напрямую @CodeRG',
+   'Delete Account':'Удалить аккаунт'
     }
 
 

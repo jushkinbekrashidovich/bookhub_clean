@@ -1,5 +1,5 @@
 name: bookhub
-version: 1.0.7+7
+version: 1.0.8+8
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -21,7 +21,6 @@ dependencies:
   fancy_shimmer_image: ^2.0.2
   flutter: 
     sdk: flutter
-  app_version: ^0.0.2
   flutter_native_splash: ^2.2.9
   new_version: ^0.2.3
   url_launcher: ^6.1.6
@@ -38,5 +37,4 @@ flutter:
   assets:
     - assets/
     - assets/svg/
-    - assets/books/
 

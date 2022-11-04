@@ -23,7 +23,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       
-      title: "bookhub",
+      title: "Bookhub",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       initialBinding: SplashBinding(),

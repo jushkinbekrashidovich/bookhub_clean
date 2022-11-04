@@ -122,50 +122,50 @@ class AddBookController extends GetxController {
   validation() async {
     if (didImageSelected.isFalse) {
       Get.snackbar(
-        "Error",
-        "Please select image",
+        "Xatolik",
+        "Rasm yuklanmadi",
       );
       return false;
     }
     if (titleController.text.isEmpty) {
       Get.snackbar(
-        "Error",
-        "Please enter tittle",
+        "Xatolik",
+        "Kitob nomi kiritilmadi",
       );
       return false;
     }
     if (locationControlller.text.isEmpty) {
       Get.snackbar(
-        "Error",
-        "Please enter location",
+        "Xatolik",
+        "Manzil kititilmadi",
       );
       return false;
     }
     if (descriptionController.text.isEmpty) {
       Get.snackbar(
-        "Error",
-        "Please enter description",
+        "Xatolik",
+        "Kitob tavsifi kiritilmadi",
       );
       return false;
     }
     if (phoneNumberController.text.isEmpty) {
       Get.snackbar(
-        "Error",
-        "Please enter phone number",
+        "Xatolik",
+        "Telefon raqami kiritilmadi",
       );
       return false;
     }
     if (priceController.text.isEmpty) {
       Get.snackbar(
-        "Error",
-        "Please enter price",
+        "Xatolik",
+        "Kitob narxi yoki nomi kiritilmadi",
       );
       return false;
     }
 
     if (didImageSelected.isFalse) {
       Get.snackbar(
-        "Error",
+        "Xatolik",
         "Please enter description",
       );
       return false;

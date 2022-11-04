@@ -145,7 +145,7 @@ class BookReviewView extends GetView<BookReviewController> {
                                                     builder: (_) =>
                                                         CupertinoAlertDialog(
                                                       title: Text(
-                                                        'Are you sure'.tr,
+                                                        'Are you sure?'.tr,
                                                         style: TextStyle(
                                                             fontSize: 20),
                                                       ),

@@ -72,10 +72,17 @@ class HomeView extends GetView<HomeController> {
                   icon: Icon(Icons.language)),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.mainColor,
+          child: Icon(Icons.arrow_upward, color: AppColors.white,),
+          onPressed: (){
+          controller.scrollUp();
+        }),
         body: Column(
           children: [
             Expanded(
               child: ListView(
+                controller: controller.scrollController,
                   padding:
                       EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
                   //primary: false,
@@ -249,7 +256,7 @@ class HomeView extends GetView<HomeController> {
                                                 builder: (_) =>
                                                     CupertinoAlertDialog(
                                                   title: Text(
-                                                    'Are you sure'.tr,
+                                                    'Are you sure?'.tr,
                                                     style: TextStyle(
                                                         fontSize: 20),
                                                   ),
@@ -257,7 +264,7 @@ class HomeView extends GetView<HomeController> {
                                                   actions: [
                                                     CupertinoDialogAction(
                                                       isDefaultAction: true,
-                                                      child: Text('Yes'),
+                                                      child: Text('Yes'.tr),
                                                       onPressed: () {
                                                         controller
                                                             .deletePost(
@@ -266,7 +273,7 @@ class HomeView extends GetView<HomeController> {
                                                     ),
                                                     CupertinoDialogAction(
                                                       isDefaultAction: true,
-                                                      child: Text('No'),
+                                                      child: Text('No'.tr),
                                                       onPressed: () {
                                                         Navigator.of(
                                                                 context)

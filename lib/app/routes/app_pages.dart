@@ -28,6 +28,8 @@ import 'package:bookhub/app/modules/main/bindings/main_binding.dart';
 import 'package:bookhub/app/modules/main/views/main_view.dart';
 import 'package:bookhub/app/modules/profile/bindings/profile_binding.dart';
 import 'package:bookhub/app/modules/profile/views/profile_view.dart';
+import 'package:bookhub/app/modules/question_answer/bindings/question_answer_binding.dart';
+import 'package:bookhub/app/modules/question_answer/views/question_answer_view.dart';
 import 'package:bookhub/app/modules/settings/bindings/settings_binding.dart';
 import 'package:bookhub/app/modules/settings/views/settings_view.dart';
 import 'package:bookhub/app/modules/splash/bindings/splash_binding.dart';
@@ -121,6 +123,10 @@ class AppPages {
     //   page: () => BookhubShopDetailsView(),
     //   binding: BookhubShopDetailsBinding(),
     // ),
-   
+    GetPage(
+      name: _Paths.QUESTION_ANSWER,
+      page: () => QuestionAnswerView(),
+      binding: QuestionAnswerBinding(),
+    ),
   ];
 }

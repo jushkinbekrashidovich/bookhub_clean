@@ -47,7 +47,7 @@ class BookDetailsView extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 15),
             //color: Colors.red,
-            height: 320,
+            height: 345,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,25 +68,52 @@ class BookDetailsView extends StatelessWidget {
                   ),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-                Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Text(
-                      title,
-                      //style: TextStyle(color: AppColors.red),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                    )),
-                Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Text(
-                      price,
-                      style:
-                          TextStyle(color: AppColors.mainColor, fontSize: 22),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                    )),
+                
+                Chip(
+                  backgroundColor: Color.fromARGB(255, 43, 137, 238),
+                  labelPadding: EdgeInsets.only(left: 10, right: 10),
+                  label: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.white),
+                  ),),
+                // Container(
+                //     width: MediaQuery.of(context).size.width * 0.9,
+                //     child: Text(
+                //       title,
+                //       //style: TextStyle(color: AppColors.red),
+                //       maxLines: 1,
+                //       overflow: TextOverflow.ellipsis,
+                //       textAlign: TextAlign.center,
+                //     )),
+
+                Chip(
+                  backgroundColor: AppColors.mainColor,
+                  labelPadding: EdgeInsets.only(left: 10, right: 10),
+                  label: Text(
+                    price,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.white),
+                  ),
+                ),
+                // Container(
+                //    decoration: BoxDecoration(
+                //     color: AppColors.white,
+
+                //    ),
+                //     width: MediaQuery.of(context).size.width * 0.9,
+                //     child: Text(
+                //       price,
+                //       style:
+                //           TextStyle(color: AppColors.mainColor, fontSize: 22),
+                //       maxLines: 1,
+                //       overflow: TextOverflow.ellipsis,
+                //       textAlign: TextAlign.center,
+                //     )),
               ],
             ),
           ),
@@ -97,7 +124,8 @@ class BookDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Text(
+                
+                Text(
                   'About'.tr,
                   style: TextStyle(fontSize: 21),
                 ),
@@ -159,10 +187,9 @@ class BookDetailsView extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 235, 240, 248),
-                              borderRadius: BorderRadius.circular(5)
-                            ),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 235, 240, 248),
+                                  borderRadius: BorderRadius.circular(5)),
                               height: 25,
                               width: 25,
                               child: Icon(
@@ -183,14 +210,15 @@ class BookDetailsView extends StatelessWidget {
                           ),
                         ],
                       ),
-                        SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 235, 240, 248),
-                              borderRadius: BorderRadius.circular(5)
-                            ),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 235, 240, 248),
+                                  borderRadius: BorderRadius.circular(5)),
                               height: 25,
                               width: 25,
                               child: Icon(
@@ -214,14 +242,15 @@ class BookDetailsView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 235, 240, 248),
-                              borderRadius: BorderRadius.circular(5)
-                            ),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 235, 240, 248),
+                                  borderRadius: BorderRadius.circular(5)),
                               height: 25,
                               width: 25,
                               child: Icon(

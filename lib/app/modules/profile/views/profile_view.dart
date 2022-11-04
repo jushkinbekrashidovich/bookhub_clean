@@ -4,7 +4,6 @@ import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app_version/app_version.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -103,34 +102,12 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.9,
-                      height: 170,
+                      height: 216,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16)),
                       child: Column(
                         children: [
-                          // ProfileItems(
-                          //   text: 'Edit Profile',
-                          //   icon: Icon(
-                          //     CupertinoIcons.person,
-                          //     color: AppColors.mainColor,
-                          //   ),
-                          //   link: () {
-                          //     Get.toNamed('/edit-profile');
-                          //   },
-                          // ),
-                          // Divider(),
-                          // ProfileItems(
-                          //   text: 'My Dashboard',
-                          //   icon: Icon(
-                          //     CupertinoIcons.square_list,
-                          //     color: AppColors.mainColor,
-                          //   ),
-                          //   link: () {
-                          //     // Get.toNamed(AppRoutes.editprofile);
-                          //   },
-                          // ),
-                          //Divider(),
                           ProfileItems(
                             text: 'Settings'.tr,
                             icon: Icon(
@@ -156,13 +133,15 @@ class ProfileView extends GetView<ProfileController> {
                             },
                           ),
                           Divider(),
+                          ProfileItems(text: 'Q & A'.tr, icon: Icon(Icons.question_answer_outlined, color: AppColors.mainColor,), link: (){
+                           Get.toNamed(Routes.QUESTION_ANSWER);
+                          }),
+                          Divider(),
                         ],
                       ),
                     ),
                     SizedBox(height: 4,),
-                  const Center(
-                    child: AppVersion(),
-                   ),
+                 
                    
                   
                   ],

@@ -10,6 +10,9 @@ import '../../../routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeController extends GetxController {
+
+  final scrollController = ScrollController();
+
   //TODO: Implement HomeController
   final segmentedControlGroupValue = 0.obs;
   late FirebaseFirestore firestore;
@@ -18,6 +21,11 @@ class HomeController extends GetxController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   
  
+
+ void scrollUp(){
+  final double start = 0;
+  scrollController.animateTo(start, duration: Duration(seconds: 1), curve: Curves.easeIn);
+ }
 
 void changeLanguage (var param1, var param2){
     var locale = Locale(param1, param2);

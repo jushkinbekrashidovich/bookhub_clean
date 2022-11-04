@@ -98,97 +98,7 @@ class BookhubShopDetailsView extends StatelessWidget {
                             textAlign: TextAlign.center,
                           )),
                           SizedBox(height: 10,),
-                      // Container(
-                      //   padding: EdgeInsets.only(left: 2, right: 2),
-                      //   height: 70,
-                      //   width: MediaQuery.of(context).size.width * 0.90,
-                      //   decoration: BoxDecoration(
-                      //     color: AppColors.white,
-                      //     borderRadius: BorderRadius.circular(10),
-                      //   ),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      //     crossAxisAlignment: CrossAxisAlignment.center,
-                      //     children: [
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.center,
-                      //         children: [
-                      //           SizedBox(
-                      //             height: 15,
-                      //           ),
-                      //           Text(
-                      //             'Author'.tr,
-                      //             style: TextStyle(
-                      //                 fontSize: 12, color: AppColors.grey),
-                      //           ),
-                      //           SizedBox(
-                      //             height: 3,
-                      //           ),
-                      //           SizedBox(
-                      //             height: 18,
-                      //             child: Text(authorName,
-                      //                 style: TextStyle(
-                      //                   fontSize: 13,
-                      //                 ),
-                      //                 textAlign: TextAlign.center),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //       SizedBox(
-                      //           height: 30,
-                      //           child: VerticalDivider(
-                      //             thickness: 2,
-                      //           )),
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.center,
-                      //         children: [
-                      //           SizedBox(
-                      //             height: 15,
-                      //           ),
-                      //           Text(
-                      //             'Quality'.tr,
-                      //             style: TextStyle(
-                      //                 fontSize: 12, color: AppColors.grey),
-                      //           ),
-                      //           SizedBox(
-                      //             height: 18,
-                      //             child: Text(quality,
-                      //                 style: TextStyle(
-                      //                   fontSize: 13,
-                      //                 ),
-                      //                 textAlign: TextAlign.center),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //       SizedBox(
-                      //           height: 30,
-                      //           child: VerticalDivider(
-                      //             thickness: 2,
-                      //           )),
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.center,
-                      //         children: [
-                      //           SizedBox(
-                      //             height: 15,
-                      //           ),
-                      //           Text(
-                      //             'Type'.tr,
-                      //             style: TextStyle(
-                      //                 fontSize: 12, color: AppColors.grey),
-                      //           ),
-                      //           SizedBox(
-                      //             height: 18,
-                      //             child: Text(type,
-                      //                 style: TextStyle(
-                      //                   fontSize: 13,
-                      //                 ),
-                      //                 textAlign: TextAlign.center),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                      
                       Container(
                         padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
                         margin: EdgeInsets.only(left: 6, right: 6,),
@@ -221,7 +131,6 @@ class BookhubShopDetailsView extends StatelessWidget {
                                 Text('📖'),
                                 SizedBox(width: 5,),
                                 Text(pages),
-                                Text(' pages'.tr),
                               ],
                             ),
                             SizedBox(height: 8,),

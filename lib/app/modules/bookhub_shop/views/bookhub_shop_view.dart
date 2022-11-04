@@ -25,6 +25,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
               SizedBox(
                 width: 5,
               ),
+              
               Container(
                 decoration: BoxDecoration(
                     color: AppColors.red,
@@ -200,7 +201,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                   padding: EdgeInsets.only(left: 3, right: 3),
                                   height: 20,
                                   decoration: BoxDecoration(
-                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.white,
+                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.green,
                                     borderRadius: BorderRadius.circular(4)
                                   ),
                                   child: Center(
