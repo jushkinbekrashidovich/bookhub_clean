@@ -66,15 +66,21 @@ class AppTranslations extends Translations {
 
    'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊',
     'What is Bookshop?':'What is Bookshop?',
-   'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.',
+   'The Bookshop belongs to Bookhub which sells original, used/good books.':'The Bookshop belongs to Bookhub which sells original, used/good books.',
    
   'How can I contact you?':'How can I contact you?',
   'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG',
 
 'Delete Account':'Delete Account',
+'Order books':'Order books',
 
-       
 
+    "Order guideline":"Order guideline",   
+    "Send":"Send",
+    "Name":"Name",
+    "If you want to order a book, please enter your details or contact us directly by telegram":"If you want to order a book, please enter your details or contact us directly by telegram",
+  "OR":"OR",
+  'e.g Clean Code, hardcover':'e.g Clean Code, hardcover',
 
     },
 
@@ -142,10 +148,18 @@ class AppTranslations extends Translations {
    'Is it free to sell our books through Bookhub?':'Kitoblarimizni Bookhub orqali sotish bepulmi?',
    'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Ha, siz Bookhub orqali kitoblaringizni sotishingiz, sotib olishingiz va almashtirishingiz mumkin.\nVa bularning hammasi bepul 😊',
      'What is Bookshop?':'Bookshop nima?',  
-       'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':"Bookshop Bookhub ilovasining original, foydalanilgan, yangi kitoblarni sotadigan do'kon, Va biz o'z xizmatlarimiz va kitoblarga kafolat beramiz.",
+       'The Bookshop belongs to Bookhub which sells original, used/good books.':"Bookshop Bookhub ilovasining yangi va foydalanilgan kitoblarni sotadigan do'kon hisoblanadi",
  'How can I contact you?':"Siz bilan qanday bog'lansam bo'ladi?",
  'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':"Telegram bot orqali bog'lanishingiz mumkin: @BookhubSupportBot \n yoki to'g'ridan-to'g'ri menga @CodeRG ga yozing",
- 'Delete Account':"Hisobni o'chirish"
+ 'Delete Account':"Hisobni o'chirish",
+ 'Order books':'Kitoblarga buyurtma berish',
+ "Order guideline":"Buyurtma yo'riqnomasi",
+ "Send":"Yuborish",
+ "Name":"Ismingiz",
+ "If you want to order a book, please enter your details or contact us directly by telegram":"Kitob buyurtma qilmoqchi bo'lsangiz, iltimos ma'lumotlaringizni kiriting yoki telegram orqali to'g'ridan to'g'ri savdo bo'limi bilan bog'laning",
+"OR":"YOKI",
+'e.g Clean Code, hardcover':'misol: Yulduzli tunlar, qattiq muqovali'
+
     },
 
     
@@ -214,10 +228,18 @@ class AppTranslations extends Translations {
   'Is it free to sell our books through Bookhub?':'Можно ли бесплатно продавать книги через Bookhub',
   'Yes, you can sell, buy and exchange your books through Bookhub.\nAnd,it is all free 😊':'Да, вы можете продавать, покупать и обменивать свои книги через Bookhub.\nИ все это бесплатно 😊',
     'What is Bookshop?':'Что такое Bookshop',
-    'The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.':'Bookshop принадлежит Bookhub, который продает оригинальные, подержанные/хорошие книги. И мы гарантируем наши услуги и книги.',
+    'The Bookshop belongs to Bookhub which sells original, used/good books.':'Bookshop принадлежит Bookhub, который продает оригинальные, подержанные/хорошие книги.',
     'How can I contact you?':'Как я могу связаться с вами?',
     'You can contact via telegram bot: @BookhubSupportBot \nor Write directly to me @CodeRG':'Вы можете связаться с помощью телеграм-бота: @BookhubSupportBot \nor Напишите мне напрямую @CodeRG',
-   'Delete Account':'Удалить аккаунт'
+   'Delete Account':'Удалить аккаунт',
+   'Order books':'Книги заказов',
+   "Order guideline":"Руководство по заказу",
+   "Send":"Отправлять",
+   "Name":"Имя",
+  "If you want to order a book, please enter your details or contact us directly by telegram":"Если вы хотите заказать книгу, введите свои данные или свяжитесь напрямую в телеграм",
+   "OR":"ИЛИ ЖЕ",
+   'e.g Clean Code, hardcover':'например, Война и мир',
+   
     }
 
 

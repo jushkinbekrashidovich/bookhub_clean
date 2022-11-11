@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
+import '../../../data/models/ads_model.dart';
 import '../../../data/models/book_model.dart';
 import '../../../routes/app_pages.dart';
 import 'package:uuid/uuid.dart';
@@ -19,6 +20,7 @@ class HomeController extends GetxController {
   final bookSales = <Book>[].obs;
   final isLoading = true.obs;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final allAds = <Ads>[].obs;
   
  
 
@@ -43,13 +45,17 @@ void changeLanguage (var param1, var param2){
     isLoading.value = true;
     try {
        bookSales.value = await fetchBooks();
+       allAds.value = await fetchAdds();
+
     } catch (err) {
       showErrorSnackbar(
           "Error while fetching foods from server: " + err.toString());
       throw err;
     }
     isLoading.value = false;
+
     super.onReady();
+    
   }
 
   @override
@@ -62,15 +68,28 @@ void changeLanguage (var param1, var param2){
         .orderBy('postedTimestamp', descending: true)
         .get()
         .then((value) {
-      //print(value.size);
       value.docs.forEach((element) {
         final book = Book.fromJson(element.data());
         book.id = element.id;
-        //print(food.id);
         books.add(book);
       });
     });
     return books;
+  }
+
+  Future<List<Ads>> fetchAdds() async {
+    final List<Ads> ads = [];
+    await firestore
+        .collection("ads")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        final ad = Ads.fromJson(element.data());
+        ad.id = element.id;
+        ads.add(ad);
+      });
+    });
+    return ads;
   }
   
 

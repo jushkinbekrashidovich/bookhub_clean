@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/custom_widgets/custom_snackbar/custom_snackbar.dart';
@@ -10,7 +11,12 @@ class BookhubShopController extends GetxController {
   late FirebaseFirestore firestore;
   final newBookSales = <NewBooks>[].obs;
   final isLoading = true.obs;
+  final scrollController = ScrollController();
 
+  void scrollUp(){
+  final double start = 0;
+  scrollController.animateTo(start, duration: Duration(seconds: 1), curve: Curves.easeIn);
+ }
   @override
   void onInit() {
     firestore = FirebaseFirestore.instance;
@@ -38,7 +44,6 @@ class BookhubShopController extends GetxController {
     final List<NewBooks> newbooks = [];
     await firestore
         .collection("newbooks")
-        .orderBy('order',)
         .get()
         .then((value) {
       //print(value.size);

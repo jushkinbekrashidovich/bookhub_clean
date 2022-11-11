@@ -22,6 +22,7 @@ abstract class Routes {
   static const BOOKHUB_SHOP_DETAILS = _Paths.BOOKHUB_SHOP_DETAILS;
   static const TODO = _Paths.TODO;
   static const QUESTION_ANSWER = _Paths.QUESTION_ANSWER;
+  static const ORDER_BOOKS = _Paths.ORDER_BOOKS;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const BOOKHUB_SHOP_DETAILS = '/bookhub-shop-details';
   static const TODO = '/todo';
   static const QUESTION_ANSWER = '/question-answer';
+  static const ORDER_BOOKS = '/order-books';
 }

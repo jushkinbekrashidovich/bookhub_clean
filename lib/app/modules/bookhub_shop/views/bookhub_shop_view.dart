@@ -1,8 +1,10 @@
 import 'package:bookhub/app/modules/book_details/views/book_details_view.dart';
 import 'package:bookhub/app/modules/bookhub_shop/controllers/bookhub_shop_controller.dart';
 import 'package:bookhub/app/modules/bookhub_shop_details/views/bookhub_shop_details_view.dart';
+import 'package:bookhub/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -15,36 +17,32 @@ class BookhubShopView extends GetView<BookhubShopController> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 20,
+          title: Text('Bookshop'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.ORDER_BOOKS);
+              },
+              icon: Icon(
+                CupertinoIcons.shopping_cart,
+                size: 24,
+                color: AppColors.red,
               ),
-              Text('Bookshop'),
-              SizedBox(
-                width: 5,
-              ),
-              
-              Container(
-                decoration: BoxDecoration(
-                    color: AppColors.red,
-                    borderRadius: BorderRadius.circular(4)),
-                height: 20,
-                width: 40,
-                child: Center(
-                    child: Text(
-                  'new',
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 14,
-                  ),
-                )),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              width: 10,
+            )
+          ],
         ),
+
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.mainColor,
+          child: Icon(Icons.arrow_upward, color: AppColors.white,),
+          onPressed: (){
+          controller.scrollUp();
+        }),
         body: ListView(
+            controller: controller.scrollController,
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.only(left: 8, right: 8, bottom: 10, top: 10),
             //primary: false,
@@ -89,24 +87,17 @@ class BookhubShopView extends GetView<BookhubShopController> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => BookhubShopDetailsView(
-                          
                           photoUrl: element.photoUrl.toString(),
                           title: element.title.toString(),
                           price: element.price.toString(),
                           authorName: element.authorName.toString(),
-
                           quality: element.quality.toString(),
                           type: element.type.toString(),
                           description: element.description.toString(),
-                          
                           phoneNumber: element.phoneNumber.toString(),
                           pages: element.pages.toString(),
                           deliver: element.deliver.toString(),
-                          
-                          
                           id: '',
-                          
-                          
                         ),
                       ),
                     );
@@ -126,19 +117,19 @@ class BookhubShopView extends GetView<BookhubShopController> {
                         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FancyShimmerImage(
-                                  width: 85.0,
-                              height: 125.0,
-                                  errorWidget: Icon(
-                                    Icons.error,
-                                    color: Colors.red,
-                                    size: 28,
-                                  ),
-                                  imageUrl: element.photoUrl.toString(),
-                                  boxFit: BoxFit.fill,
-                                ),
+                            width: 85.0,
+                            height: 125.0,
+                            errorWidget: Icon(
+                              Icons.error,
+                              color: Colors.red,
+                              size: 28,
+                            ),
+                            imageUrl: element.photoUrl.toString(),
+                            boxFit: BoxFit.fill,
+                          ),
                           // CachedNetworkImage(
                           //   imageBuilder: (context, imageProvider) => Container(
-                              
+
                           //     decoration: BoxDecoration(
                           //       borderRadius: BorderRadius.circular(3),
                           //       boxShadow: [
@@ -195,26 +186,27 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                             Color.fromARGB(255, 149, 148, 148)),
                                   ),
                                 ),
-                                SizedBox(height: 10,),
-
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Container(
                                   padding: EdgeInsets.only(left: 3, right: 3),
                                   height: 20,
                                   decoration: BoxDecoration(
-                                    color: element.quality.toString()=='new'?AppColors.red:AppColors.green,
-                                    borderRadius: BorderRadius.circular(4)
-                                  ),
+                                      color: element.quality.toString() == 'new'
+                                          ? AppColors.red
+                                          : AppColors.green,
+                                      borderRadius: BorderRadius.circular(4)),
                                   child: Center(
                                     child: Text(
-                                    element.quality.toString(),
-                                    style: TextStyle(
-                                       color: AppColors.white,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500),
-                                ),
+                                      element.quality.toString(),
+                                      style: TextStyle(
+                                          color: AppColors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
                                 ),
-                                
                                 const SizedBox(
                                   height: 15,
                                 ),
@@ -227,7 +219,7 @@ class BookhubShopView extends GetView<BookhubShopController> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        color: Colors.blue, fontSize: 18),
+                                        color: Colors.blue, fontSize: 16),
                                   ),
                                 ),
                               ],
@@ -237,9 +229,15 @@ class BookhubShopView extends GetView<BookhubShopController> {
                       ),
                     ),
                   ),
+                  
                 );
+                
               }),
-            ])));
+              
+            ])
+            )
+            );
+
   }
 
   static String getReadableTime(int? timestamp) {

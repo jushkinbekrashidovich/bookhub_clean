@@ -33,12 +33,12 @@ class AppThemes {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       },
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
       elevation: 1,
       centerTitle: true,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.white,
+        systemNavigationBarColor: Colors.white,
         // ios
         statusBarBrightness: Brightness.light,
         // android
@@ -96,7 +96,7 @@ class AppThemes {
       elevation: 1,
       centerTitle: true,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: Colors.white,
         systemNavigationBarColor: Colors.transparent,
         // ios
         statusBarBrightness: Brightness.light,

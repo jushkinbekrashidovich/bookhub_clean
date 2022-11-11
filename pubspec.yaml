@@ -1,5 +1,5 @@
 name: bookhub
-version: 1.0.8+8
+version: 1.0.11+11
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -9,21 +9,23 @@ dependencies:
   cupertino_icons: ^1.0.5
   get: ^4.6.5
   flutter_svg: ^1.1.4
-  firebase_core: ^2.1.0
-  firebase_auth: ^4.0.2
+  firebase_core: ^2.2.0
+  firebase_auth: ^4.1.2
   google_sign_in: ^5.4.1
-  cloud_firestore: ^4.0.2
+  cloud_firestore: ^4.0.5
   image_picker: ^0.8.5+3
   double_back_to_close_app: ^2.1.0
-  firebase_storage: ^11.0.2
+  firebase_storage: ^11.0.5
   expandable: ^5.0.1
   google_fonts: ^3.0.1
   fancy_shimmer_image: ^2.0.2
+  firebase_messaging: ^14.1.0
   flutter: 
     sdk: flutter
   flutter_native_splash: ^2.2.9
-  new_version: ^0.2.3
+  new_version: ^0.3.1
   url_launcher: ^6.1.6
+  carousel_slider: ^4.1.1
   
 
 dev_dependencies: 

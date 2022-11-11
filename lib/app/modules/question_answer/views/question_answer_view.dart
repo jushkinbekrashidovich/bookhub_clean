@@ -67,7 +67,7 @@ class QuestionAnswerView extends GetView<QuestionAnswerController> {
                 child: ExpansionTile(
                   title: Text('What is Bookshop?'.tr, style: GoogleFonts.lora(fontSize: 18),),
                   children:  [
-                    ListTile(title: Text('The Bookshop belongs to Bookhub which sells original, used/good books. And we give guarantee our services and books.'.tr, style: GoogleFonts.lora(fontSize: 14),),)
+                    ListTile(title: Text('The Bookshop belongs to Bookhub which sells original, used/good books.'.tr, style: GoogleFonts.lora(fontSize: 14),),)
                   ], 
                   ),
               ),

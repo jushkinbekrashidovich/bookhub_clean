@@ -222,7 +222,7 @@ class BookDetailsView extends StatelessWidget {
                               height: 25,
                               width: 25,
                               child: Icon(
-                                CupertinoIcons.location,
+                                Icons.location_on_outlined,
                                 color: AppColors.mainColor,
                                 size: 18,
                               )),

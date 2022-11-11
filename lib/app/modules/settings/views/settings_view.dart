@@ -100,31 +100,31 @@ class SettingsView extends GetView<SettingsController> {
                                 builder: (context) {
                                   return CupertinoAlertDialog(
                                     title: Text(
-                                      "Delete account?".tr,
+                                      'Delete Account'.tr,
                                       style: TextStyle(),
                                     ),
                                     //content:  Text("Haqiqatdan chiqishni xohlaysizmi".tr),
                                     actions: [
                                       CupertinoDialogAction(
                                           child: Text(
-                                            "Yes".tr,
+                                            'Yes'.tr,
                                             style:
-                                                TextStyle(color: AppColors.red),
+                                               const TextStyle(color: AppColors.red),
                                           ),
                                           onPressed: () {
                                             controller.logout();
                                           }),
                                       CupertinoDialogAction(
                                           child: Text(
-                                            "No".tr,
-                                            style: TextStyle(
+                                            'No'.tr,
+                                            style: const TextStyle(
                                               color: AppColors.mainColor,
                                             ),
                                           ),
                                           onPressed: () {
                                             Get.back();
                                           }),
-                                    ],
+                                    ], 
                                   );
                                 });
                           }
